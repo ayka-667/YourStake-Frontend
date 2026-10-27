@@ -26,4 +26,4 @@ npm run build        # outputs dist/, uses .env.production
 
 `vercel.json` already sets the build command, the `dist` output folder and the
 rewrite of every route to `index.html` (needed for direct links like `/crash`).
-Node 20 is selected through `engines` in `package.json`.
+Node 24 is selected through `engines` in `package.json`.
