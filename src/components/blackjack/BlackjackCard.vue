@@ -5,7 +5,7 @@
                 <img v-bind:src="require('@/assets/img/blackjack/cards/' + card.rank.toLowerCase() + '_' + card.suit + '.jpg')" alt="blackjack-logo" />
             </div>
             <div class="inner-back">
-                <img src="@/assets/img/blackjack/cards/back.png" alt="blackjack-logo" />
+                <img src="@/assets/img/blackjack/cards/back.png" alt="YourStake" />
             </div>
         </div>
     </div>
@@ -152,7 +152,7 @@
         align-items: center;
         border-radius: 5px;
         transform: rotateY(-180deg);
-        background: linear-gradient(180deg, #212335 0%, #31355a 100%);
+        background: #0f212e;
         filter: none;
     }
 
