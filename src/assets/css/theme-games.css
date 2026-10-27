@@ -962,8 +962,11 @@ aside#chat .chat-header {
     flex-wrap: wrap !important;
 }
 
-aside#chat .chat-room-dropdown {
+aside#chat .header-title {
     order: 1;
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
 }
 
 aside#chat .header-online {

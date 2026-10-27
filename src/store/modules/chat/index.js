@@ -1,7 +1,8 @@
 const state = {
     chatLastMessage: null,
     chatScroll: true,
-    chatRoom: localStorage.getItem('chatRoom') === null ? 'en' : localStorage.getItem('chatRoom'),
+    // Single chat room for everyone
+    chatRoom: 'en',
     chatOnline: { en: 0, tr: 0, de: 0, es: 0, beg: 0, whale: 0 },
     chatMessages: {
         data: null,
@@ -54,12 +55,8 @@ const actions = {
     chatSetScroll({ commit }, value) {
         commit('chat_set_scroll', value);
     },
-    chatSetRoom({ getters, commit, dispatch }, room) {
-        if(getters.chatRoom === room) { return; }
-
-        localStorage.setItem('chatRoom', room);
-        commit('chat_set_room', room);
-        dispatch('chatGetMessagesSocket', { room: room });
+    chatSetRoom() {
+        // Rooms were removed, everyone stays in the main chat
     },
     chatSocketInit({ getters, commit, dispatch }, data) {
         commit('chat_set_online', data.online);

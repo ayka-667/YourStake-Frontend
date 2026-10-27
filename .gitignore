@@ -23,3 +23,5 @@ pnpm-debug.log*
 
 # Build output (Vercel builds it)
 /dist
+
+.vercel
