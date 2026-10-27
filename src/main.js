@@ -8,6 +8,7 @@ import store from './store';
 
 import '@/assets/css/global.css';
 import '@/assets/css/theme-games.css';
+import '@/assets/css/motion.css';
 
 Vue.use(VueMeta);
 

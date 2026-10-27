@@ -1,0 +1,261 @@
+/*
+ * Motion layer: page transitions, modals, notifications, sidebar, buttons and chat.
+ * Loaded last so it can refine the component transitions.
+ */
+
+:root {
+    --ease-out: cubic-bezier(.22, 1, .36, 1);
+    --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+}
+
+html { scroll-behavior: smooth; }
+
+/* ---------- Page transitions (router-view, mode out-in) ---------- */
+
+body .app-page main .slide-fade-enter-active {
+    transition: opacity .35s ease, transform .45s var(--ease-out) !important;
+}
+
+body .app-page main .slide-fade-leave-active {
+    transition: opacity .12s ease, transform .12s ease !important;
+}
+
+body .app-page main .slide-fade-enter {
+    opacity: 0 !important;
+    transform: translateY(12px);
+}
+
+body .app-page main .slide-fade-leave-to {
+    opacity: 0 !important;
+    transform: translateY(-4px);
+}
+
+/* ---------- Modals: overlay blur + panel pop ---------- */
+
+.modals .modals-overlay {
+    backdrop-filter: blur(3px);
+}
+
+.modals .modals-overlay.fade-enter-active,
+.modals .modals-overlay.fade-leave-active {
+    transition: opacity .25s ease !important;
+}
+
+.modals .modals-holder.slide-fade-enter-active {
+    transition: opacity .25s ease, transform .4s var(--ease-spring) !important;
+}
+
+.modals .modals-holder.slide-fade-leave-active {
+    transition: opacity .15s ease, transform .15s ease !important;
+}
+
+.modals .modals-holder.slide-fade-enter,
+.modals .modals-holder.slide-fade-leave-to {
+    opacity: 0 !important;
+    transform: translateY(14px) scale(.96) !important;
+}
+
+/* ---------- Notifications slide in from the right ---------- */
+
+.notifications .slide-enter-active {
+    transition: opacity .3s ease, transform .45s var(--ease-spring) !important;
+}
+
+.notifications .slide-leave-active {
+    transition: opacity .2s ease, transform .25s ease !important;
+}
+
+.notifications .slide-enter,
+.notifications .slide-leave-to {
+    opacity: 0 !important;
+    transform: translateX(110%) !important;
+}
+
+/* ---------- Sidebar: active indicator + hover nudge ---------- */
+
+aside#sidebar a.sidebar-link {
+    position: relative;
+    overflow: hidden;
+}
+
+aside#sidebar a.sidebar-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 22%;
+    bottom: 22%;
+    width: 3px;
+    border-radius: 0 3px 3px 0;
+    background: #00e701;
+    transform: scaleY(0);
+    transition: transform .3s var(--ease-out);
+}
+
+aside#sidebar a.sidebar-link.router-link-active::before { transform: scaleY(1); }
+
+aside#sidebar a.sidebar-link .ui-icon,
+aside#sidebar a.sidebar-link span {
+    transition: transform .25s var(--ease-out), color .2s ease;
+}
+
+aside#sidebar a.sidebar-link:hover .ui-icon,
+aside#sidebar a.sidebar-link:hover span:not(.link-live) { transform: translateX(3px); }
+
+aside#sidebar .link-live { animation: live-pulse 2s ease-in-out infinite; }
+
+/* ---------- Buttons: press feedback ---------- */
+
+button.button-bet,
+button.button-cashout,
+button.button-play,
+button.button-start,
+button.button-create,
+.navbar-cashier button.button-wallet,
+nav#navbar .button-register,
+nav#navbar .button-signin,
+nav#navbar .button-icon,
+.home .search-clear,
+.modal-cashier a.cashier-rewards,
+.modal-cashier .code-input button,
+.admin-user-credit button {
+    transition: transform .15s var(--ease-out), filter .15s ease, background .15s ease, box-shadow .2s ease !important;
+}
+
+button.button-bet:active:not(:disabled),
+button.button-cashout:active:not(:disabled),
+button.button-play:active:not(:disabled),
+button.button-start:active:not(:disabled),
+button.button-create:active:not(:disabled),
+.navbar-cashier button.button-wallet:active,
+nav#navbar .button-register:active,
+nav#navbar .button-signin:active,
+nav#navbar .button-icon:active,
+.modal-cashier a.cashier-rewards:active,
+.modal-cashier .code-input button:active:not(:disabled),
+.admin-user-credit button:active:not(:disabled) {
+    transform: scale(.96);
+}
+
+button.button-bet:hover:not(:disabled) .button-inner {
+    box-shadow: 0 6px 18px rgba(0, 231, 1, 0.3);
+}
+
+/* Balance pill pops when it changes (AmountNumber re-renders) */
+.navbar-cashier .cashier-balance {
+    transition: box-shadow .3s ease;
+}
+
+.navbar-cashier:hover .cashier-balance {
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+/* ---------- Chat: messages slide in ---------- */
+
+aside#chat .chat-message-element {
+    animation: chat-in .35s var(--ease-out) both;
+}
+
+aside#chat .footer-input input {
+    transition: border-color .2s ease, box-shadow .25s ease !important;
+}
+
+aside#chat .footer-input input:focus {
+    border-color: #557086 !important;
+    box-shadow: 0 0 0 4px rgba(85, 112, 134, 0.18);
+}
+
+/* ---------- Game panels fade in ---------- */
+
+.crash .crash-container,
+.roll,
+.mines,
+.towers,
+.blackjack-overview,
+.duels,
+.battles,
+.unbox,
+.upgrader,
+.leaderboard,
+.profile,
+.rewards,
+.affiliates {
+    animation: panel-in .5s var(--ease-out) both;
+}
+
+/* ---------- Leaderboard ---------- */
+
+.leaderboard .podium-card {
+    animation: podium-in .7s var(--ease-spring) both;
+}
+
+.leaderboard .podium-card.card-2 { animation-delay: .1s; }
+.leaderboard .podium-card.card-1 { animation-delay: .2s; }
+.leaderboard .podium-card.card-3 { animation-delay: .3s; }
+
+.leaderboard .table-row {
+    animation: chat-in .45s var(--ease-out) both;
+}
+
+.leaderboard .table-row:nth-child(2) { animation-delay: .35s; }
+.leaderboard .table-row:nth-child(3) { animation-delay: .4s; }
+.leaderboard .table-row:nth-child(4) { animation-delay: .45s; }
+.leaderboard .table-row:nth-child(5) { animation-delay: .5s; }
+.leaderboard .table-row:nth-child(6) { animation-delay: .55s; }
+.leaderboard .table-row:nth-child(7) { animation-delay: .6s; }
+.leaderboard .table-row:nth-child(8) { animation-delay: .65s; }
+
+.leaderboard .podium-card.card-1 .avatar-image {
+    animation: crown-glow 2.6s ease-in-out infinite;
+}
+
+/* ---------- Mines tiles reveal ---------- */
+
+.mines-tile .tile-coin img,
+.mines-tile .tile-mine img {
+    animation: tile-pop .45s var(--ease-spring) both;
+}
+
+/* ---------- Keyframes ---------- */
+
+@keyframes chat-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+}
+
+@keyframes panel-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: none; }
+}
+
+@keyframes podium-in {
+    from { opacity: 0; transform: translateY(30px) scale(.95); }
+    to { opacity: 1; transform: none; }
+}
+
+@keyframes tile-pop {
+    from { opacity: 0; transform: scale(.4) rotate(-12deg); }
+    to { opacity: 1; transform: none; }
+}
+
+@keyframes live-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0, 231, 1, 0.55); }
+    50% { box-shadow: 0 0 0 5px rgba(0, 231, 1, 0); }
+}
+
+@keyframes crown-glow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(245, 183, 10, 0.45); }
+    50% { box-shadow: 0 0 0 8px rgba(245, 183, 10, 0); }
+}
+
+/* ---------- Respect the OS "reduce motion" setting ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
