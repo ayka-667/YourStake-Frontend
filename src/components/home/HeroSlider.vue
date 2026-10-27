@@ -40,9 +40,9 @@
                     </template>
 
                     <template v-else-if="slide.id === 'battles'">
-                        <img v-for="(caseName, n) in ['silver-case', 'gold-case', 'gem-case']" v-bind:key="caseName"
+                        <CaseArt v-for="(caseName, n) in ['silver-case', 'gold-case', 'gem-case']" v-bind:key="caseName"
                             class="art-case" v-bind:class="'case-' + n"
-                            v-bind:src="sliderImagePath + '/public/img/' + caseName + '.png'" draggable="false" alt="" />
+                            v-bind:slug="caseName" v-bind:interactive="false" v-bind:float="true" />
                     </template>
 
                     <template v-else>
@@ -71,11 +71,15 @@
 
 <script>
     import { mapGetters, mapActions } from 'vuex';
+    import CaseArt from '@/components/CaseArt';
 
     const SLIDE_DURATION = 6500;
 
     export default {
         name: 'HeroSlider',
+        components: {
+            CaseArt
+        },
         data() {
             return {
                 sliderIndex: 0,

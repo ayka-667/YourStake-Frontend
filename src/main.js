@@ -10,6 +10,7 @@ import '@/assets/css/global.css';
 import '@/assets/css/theme-games.css';
 import '@/assets/css/ui-pro.css';
 import '@/assets/css/motion.css';
+import '@/assets/css/apple.css';
 
 Vue.use(VueMeta);
 

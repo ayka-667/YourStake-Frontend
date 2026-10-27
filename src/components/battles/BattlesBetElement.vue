@@ -36,13 +36,13 @@
                                 <ButtonLoading v-if="socketSendLoading === 'BattlesJoin' || socketSendLoading === 'BattlesCall'" />
                                 <div v-else class="inner-content">
                                     <div v-if="authUser.user !== null && authUser.user._id === battlesGameData.game.bets[0].user._id" class="content-bot">
-                                        <img src="https://cdn.discordapp.com/attachments/1121562847294533732/1206030406122475530/Group_450.png?ex=65da8657&is=65c81157&hm=961997a76c957771f364dafe71e397946a3022a507ff466ef6d548feab249163&" />
+                                        <svg viewBox="0 0 16 16" aria-hidden="true" class="bot-icon"><rect x="2.5" y="5" width="11" height="8" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 5V2.5M6 9h.01M10 9h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
                                     </div>
                                     <svg v-else width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M3.47861 8.33238L6.15342 11.0087L5.08395 12.0789L6.15493 13.1499L5.08471 14.2201L3.21144 12.3469L1.07023 14.4881L0 13.4178L2.14121 11.2759L0.267935 9.40336L1.33816 8.33313L2.40839 9.4026L3.47861 8.33238ZM0.413256 0.456299L3.09715 0.458569L12.0412 9.40336L13.1122 8.33313L14.1824 9.40336L12.3099 11.2766L14.4503 13.4178L13.3801 14.4881L11.2389 12.3469L9.36561 14.2201L8.29539 13.1499L9.36561 12.0789L0.415526 3.12884L0.413256 0.456299ZM11.3554 0.456299L14.0371 0.458569L14.0386 3.12505L10.971 6.19192L8.29463 3.51636L11.3554 0.456299Z" />
                                     </svg>
 
-                                    {{ authUser.user !== null && authUser.user._id === battlesGameData.game.bets[0].user._id ? 'CALL BOT' : 'JOIN BATTLE' }}
+                                    {{ authUser.user !== null && authUser.user._id === battlesGameData.game.bets[0].user._id ? 'Call bots' : 'Join battle' }}
                                 </div>
                             </transition>
                         </div>

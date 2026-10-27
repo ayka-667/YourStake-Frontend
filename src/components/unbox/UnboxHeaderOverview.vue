@@ -1,5 +1,5 @@
 <template>
-    <div class="unbox-overview">
+    <div class="unbox-header-bar">
         <div class="overview-top">
             <h1 class="overview-title">Cases</h1>
             <div class="overview-filter">
@@ -57,32 +57,32 @@
 </script>
 
 <style scoped>
-    .unbox-overview {
+    .unbox-header-bar {
         width: 100%;
         margin-bottom: 20px;
     }
 
-    .unbox-overview .overview-top {
+    .unbox-header-bar .overview-top {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 16px;
     }
 
-    .unbox-overview .overview-title {
+    .unbox-header-bar .overview-title {
         font-size: 24px;
         font-weight: 800;
         letter-spacing: -0.01em;
         color: #ffffff;
     }
 
-    .unbox-overview .overview-filter {
+    .unbox-header-bar .overview-filter {
         display: flex;
         align-items: center;
         gap: 10px;
     }
 
-    .unbox-overview .overview-tabs {
+    .unbox-header-bar .overview-tabs {
         display: flex;
         gap: 4px;
         margin-top: 16px;
@@ -91,9 +91,9 @@
         scrollbar-width: none;
     }
 
-    .unbox-overview .overview-tabs::-webkit-scrollbar { display: none; }
+    .unbox-header-bar .overview-tabs::-webkit-scrollbar { display: none; }
 
-    .unbox-overview button.button-tab {
+    .unbox-header-bar button.button-tab {
         position: relative;
         flex: none;
         padding: 10px 14px 12px 14px;
@@ -105,7 +105,7 @@
         transition: color .15s ease;
     }
 
-    .unbox-overview button.button-tab::after {
+    .unbox-header-bar button.button-tab::after {
         content: '';
         position: absolute;
         left: 14px;
@@ -118,12 +118,12 @@
         transition: transform .2s cubic-bezier(.22, 1, .36, 1);
     }
 
-    .unbox-overview button.button-tab:hover { color: #ffffff; }
-    .unbox-overview button.button-tab.tab-active { color: #ffffff; }
-    .unbox-overview button.button-tab.tab-active::after { transform: scaleX(1); }
+    .unbox-header-bar button.button-tab:hover { color: #ffffff; }
+    .unbox-header-bar button.button-tab.tab-active { color: #ffffff; }
+    .unbox-header-bar button.button-tab.tab-active::after { transform: scaleX(1); }
 
     @media only screen and (max-width: 800px) {
-        .unbox-overview .overview-top { flex-direction: column; align-items: stretch; }
-        .unbox-overview .overview-filter { flex-wrap: wrap; }
+        .unbox-header-bar .overview-top { flex-direction: column; align-items: stretch; }
+        .unbox-header-bar .overview-filter { flex-wrap: wrap; }
     }
 </style>

@@ -7,7 +7,7 @@
         </button>
         <div class="box-header">
             <div class="header-info">
-                <img v-bind:src="unboxImagePath + '/public/img/' + modalsData.box.slug + '.png'" />
+                <CaseArt class="info-art" v-bind:slug="modalsData.box.slug" v-bind:interactive="false" />
                 <div class="info-text">
                     <div class="text-name">{{ modalsData.box.name }}</div>
                     <div class="text-amount">
@@ -32,10 +32,12 @@
     import { mapGetters, mapActions } from 'vuex';
     import IconClose from '@/components/icons/IconClose';
     import UnboxItemElement from '@/components/unbox/UnboxItemElement';
+    import CaseArt from '@/components/CaseArt';
 
     export default {
         name: 'ModalBox',
         components: {
+            CaseArt,
             IconClose,
             UnboxItemElement
         },
@@ -145,8 +147,9 @@
         transform: translate(0, -50%);
     }
 
-    .modal-box .header-info img {
-        height: 60px;
+    .modal-box .header-info .case-art {
+        width: 72px;
+        flex: none;
     }
 
     .modal-box .info-text {

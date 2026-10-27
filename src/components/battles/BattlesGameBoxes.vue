@@ -13,7 +13,7 @@
             <button v-for="(box, index) in battlesGetBoxes" v-bind:key="box.pos" v-on:click="battlesBoxButton(box.box)" class="button-box" v-bind:class="{ 
                 'button-active': index === 0 && ['created', 'countdown', 'pending'].includes(game.state) === true || box.pos === battlesGetRound - 1
             }">
-                <img v-bind:src="unboxImagePath + '/public/img/' + box.box.slug + '.png'" />
+                <CaseArt v-bind:slug="box.box.slug" v-bind:interactive="false" />
             </button>
 
         </transition-group>
@@ -23,10 +23,12 @@
 <script>
     import { mapActions } from 'vuex';
     import IconCheckGradient from '@/components/icons/IconCheckGradient';
+    import CaseArt from '@/components/CaseArt';
 
     export default {
         name: 'BattlesGameBoxes',
         components: {
+            CaseArt,
             IconCheckGradient
         },
         props: ['game'],
@@ -207,16 +209,16 @@
         margin-right: 11px;
     }
 
-    .battles-game-boxes button.button-box img {
+    .battles-game-boxes button.button-box .case-art {
         width: 48px;
         opacity: 0.3;
     }
 
-    .battles-game-boxes button.button-box.button-active img {
+    .battles-game-boxes button.button-box.button-active .case-art {
         transform: scale(1.1);
     }
 
-    .battles-game-boxes.boxes-rolling button.button-box.button-active img {
+    .battles-game-boxes.boxes-rolling button.button-box.button-active .case-art {
         opacity: 1;
         mix-blend-mode: normal;
     }

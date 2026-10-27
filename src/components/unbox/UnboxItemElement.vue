@@ -1,17 +1,13 @@
 <template>
-    <div class="unbox-item-element" v-bind:class="['element-' + item.color]">
-        <div class="element-inner">
-            <div class="inner-percentage">{{item.tickets / 1000}}%</div>
-            <div class="inner-image">
-                <img v-bind:src="item.item.image" />
-            </div>
-            <div class="inner-name">{{item.item.name}}</div>
-            <div class="inner-price">
-                <img src="@/assets/img/icons/coin.svg" alt="icon" />
-                <div class="price-value">
-                    <span>{{ unboxFormatValue(item.item.amountFixed).split('.')[0] }}</span>.{{ unboxFormatValue(item.item.amountFixed).split('.')[1] }}
-                </div>
-            </div>
+    <div class="unbox-item-element" v-bind:class="['element-' + item.color]" v-bind:style="{ '--i': index || 0 }">
+        <div class="element-chance">{{ item.tickets / 1000 }}%</div>
+        <div class="element-image">
+            <img v-bind:src="item.item.image" alt="" />
+        </div>
+        <div class="element-name">{{ item.item.name }}</div>
+        <div class="element-price">
+            <img src="@/assets/img/icons/coin.svg" alt="" />
+            {{ unboxFormatValue(item.item.amountFixed) }}
         </div>
     </div>
 </template>
@@ -19,7 +15,7 @@
 <script>
     export default {
         name: 'UnboxItemElement',
-        props: ['item'],
+        props: ['item', 'index'],
         methods: {
             unboxFormatValue(value) {
                 return parseFloat(Math.floor(value / 10) / 100).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
@@ -30,235 +26,115 @@
 
 <style scoped>
     .unbox-item-element {
-        width: calc(14.28% - 5.14px);
+        --rarity: #8aa0b8;
         position: relative;
-        margin-bottom: 6px;
-        margin-right: 6px;
-        padding: 1px;
-        z-index: 1;
-    }
-
-    .modal-box .unbox-item-element {
-        width: calc(25% - 4.5px);
-    }
-
-    .unbox-item-element:nth-child(7n) {
-        margin-right: 0;
-    }
-
-    .modal-box .unbox-item-element:nth-child(7n) {
-        margin-right: 6px;
-    }
-
-    .modal-box .unbox-item-element:nth-child(4n) {
-        margin-right: 0;
-    }
-
-    .unbox-item-element:before {
-        content: '';
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 14px 12px 16px 12px;
+        border-radius: 16px;
         background: #1a2c38;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+        overflow: hidden;
+        isolation: isolate;
+        animation: item-in .7s cubic-bezier(.32, .72, 0, 1) both;
+        animation-delay: calc(var(--i) * 40ms);
+        transition: transform .5s cubic-bezier(.32, .72, 0, 1), box-shadow .5s ease;
+    }
+
+    .unbox-item-element.element-blue { --rarity: #3b9bff; }
+    .unbox-item-element.element-purple { --rarity: #a86bff; }
+    .unbox-item-element.element-green { --rarity: #22d36b; }
+    .unbox-item-element.element-red { --rarity: #ff4d6d; }
+    .unbox-item-element.element-yellow { --rarity: #f5b70a; }
+
+    .unbox-item-element::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(60% 45% at 50% 38%, var(--rarity) 0%, transparent 100%);
+        opacity: .16;
+        transition: opacity .5s ease;
         z-index: -1;
-    }
-
-    .unbox-item-element.element-blue:before {
-        background: linear-gradient(223deg, rgba(66, 107, 252, 0.35) 0%, rgb(66, 107, 252, 0.6) 100%);
-    }
-
-    .unbox-item-element.element-purple:before {
-        background: linear-gradient(223deg, rgba(253, 134, 255, 0.35) 0%, rgb(253, 134, 255, 0.6) 100%);
-    }
-
-    .unbox-item-element.element-green:before {
-        background: linear-gradient(223deg, rgba(46, 202, 146, 0.35) 0%, rgb(46, 202, 146, 0.6) 100%);
-    }
-
-    .unbox-item-element.element-red:before {
-        background: linear-gradient(223deg, rgb(218, 50, 50, 0.35) 0%, rgb(218, 50, 50, 0.6) 100%);
-    }
-
-    .unbox-item-element.element-yellow:before {
-        background: linear-gradient(223deg, rgba(220, 177, 25, 0.35) 0%, rgba(220, 177, 25, 0.6) 100%);
     }
 
     .unbox-item-element::after {
         content: '';
-        width: calc(100% - 2px);
-        height: calc(100% - 2px);
         position: absolute;
-        top: 1px;
-        left: 1px;
-        background: #042037;
-        z-index: -1;
+        left: 24%;
+        right: 24%;
+        bottom: 0;
+        height: 3px;
+        border-radius: 3px 3px 0 0;
+        background: var(--rarity);
+        box-shadow: 0 0 14px var(--rarity);
     }
 
-    .unbox-item-element .element-inner {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        padding: 40px 0 20px 0;
+    .unbox-item-element:hover {
+        transform: translateY(-4px);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08), 0 18px 40px -20px rgba(0, 0, 0, 0.8);
     }
 
-    .unbox-item-element.element-blue .element-inner {
-    }
+    .unbox-item-element:hover::before { opacity: .3; }
 
-    .unbox-item-element.element-purple .element-inner {
-    }
-
-    .unbox-item-element.element-green .element-inner {
-    }
-
-    .unbox-item-element.element-red .element-inner {
-    }
-
-    .unbox-item-element.element-yellow .element-inner {
-    }
-
-    .unbox-item-element .inner-percentage {
-        position: absolute;
-        top: 9px;
-        right: 9px;
-        font-size: 14px;
+    .unbox-item-element .element-chance {
+        align-self: flex-end;
+        padding: 3px 8px;
+        border-radius: 999px;
+        background: rgba(15, 33, 46, 0.7);
+        font-size: 12px;
         font-weight: 600;
-        color: #557086;
-    }
-
-    .unbox-item-element .inner-image {
-        height: 74px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        image-rendering: pixelated;
-    }
-
-    .unbox-item-element .inner-image img {
-        width: 96px;
-    }
-
-    .unbox-item-element .inner-name {
-        /* height: 38px; */
-        margin-top: 25px;
-        margin-bottom: 10px;
-        text-align: center;
-        font-size: 15px;
-        font-weight: 600;
-        color: #a2acb6;
-    }
-
-    .unbox-item-element .inner-price {
-        display: flex;
-        align-items: center;
-        margin-top: 6px;
-    }
-
-    .unbox-item-element .inner-price img {
-        width: 18px;
-        height: 18px;
-        margin-right: 8px;
-    }
-
-    .unbox-item-element .price-value {
-        font-size: 10px;
-        font-weight: 600;
+        font-variant-numeric: tabular-nums;
         color: #b1bad3;
     }
 
-    .unbox-item-element .price-value span {
+    .unbox-item-element .element-image {
+        width: 96px;
+        height: 96px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 4px 0 10px 0;
+    }
+
+    .unbox-item-element .element-image img {
+        max-width: 100%;
+        max-height: 100%;
+        filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.45));
+        transition: transform .6s cubic-bezier(.32, .72, 0, 1);
+    }
+
+    .unbox-item-element:hover .element-image img { transform: translateY(-3px) scale(1.06); }
+
+    .unbox-item-element .element-name {
+        max-width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
         font-size: 14px;
-        font-weight: 700;
+        font-weight: 600;
         color: #ffffff;
     }
 
-    @media only screen and (max-width: 1200px) {
-
-        .unbox-item-element {
-            width: calc(16.66% - 5px);
-        }
-
-        .unbox-item-element:nth-child(7n) {
-            margin-right: 6px;
-        }
-
-        .unbox-item-element:nth-child(6n) {
-            margin-right: 0;
-        }
-
+    .unbox-item-element .element-price {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 6px;
+        font-size: 13px;
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+        color: #b1bad3;
     }
 
-    @media only screen and (max-width: 1050px) {
+    .unbox-item-element .element-price img { width: 14px; height: 14px; }
 
-        .unbox-item-element {
-            width: calc(20% - 4.8px);
-        }
-
-        .unbox-item-element:nth-child(6n) {
-            margin-right: 6px;
-        }
-
-        .unbox-item-element:nth-child(5n) {
-            margin-right: 0;
-        }
-
+    @keyframes item-in {
+        from { opacity: 0; transform: translateY(12px); }
+        to { opacity: 1; transform: none; }
     }
 
-    @media only screen and (max-width: 800px) {
-
-        .unbox-item-element {
-            width: calc(25% - 4.5);
-        }
-
-        .unbox-item-element:nth-child(5n) {
-            margin-right: 6px;
-        }
-
-        .unbox-item-element:nth-child(4n) {
-            margin-right: 0;
-        }
-
-    }
-
-    @media only screen and (max-width: 700px) {
-
-        .unbox-item-element,
-        .modal-box .unbox-item-element {
-            width: calc(33.33% - 4px);
-        }
-
-        .unbox-item-element:nth-child(4n),
-        .modal-box .unbox-item-element:nth-child(4n) {
-            margin-right: 6px;
-        }
-
-        .unbox-item-element:nth-child(3n),
-        .modal-box .unbox-item-element:nth-child(3n) {
-            margin-right: 0;
-        }
-
-    }
-
-    @media only screen and (max-width: 550px) {
-
-        .unbox-item-element,
-        .modal-box .unbox-item-element {
-            width: calc(50% - 3px);
-        }
-
-        .unbox-item-element:nth-child(3n),
-        .modal-box .unbox-item-element:nth-child(3n) {
-            margin-right: 6px;
-        }
-
-        .unbox-item-element:nth-child(2n),
-        .modal-box .unbox-item-element:nth-child(2n) {
-            margin-right: 0;
-        }
-
+    @media (prefers-reduced-motion: reduce) {
+        .unbox-item-element { animation: none; }
     }
 </style>

@@ -47,7 +47,7 @@
                 </div>
                 <div v-else class="content-list" key="data">
 
-                    <BlackjackTablesElement v-for="table of blackjackGetTables.standard" v-bind:key="table.table" v-bind:table="table" />
+                    <BlackjackTablesElement v-for="(table, index) of blackjackGetTables.standard" v-bind:key="table.table" v-bind:table="table" v-bind:index="index" />
 
                 </div>
             </transition>

@@ -6,7 +6,7 @@
         <div v-if="message.type === 'rainTip' || message.type === 'rainCompleted'" class="element-rain">
             <div class="rain-header">
                 <IconRainGradient />
-                <span class="text-green-gradient">{{ message.type === 'rainTip' ? 'RAIN TIP' : 'RAIN COMPLETED!' }}</span>
+                <span class="text-green-gradient">{{ message.type === 'rainTip' ? 'Rain tip' : 'Rain completed' }}</span>
             </div>
             <div class="rain-content">
                 <div v-if="message.type === 'rainTip'" class="content-tip">

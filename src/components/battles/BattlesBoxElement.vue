@@ -4,7 +4,7 @@
             <div class="name-inner">{{ box.name }}</div>
         </div>
         <div class="element-image">
-            <img v-bind:src="unboxImagePath + '/public/img/' + box.slug + '.png'" />
+            <CaseArt v-bind:slug="box.slug" />
         </div>
         <div v-if="battlesSelectedCount === 0" class="element-select">
             <div class="select-price">
@@ -35,9 +35,13 @@
 
 <script>
     import { mapGetters, mapActions } from 'vuex';
+    import CaseArt from '@/components/CaseArt';
 
     export default {
         name: 'BattlesBoxElement',
+        components: {
+            CaseArt
+        },
         props: ['box'],
         data() {
             return {
@@ -163,8 +167,8 @@
         align-items: center;
     }
 
-    .battles-box-element .element-image img {
-        width: 130px;
+    .battles-box-element .element-image .case-art {
+        width: 118px;
     }
 
     .battles-box-element .element-select {

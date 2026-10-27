@@ -4,7 +4,7 @@
             <button v-on:click="generalSetSidebarMobile(generalSidebarMobile === 'Navbar' ? null : 'Navbar')" class="button-icon button-menu">
                 <UiIcon name="menu" />
             </button>
-            <router-link to="/" class="link-logo">YourStake</router-link>
+            <router-link to="/" class="link-logo"><img src="@/assets/img/logo-chip.png" alt="" />YourStake</router-link>
         </div>
 
         <div class="navbar-mid">

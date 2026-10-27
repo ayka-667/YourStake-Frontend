@@ -1,52 +1,50 @@
 <template>
-    <div class="unbox-header-box">
+    <div class="unbox-header-box" v-bind:style="heroStyle">
         <router-link class="link-back" to="/unbox">
-            <div class="link-inner">
-                <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.519893 4.88899C-0.173298 5.40596 -0.173297 6.69838 0.519893 7.21535L5.97877 11.2865C6.67196 11.8035 7.53845 11.1573 7.53845 10.1233V9.06113H14V3.04304H7.53845V1.98103C7.53845 0.947086 6.67196 0.300873 5.97877 0.817844L0.519893 4.88899Z" />
-                </svg>
-                Back
-            </div>
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" /></svg>
+            All cases
         </router-link>
-        <div v-if="unboxBoxData.box !== null" class="box-mid">
-            <div class="mid-info">
-                <div class="info-inner">
-                    <div class="inner-image">
-                        <div class="image-inner">
-                            <img v-bind:src="unboxImagePath + '/public/img/' + unboxBoxData.box.slug + '.png'" />
-                        </div>
+        <div v-if="unboxBoxData.box !== null" class="hero-body">
+            <div class="hero-art">
+                <CaseArt v-bind:slug="unboxBoxData.box.slug" v-bind:float="true" />
+            </div>
+            <div class="hero-info">
+                <span class="info-eyebrow">{{ heroTheme.label }} case</span>
+                <h1 class="info-name">{{ unboxBoxData.box.name }}</h1>
+                <div class="info-meta">
+                    <div class="meta-price">
+                        <img src="@/assets/img/icons/coin.svg" alt="" />
+                        {{ unboxFormatValue(unboxBoxData.box.amount) }}
                     </div>
-                    {{unboxBoxData.box.name}}
+                    <span class="meta-note">per case</span>
                 </div>
+                <button v-on:click="unboxFairButton()" class="button-fair">
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5l5.5 2v4c0 3.4-2.3 6-5.5 7-3.2-1-5.5-3.6-5.5-7v-4z" /><path d="M5.6 8.1l1.7 1.7 3.2-3.4" /></svg>
+                    Provably fair
+                </button>
             </div>
         </div>
-        <button v-on:click="unboxFairButton()" class="button-fair">
-            <div class="button-inner">
-                <svg width="12" height="15" viewBox="0 0 12 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0001 2.30199V3.8031H10.941C9.76198 3.80425 8.60479 3.48508 7.59306 2.87967L6.25388 2.07004C6.17599 2.02293 6.0867 1.99803 5.99567 1.99803C5.90465 1.99803 5.81535 2.02293 5.73747 2.07004L4.40266 2.8753C3.39067 3.48009 2.23365 3.79922 1.05471 3.79872H3.60219e-10V2.30199C-5.0177e-06 2.16926 0.0524184 2.04191 0.145859 1.94765C0.239299 1.85339 0.36619 1.79986 0.49891 1.7987H1.05909C2.32857 1.79901 3.574 1.45247 4.66087 0.796506L6.00005 0L7.33485 0.800882C8.42243 1.45521 9.6674 1.80162 10.9366 1.80308H11.5012C11.6328 1.80533 11.7584 1.85862 11.8515 1.9517C11.9446 2.04478 11.9979 2.17037 12.0001 2.30199Z" />
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M10.941 4.81404C9.58091 4.8134 8.2466 4.44276 7.08102 3.74182L6.00005 3.08536L4.91908 3.72869C3.75456 4.43362 2.42034 4.80878 1.05909 4.81404H0V6.12696C0.00306513 7.64623 0.438442 9.13326 1.25526 10.4143C2.07207 11.6953 3.23659 12.7174 4.61273 13.3612L6.00005 14.0045L7.37862 13.3612C8.75673 12.7191 9.92335 11.6976 10.7418 10.4164C11.5603 9.13521 11.9968 7.64729 12.0001 6.12696V4.81404H10.941ZM6.25388 9.19044C6.16095 9.27977 6.03705 9.32966 5.90815 9.32966C5.77924 9.32966 5.65534 9.27977 5.56241 9.19044L4.16196 7.78999L4.86656 7.08539L5.9169 8.13135L7.66746 6.38079L8.37206 7.08539L6.25388 9.19044Z" />
-                </svg>
-                Fairness
-            </div>
-        </button>
     </div>
 </template>
 
 <script>
     import { mapGetters, mapActions } from 'vuex';
+    import CaseArt from '@/components/CaseArt';
+    import { caseTheme } from '@/utils/caseTheme';
 
     export default {
         name: 'UnboxHeaderBox',
-        data() {
-            return {
-                unboxImagePath: process.env.VUE_APP_BACKEND_URL
-            }
+        components: {
+            CaseArt
         },
         methods: {
             ...mapActions([
                 'notificationShow',
                 'modalsSetShow'
             ]),
+            unboxFormatValue(value) {
+                return parseFloat(Math.floor(value / 10) / 100).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            },
             unboxFairButton() {
                 if(this.authUser.user === null) {
                     this.notificationShow({ type: 'error', message: 'Please sign in to perform this action.' });
@@ -60,226 +58,138 @@
             ...mapGetters([
                 'authUser',
                 'unboxBoxData'
-            ])
+            ]),
+            heroTheme() {
+                return caseTheme(this.unboxBoxData.box !== null ? this.unboxBoxData.box.slug : '');
+            },
+            heroStyle() {
+                return { '--case-glow': this.heroTheme.glow };
+            }
         }
     }
 </script>
 
 <style scoped>
     .unbox-header-box {
+        position: relative;
         width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-bottom: 25px;
+        margin-bottom: 18px;
+        padding: 22px 28px 28px 28px;
+        border-radius: 20px;
+        background:
+            radial-gradient(60% 120% at 18% 55%, color-mix(in srgb, var(--case-glow) 26%, transparent) 0%, transparent 70%),
+            linear-gradient(180deg, #1a2c38 0%, #152733 100%);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+        overflow: hidden;
+        animation: hero-in .8s cubic-bezier(.32, .72, 0, 1) both;
     }
 
     .unbox-header-box a.link-back {
-        width: 110px;
-        height: 44px;
-        position: relative;
-        padding: 1px;
-        transition: all .2s;
-    }
-    .unbox-header-box a.link-back:active {
-        transition-duration: .2s;
-        scale: .9;
-    }
-    
-
-    .unbox-header-box a.link-back::before {
-        content: '';
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background: #0f3759;
-        border-radius: 4px;
-        isolation: isolate;
-    }
-
-    .unbox-header-box a.link-back .link-inner {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
+        display: inline-flex;
         align-items: center;
-        font-size: 14px;
-        font-weight: 700;
+        gap: 4px;
+        padding: 6px 12px 6px 8px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        font-size: 13px;
+        font-weight: 600;
         color: #b1bad3;
-        background: #0b2d49;
-        transition: color 0.3s ease;
-        border-radius: 4px;
-        isolation: isolate;
+        transition: background .3s ease, color .3s ease;
     }
 
-    .unbox-header-box a.link-back:hover .link-inner {
+    .unbox-header-box a.link-back:hover { background: rgba(255, 255, 255, 0.1); color: #ffffff; }
+
+    .unbox-header-box svg {
+        width: 16px;
+        height: 16px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    .unbox-header-box .hero-body {
+        display: flex;
+        align-items: center;
+        gap: 36px;
+        margin-top: 6px;
+    }
+
+    .unbox-header-box .hero-art {
+        width: 240px;
+        flex: none;
+    }
+
+    .unbox-header-box .info-eyebrow {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--case-glow);
+    }
+
+    .unbox-header-box .info-name {
+        margin: 4px 0 14px 0;
+        font-size: 40px;
+        font-weight: 800;
+        line-height: 1.05;
+        letter-spacing: -0.03em;
         color: #ffffff;
     }
 
-    .unbox-header-box a.link-back .link-inner svg {
-        margin-right: 8px;
-        fill: #557b9b;
-        transition: fill 0.3s ease;
-    }
-
-    .unbox-header-box a.link-back:hover .link-inner svg {
-        fill: #ffffff;
-    }
-
-    .unbox-header-box .box-mid {
-        width: calc(100% - 223px);
-        padding-left: 20px;
-    }
-
-    .unbox-header-box .mid-info {
-        width: 243px;
-        height: 62px;
-        position: relative;
-        padding: 1px;
-    }
-
-    .unbox-header-box .mid-info::before {
-        content: '';
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background: #0a2943;
-        border-radius: 4px;
-        isolation: isolate;
-    }
-
-    .unbox-header-box .info-inner {
-        width: 100%;
-        height: 100%;
+    .unbox-header-box .info-meta {
         display: flex;
         align-items: center;
-        padding-left: 100px;
-        font-size: 15px;
-        font-weight: 700;
+        gap: 10px;
+    }
+
+    .unbox-header-box .meta-price {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: rgba(15, 33, 46, 0.75);
+        font-size: 18px;
+        font-weight: 800;
+        font-variant-numeric: tabular-nums;
         color: #ffffff;
-        background: #051b2d;
-        border-radius: 4px;
-        isolation: isolate;
     }
 
-    .unbox-header-box .inner-image {
-        width: 76px;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        padding: 1px;
-        background: #0a2943;
-        border-radius: 4px;
-        isolation: isolate;
-    }
+    .unbox-header-box .meta-price img { width: 18px; height: 18px; }
 
-    .unbox-header-box .image-inner {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: #051b2d;
-        border-radius: 4px;
-        isolation: isolate;
-    }
-
-    .unbox-header-box .image-inner img {
-        height: 52px;
+    .unbox-header-box .meta-note {
+        font-size: 13px;
+        font-weight: 500;
+        color: #7f92a5;
     }
 
     .unbox-header-box button.button-fair {
-        width: 113px;
-        height: 32px;
-        filter: none;
-        transition: all .2s;
-    }
-    .unbox-header-box button.button-fair:active {
-        transition-duration: .2s;
-        scale: .9;
-    }
-
-    .unbox-header-box button.button-fair .button-inner {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
+        display: inline-flex;
         align-items: center;
-        font-size: 12px;
-        font-weight: 700;
+        gap: 6px;
+        margin-top: 22px;
+        padding: 8px 14px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.06);
+        font-size: 13px;
+        font-weight: 600;
         color: #b1bad3;
-        background: #2f4553;
-        transition: color 0.3s ease;
-        border-radius: 4px;
-        isolation: isolate;
+        transition: background .3s ease, color .3s ease, transform .3s cubic-bezier(.32, .72, 0, 1);
     }
 
-    .unbox-header-box button.button-fair .button-inner:hover {
-        transition:  all .2s;
-        background: #2a4f6d;
+    .unbox-header-box button.button-fair:hover { background: rgba(255, 255, 255, 0.1); color: #ffffff; }
+    .unbox-header-box button.button-fair:active { transform: scale(.97); }
+
+    @keyframes hero-in {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: none; }
     }
 
-    .unbox-header-box button.button-fair:hover .button-inner {
-        color: #ffffff;
-    }
-
-    .unbox-header-box button.button-fair .button-inner svg {
-        margin-right: 6px;
-        fill: #b1bad3;
-        transition: fill 0.3s ease;
-    }
-
-    .unbox-header-box button.button-fair:hover .button-inner svg {
-        fill: #ffffff;
-    }
-
-    @media only screen and (max-width: 800px) {
-
-        .unbox-header-box {
-            display: grid;
-            grid-template-rows: auto auto;
-        }
-
-        .unbox-header-box a.link-back {
-            grid-row: 1 / 1;
-            margin-bottom: 15px;
-        }
-
-        .unbox-header-box .box-mid {
-            grid-row: 2 / 2;
-            padding-left: 0;
-        }
-
-        .unbox-header-box button.button-fair {
-            grid-row: 2 / 2;
-        }
-
-    }
-
-    @media only screen and (max-width: 500px) {
-
-        .unbox-header-box {
-            align-items: center;
-        }
-
-        .unbox-header-box a.link-back {
-            grid-column: 1 / 1;
-            margin-bottom: 0;
-        }
-
-        .unbox-header-box .box-mid {
-            margin-top: 15px;
-        }
-
-        .unbox-header-box button.button-fair {
-            grid-column: 2 / 2;
-            grid-row: 1 / 1;
-        }
-
+    @media only screen and (max-width: 700px) {
+        .unbox-header-box { padding: 18px; }
+        .unbox-header-box .hero-body { flex-direction: column; text-align: center; gap: 10px; }
+        .unbox-header-box .hero-art { width: 180px; }
+        .unbox-header-box .info-meta { justify-content: center; }
+        .unbox-header-box .info-name { font-size: 30px; }
     }
 </style>

@@ -14,7 +14,7 @@
             </div>
             <div v-else-if="unboxGetBoxes.length > 0" class="overview-list" key="data">
 
-                <UnboxBoxElement v-for="box of unboxGetBoxes" v-bind:key="box._id" v-bind:box="box" />
+                <UnboxBoxElement v-for="(box, index) of unboxGetBoxes" v-bind:key="box._id" v-bind:box="box" v-bind:index="index" />
 
             </div>
             <div v-else class="overview-empty" key="empty">No cases yet.</div>
@@ -212,5 +212,21 @@
             margin-right: 0;
         }
 
+    }
+    /* Responsive grid (overrides the fixed 7-column layout above) */
+    .unbox-overview .overview-loading,
+    .unbox-overview .overview-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(176px, 1fr));
+        gap: 14px;
+    }
+
+    .unbox-overview .overview-loading .loading-placeholder {
+        width: auto !important;
+        height: 250px;
+        margin: 0 !important;
+        border: none;
+        border-radius: 16px;
+        background: #1a2c38;
     }
 </style>

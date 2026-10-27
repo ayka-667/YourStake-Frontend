@@ -160,6 +160,8 @@
 </template>
 
 <script>
+    import { caseImageUrl } from '@/utils/caseTheme';
+
     let counter = 0;
 
     export default {
@@ -186,7 +188,7 @@
         methods: {
             uid(name) { return this.artId + '-' + name; },
             url(name) { return 'url(#' + this.uid(name) + ')'; },
-            caseImage(slug) { return this.artBackend + '/public/img/' + slug + '.png'; },
+            caseImage(slug) { return caseImageUrl(slug); },
             wedge(cx, cy, outer, inner, startDeg, endDeg) {
                 const rad = (deg) => (deg - 90) * Math.PI / 180;
                 const p = (r, deg) => [cx + r * Math.cos(rad(deg)), cy + r * Math.sin(rad(deg))].map((v) => v.toFixed(2)).join(' ');

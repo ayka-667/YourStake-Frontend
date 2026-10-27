@@ -5,7 +5,7 @@
             <div class="name-inner">Level 5 Case</div>
         </div>
         <div class="element-image">
-            <img v-bind:src="rewardsImagePath + '/public/img/starter-case.png'" />
+            <CaseArt slug="starter-case" />
         </div>
         <div class="element-info">
             <div v-if="rewardsGetState === 'ready'" class="info-ready">Ready to open</div>
@@ -19,8 +19,12 @@
 </template>
 
 <script>
+    import CaseArt from '@/components/CaseArt';
     export default {
         name: 'RewardsBoxElement',
+        components: {
+            CaseArt
+        },
         props: [
             'cooldown', 
             'locked'
@@ -147,8 +151,8 @@
         align-items: center;
     }
 
-    .rewards-box-element .element-image img {
-        width: 130px;
+    .rewards-box-element .element-image .case-art {
+        width: 118px;
     }
 
     .rewards-box-element .element-info {

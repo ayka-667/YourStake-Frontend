@@ -30,7 +30,7 @@
                     3: [],
                     4: []
                 },
-                unboxReelStyle: { transform: 'translateX(2535px) translateY(0px)', transition: 'none' }
+                unboxReelStyle: { transform: 'translateX(2583px) translateY(0px)', transition: 'none' }
             }
         },
         methods: {
@@ -119,7 +119,7 @@
                 handler() {
                     this.unboxReelsPos = 20;
 
-                    if(this.unboxCount === 1) { this.unboxReelStyle = { transform: 'translateX(2535px) translateY(0px)', transition: 'none' }; }
+                    if(this.unboxCount === 1) { this.unboxReelStyle = { transform: 'translateX(2583px) translateY(0px)', transition: 'none' }; }
                     else { this.unboxReelStyle = { transform: 'translateX(0px) translateY(-2450.5px)', transition: 'none' }; }
                 }
             },
@@ -131,7 +131,7 @@
                         this.unboxGetReelsPos();
 
                         for(const [index, game] of this.unboxGames.entries()) { 
-                            if(this.unboxCount === 1) { this.unboxReelStyle = { transform: 'translateX(2535px) translateY(0px)', transition: 'none' }; }
+                            if(this.unboxCount === 1) { this.unboxReelStyle = { transform: 'translateX(2583px) translateY(0px)', transition: 'none' }; }
                             else { this.unboxReelStyle = { transform: 'translateX(0px) translateY(-2450.5px)', transition: 'none' }; }
 
                             this.unboxReels[index + 1][60] = this.unboxGetOutcomeItem(game);

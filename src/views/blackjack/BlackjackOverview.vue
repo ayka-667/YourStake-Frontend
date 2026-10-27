@@ -6,12 +6,10 @@
                     <IconUserGradient />
                     <span class="gradient-green">Standard Tables</span>
                     <div class="title-limits">
-                        (
                         <img src="@/assets/img/icons/coin.svg" alt="icon" />
                         <div class="limits-value">
                             <span>0</span>.10 <span>- 1,000</span>.00
                         </div>
-                        )
                     </div>
                 </div>
                 <router-link to="/blackjack/tables" class="link-all">
@@ -37,7 +35,7 @@
                     </div>
                     <div v-else class="content-list" key="data">
 
-                        <BlackjackTablesElement v-for="table of blackjackGetTables.standard.slice(0, 10)" v-bind:key="table.table" v-bind:table="table" />
+                        <BlackjackTablesElement v-for="(table, index) of blackjackGetTables.standard.slice(0, 10)" v-bind:key="table.table" v-bind:table="table" v-bind:index="index" />
 
                     </div>
                 </transition>
@@ -49,12 +47,10 @@
                     <IconWhaleGradient />
                     <span class="gradient-yellow">High Roller Tables</span>
                     <div class="title-limits">
-                        (
                         <img src="@/assets/img/icons/coin.svg" alt="icon" />
                         <div class="limits-value">
                             <span>50</span>.00 <span>- 1,000</span>.00
                         </div>
-                        )
                     </div>
                 </div>
             </div>
@@ -71,7 +67,7 @@
                     </div>
                     <div v-else class="content-list" key="data">
 
-                        <BlackjackTablesElement v-for="table of blackjackGetTables.whale" v-bind:key="table.table" v-bind:table="table" />
+                        <BlackjackTablesElement v-for="(table, index) of blackjackGetTables.whale.slice(0, 10)" v-bind:key="table.table" v-bind:table="table" v-bind:index="index" />
 
                     </div>
                 </transition>

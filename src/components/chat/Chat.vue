@@ -56,8 +56,8 @@
         <div class="chat-footer">
             <div class="footer-input">
                 <input v-model="chatMessage" v-on:keyup.enter="chatMessageButton" type="text" placeholder="Send a message" />
-                <button v-on:click="chatMessageButton()" class="button-send" v-bind:disabled="socketSendLoading !== null">
-                    <IconMessage />
+                <button v-on:click="chatMessageButton()" class="button-send" v-bind:class="{ 'send-ready': chatMessage.trim() !== '' }" v-bind:disabled="socketSendLoading !== null" aria-label="Send">
+                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7.5L8 3l4.5 4.5" /></svg>
                 </button>
             </div>
             <div class="footer-actions">
@@ -76,7 +76,6 @@
     import IconChatGradient from '@/components/icons/IconChatGradient';
     import IconClose from '@/components/icons/IconClose';
     import IconUsers from '@/components/icons/IconUsers';
-    import IconMessage from '@/components/icons/IconMessage';
     import IconRules from '@/components/icons/IconRules';
     import ChatMessageElement from '@/components/chat/ChatMessageElement';
     import ChatEmojisDropdown from '@/components/chat/ChatEmojisDropdown';
@@ -89,7 +88,6 @@
             IconChatGradient,
             IconClose,
             IconUsers,
-            IconMessage,
             IconRules,
             ChatMessageElement,
             ChatEmojisDropdown,

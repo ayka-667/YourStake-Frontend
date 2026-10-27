@@ -4,7 +4,7 @@
             <button v-on:click="generalSetSidebarMobile(generalSidebarMobile === 'Navbar' ? null : 'Navbar')" class="button-menu">
                 <UiIcon name="menu" />
             </button>
-            <router-link to="/" class="head-tab tab-active">YourStake</router-link>
+            <router-link to="/" class="head-tab tab-active">Casino</router-link>
         </div>
 
         <div class="sidebar-scroll">

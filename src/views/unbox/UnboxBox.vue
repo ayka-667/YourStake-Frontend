@@ -35,7 +35,7 @@
                     </div>
                     <div v-else class="content-list" key="data">
 
-                        <UnboxItemElement v-for="item of unboxGetBoxItems" v-bind:key="item._id" v-bind:item="item" />
+                        <UnboxItemElement v-for="(item, index) of unboxGetBoxItems" v-bind:key="item._id" v-bind:item="item" v-bind:index="index" />
 
                     </div>
                 </transition>
