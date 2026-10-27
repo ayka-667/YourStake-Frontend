@@ -22,7 +22,7 @@
         <transition name="pane" mode="out-in">
             <div v-if="modalTab === 'overview'" key="overview" class="cashier-pane">
                 <p class="cashier-info">
-                    Everything here is play money: no real deposits or withdrawals. Get coins from rewards, chat rain or a bonus code.
+                    Get coins from rewards, chat rain or a bonus code.
                 </p>
 
                 <router-link v-on:click.native="modalsSetShow(null)" to="/rewards" class="cashier-rewards">
