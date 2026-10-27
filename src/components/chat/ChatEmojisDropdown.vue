@@ -2,7 +2,7 @@
     <div class="chat-emojis-dropdown" v-bind:class="{ 'dropdown-open': dropdownOpen === true }">
         <button v-on:click="chatToggleDropdown" class="button-toggle">
             <IconEmojisGradient />
-            <span class="gradient-green">EMOJIS</span>
+            <span>Emojis</span>
         </button>
         <div class="dropdown-window">
             <div class="window-inner">

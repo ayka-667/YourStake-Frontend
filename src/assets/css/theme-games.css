@@ -1192,3 +1192,128 @@ aside#chat .rain-tip-dropdown button.button-toggle {
     font-weight: 600 !important;
     color: var(--text-muted) !important;
 }
+
+/* ---------- Chat header: "Chat · N online" + rain pot bar ---------- */
+
+aside#chat .chat-header {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center;
+    gap: 12px 8px;
+    padding: 6px 16px 14px 16px !important;
+}
+
+aside#chat .header-title {
+    order: 1;
+    flex: 1;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+aside#chat .header-online {
+    order: 2;
+    width: auto !important;
+    margin: 0 !important;
+    justify-content: flex-end !important;
+    gap: 7px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: var(--bg-panel);
+    font-size: 12px !important;
+    font-weight: 600 !important;
+}
+
+aside#chat .header-online svg {
+    display: none !important;
+}
+
+aside#chat .header-online::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 6px rgba(0, 231, 1, 0.7);
+}
+
+aside#chat .header-online span {
+    background: none !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+aside#chat .header-online span::after {
+    content: ' online';
+    font-weight: 500;
+    color: var(--text-muted);
+    -webkit-text-fill-color: var(--text-muted);
+}
+
+aside#chat .rain-tip-dropdown {
+    order: 3;
+    flex: 1 1 100% !important;
+}
+
+aside#chat .rain-tip-dropdown button.button-toggle {
+    width: 100% !important;
+    height: 40px !important;
+    border-radius: 6px !important;
+    background: var(--bg-panel) !important;
+    transition: background .15s ease;
+}
+
+aside#chat .rain-tip-dropdown button.button-toggle:hover {
+    background: var(--bg-hover) !important;
+}
+
+aside#chat .rain-tip-dropdown .button-inner {
+    justify-content: flex-start !important;
+    gap: 8px;
+    padding: 0 12px !important;
+}
+
+aside#chat .rain-tip-dropdown .button-inner > span {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+    color: var(--text-muted) !important;
+    -webkit-text-fill-color: var(--text-muted) !important;
+    background: none !important;
+}
+
+aside#chat .rain-tip-dropdown .inner-amount {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: auto !important;
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+aside#chat .rain-tip-dropdown .inner-amount img {
+    width: 14px;
+    height: 14px;
+}
+
+/* rain messages in the feed */
+aside#chat .chat-message-element.element-rain {
+    background: rgba(0, 231, 1, 0.06) !important;
+    border-left: 3px solid var(--green) !important;
+}
+
+aside#chat .chat-message-element .rain-header span {
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    letter-spacing: .04em;
+    color: var(--green) !important;
+    -webkit-text-fill-color: var(--green) !important;
+    background: none !important;
+}
+
+aside#chat .footer-actions .chat-emojis-dropdown span {
+    background: none !important;
+    color: var(--text-muted) !important;
+    -webkit-text-fill-color: var(--text-muted) !important;
+}

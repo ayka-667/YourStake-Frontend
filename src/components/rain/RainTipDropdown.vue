@@ -3,7 +3,7 @@
         <button v-on:click="rainSetDropdownTip(!rainDropdownTip)" class="button-toggle">
             <div class="button-inner">
                 <IconRain />
-                <span class="gradient-green">TIP RAIN</span>
+                <span class="gradient-green">Rain pot</span>
                 <div class="inner-amount">
                     <img src="@/assets/img/icons/coin.svg" alt="icon" />
                     <div class="amount-value">
