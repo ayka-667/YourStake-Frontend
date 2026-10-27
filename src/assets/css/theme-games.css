@@ -1317,3 +1317,40 @@ aside#chat .footer-actions .chat-emojis-dropdown span {
     color: var(--text-muted) !important;
     -webkit-text-fill-color: var(--text-muted) !important;
 }
+
+/* Line rain icon takes the surrounding colour */
+aside#chat .rain-tip-dropdown .icon-rain { color: #00e701; flex-shrink: 0; }
+aside#chat .chat-message-element .rain-header .icon-rain { color: #00e701; width: 16px; height: 16px; }
+
+.icon-rain path { fill: none !important; stroke: currentColor !important; }
+
+/* Bets table: neutral game label with a line icon */
+.bets-element .element-game .ui-icon {
+    width: 16px !important;
+    height: 16px !important;
+    margin-right: 10px;
+    color: #b1bad3;
+}
+
+.bets-element .element-game span {
+    background: none !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    font-weight: 600 !important;
+}
+
+/* Player count icons in game panels: muted instead of green gradient */
+.crash-controls .header-player svg path,
+.roll .bets-header svg path,
+[class$="-controls"] .header-player svg path {
+    fill: #b1bad3 !important;
+}
+
+.crash-controls .header-player span {
+    background: none !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+.bets-element .element-game .ui-icon path,
+.bets-element .element-game .ui-icon rect { fill: none !important; stroke: currentColor !important; }

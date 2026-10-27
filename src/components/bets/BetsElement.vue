@@ -1,24 +1,8 @@
 <template>
     <div class="bets-element">
         <div class="element-game">
-            <IconCrash v-if="bet.method === 'crash'" />
-            <IconRoll v-else-if="bet.method === 'roll'" />
-            <IconBlackjack v-else-if="bet.method === 'blackjack'" />
-            <IconDuels v-else-if="bet.method === 'duels'" />
-            <IconMines v-else-if="bet.method === 'mines'" />
-            <IconTowers v-else-if="bet.method === 'towers'" />
-            <IconUnbox v-else-if="bet.method === 'unbox'" />
-            <IconBattles v-else-if="bet.method === 'battles'" />
-            <span v-bind:class="{
-                'gradient-yellow': bet.method === 'crash',
-                'gradient-green': bet.method === 'roll',
-                'gradient-blue-dark': bet.method === 'blackjack',
-                'gradient-red': bet.method === 'duels',
-                'gradient-purple': bet.method === 'mines',
-                'gradient-blue': bet.method === 'towers',
-                'gradient-pink': bet.method === 'unbox',
-                'gradient-orange': bet.method === 'battles'
-            }">{{betsGetMethod}}</span>
+            <UiIcon v-bind:name="bet.method" />
+            <span>{{betsGetMethod}}</span>
         </div>
         <div class="element-user" v-bind:class="[
             bet.user === null ? 
@@ -53,6 +37,7 @@
 </template>
 
 <script>
+    import UiIcon from '@/components/UiIcon';
     import AvatarImage from '@/components/AvatarImage';
     import IconCrash from '@/components/icons/IconCrash';
     import IconRoll from '@/components/icons/IconRoll';
@@ -66,6 +51,7 @@
     export default {
         name: 'BetsElement',
         components: {
+            UiIcon,
             AvatarImage,
             IconCrash,
             IconRoll,

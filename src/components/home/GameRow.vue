@@ -21,10 +21,14 @@
                 v-bind:style="{ '--tile-a': game.colors[0], '--tile-b': game.colors[1], '--delay': (index * 60) + 'ms' }"
             >
                 <div class="tile-art">
-                    <span v-if="live" class="tile-live"><i></i>LIVE</span>
-                    <UiIcon v-bind:name="game.icon" />
-                    <div class="tile-name">{{ game.name }}</div>
-                    <div class="tile-brand">ORIGINALS</div>
+                    <span v-if="live" class="tile-live"><i></i>Live</span>
+                    <div class="tile-visual">
+                        <GameArt v-bind:game="game.icon" />
+                    </div>
+                    <div class="tile-meta">
+                        <div class="tile-name">{{ game.name }}</div>
+                        <div class="tile-brand">YourStake Originals</div>
+                    </div>
                 </div>
             </router-link>
         </div>
@@ -33,11 +37,13 @@
 
 <script>
     import UiIcon from '@/components/UiIcon';
+    import GameArt from '@/components/home/GameArt';
 
     export default {
         name: 'GameRow',
         components: {
-            UiIcon
+            UiIcon,
+            GameArt
         },
         props: ['title', 'icon', 'games', 'live'],
         data() {
@@ -142,15 +148,27 @@
         position: relative;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
         border-radius: 10px;
         background:
-            radial-gradient(120% 70% at 50% 0%, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 60%),
-            linear-gradient(160deg, var(--tile-a) 0%, var(--tile-b) 100%);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            radial-gradient(90% 60% at 50% 30%, color-mix(in srgb, var(--tile-a) 32%, transparent) 0%, transparent 70%),
+            linear-gradient(180deg, #1c3342 0%, #132532 100%);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06), 0 4px 12px rgba(0, 0, 0, 0.25);
         overflow: hidden;
         transition: transform .35s cubic-bezier(.22, 1, .36, 1), box-shadow .35s ease;
+    }
+
+    /* accent line at the top, in the game colour */
+    .tile-art::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 16%;
+        right: 16%;
+        height: 2px;
+        border-radius: 0 0 2px 2px;
+        background: var(--tile-a);
+        opacity: .8;
+        box-shadow: 0 0 12px var(--tile-a);
     }
 
     /* light sweep on hover */
@@ -161,46 +179,46 @@
         left: -60%;
         width: 50%;
         height: 100%;
-        background: linear-gradient(100deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.35) 50%, rgba(255, 255, 255, 0) 100%);
+        background: linear-gradient(100deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.12) 50%, rgba(255, 255, 255, 0) 100%);
         transform: skewX(-18deg);
         pointer-events: none;
     }
 
     a.game-tile:hover .tile-art {
         transform: translateY(-6px);
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
+        box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--tile-a) 45%, transparent), 0 14px 30px rgba(0, 0, 0, 0.4), 0 0 30px color-mix(in srgb, var(--tile-a) 20%, transparent);
     }
 
-    a.game-tile:hover .tile-art::after { animation: shine .8s ease; }
+    a.game-tile:hover .tile-art::after { animation: shine .9s ease; }
     a.game-tile:active .tile-art { transform: translateY(-2px) scale(.98); }
 
-    .tile-art .ui-icon {
-        width: 56px;
-        height: 56px;
-        margin-bottom: 18px;
-        color: #ffffff;
-        stroke-width: 1.6;
-        filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
-        transition: transform .45s cubic-bezier(.34, 1.56, .64, 1);
+    .tile-visual {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 18% 12% 4% 12%;
+        transition: transform .5s cubic-bezier(.22, 1, .36, 1);
     }
 
-    a.game-tile:hover .tile-art .ui-icon { transform: translateY(-4px) scale(1.12) rotate(-4deg); }
+    a.game-tile:hover .tile-visual { transform: scale(1.07); }
+
+    .tile-meta {
+        padding: 0 14px 14px 14px;
+    }
 
     .tile-name {
-        font-size: 20px;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: .02em;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
         color: #ffffff;
     }
 
     .tile-brand {
-        position: absolute;
-        bottom: 12px;
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: .16em;
-        color: rgba(255, 255, 255, 0.7);
+        margin-top: 2px;
+        font-size: 11px;
+        font-weight: 600;
+        color: #557086;
     }
 
     .tile-live {
@@ -213,11 +231,11 @@
         padding: 3px 8px 3px 6px;
         border-radius: 999px;
         background: rgba(5, 8, 10, 0.55);
-        font-size: 10px;
-        font-weight: 800;
-        letter-spacing: .04em;
+        font-size: 11px;
+        font-weight: 700;
         color: #ffffff;
         backdrop-filter: blur(4px);
+        z-index: 1;
     }
 
     .tile-live i {
