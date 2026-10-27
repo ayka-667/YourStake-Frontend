@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@500;600;700;800&family=Inter+Tight:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+    html, body { margin: 0; background: transparent; }
+    .sheet { width: 1200px; padding: 40px; box-sizing: border-box; background: #1a2c38; font-family: 'Figtree', sans-serif; }
+    .option { display: flex; align-items: center; justify-content: space-between; padding: 36px 40px; margin-bottom: 24px; border-radius: 12px; background: #0f212e; }
+    .label { width: 40px; font-size: 22px; font-weight: 800; color: #557086; }
+    .logo { flex: 1; display: flex; align-items: center; gap: 22px; height: 120px; }
+    .mark { width: 110px; height: 110px; flex-shrink: 0; }
+    .mark svg { width: 100%; height: 100%; display: block; }
+    .small { display: flex; align-items: center; gap: 14px; }
+    .small .mark { width: 32px; height: 32px; }
+    .small .mark.m16 { width: 16px; height: 16px; }
+    .small .tab { display: flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 8px 8px 0 0; background: #e8eaed; font: 500 13px 'Figtree', sans-serif; color: #202124; }
+    .small .tab .mark { width: 16px; height: 16px; }
+
+    /* wordmarks */
+    .w1 { font-weight: 800; font-size: 76px; letter-spacing: -2.5px; color: #ffffff; }
+    .w2 { font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 74px; letter-spacing: -2px; color: #ffffff; }
+    .w2 span { font-weight: 600; color: #b1bad3; }
+    .w3 { font-weight: 800; font-size: 54px; letter-spacing: 9px; color: #ffffff; }
+
+    /* export frames */
+    .export { display: flex; align-items: center; gap: 30px; width: 1171px; height: 304px; padding: 0 50px; box-sizing: border-box; }
+    .export .mark { width: 200px; height: 200px; }
+    .export .w1 { font-size: 138px; letter-spacing: -4.5px; }
+    .export .w2 { font-size: 134px; letter-spacing: -3.5px; }
+    .export .w3 { font-size: 92px; letter-spacing: 15px; }
+    .square { width: 512px; height: 512px; }
+</style>
+</head>
+<body>
+
+<!-- ===== Marks ===== -->
+<template id="mark1">
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="m1bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#213743"/><stop offset="1" stop-color="#0b1821"/></linearGradient>
+        <linearGradient id="m1s" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5cff5d"/><stop offset="1" stop-color="#00b800"/></linearGradient>
+    </defs>
+    <rect x="4" y="4" width="112" height="112" rx="28" fill="url(#m1bg)"/>
+    <rect x="4.75" y="4.75" width="110.5" height="110.5" rx="27.25" fill="none" stroke="#ffffff" stroke-opacity=".08" stroke-width="1.5"/>
+    <path d="M78 40 A19 19 0 1 0 60 60 A19 19 0 1 1 42 80" fill="none" stroke="url(#m1s)" stroke-width="13" stroke-linecap="round"/>
+</svg>
+</template>
+
+<template id="mark2">
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="m2c" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3dff3e"/><stop offset="1" stop-color="#00a800"/></linearGradient>
+    </defs>
+    <circle cx="60" cy="60" r="56" fill="url(#m2c)"/>
+    <g fill="#ffffff">
+        <rect x="53" y="6" width="14" height="13" rx="3"/>
+        <rect x="53" y="6" width="14" height="13" rx="3" transform="rotate(60 60 60)"/>
+        <rect x="53" y="6" width="14" height="13" rx="3" transform="rotate(120 60 60)"/>
+        <rect x="53" y="6" width="14" height="13" rx="3" transform="rotate(180 60 60)"/>
+        <rect x="53" y="6" width="14" height="13" rx="3" transform="rotate(240 60 60)"/>
+        <rect x="53" y="6" width="14" height="13" rx="3" transform="rotate(300 60 60)"/>
+    </g>
+    <circle cx="60" cy="60" r="38" fill="#0f212e"/>
+    <circle cx="60" cy="60" r="38" fill="none" stroke="#00e701" stroke-opacity=".35" stroke-width="2"/>
+    <path d="M60 38 L77 60 L60 82 L43 60 Z" fill="url(#m2c)"/>
+</svg>
+</template>
+
+<template id="mark3">
+<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+    <path d="M60 8 L108 60 L60 112 L12 60 Z" fill="#00c400"/>
+    <path d="M60 8 L60 60 L12 60 Z" fill="#6bff6c"/>
+    <path d="M60 8 L108 60 L60 60 Z" fill="#00e701"/>
+    <path d="M12 60 L60 60 L60 112 Z" fill="#009c00"/>
+    <path d="M60 60 L108 60 L60 112 Z" fill="#00b000"/>
+    <path d="M60 30 L82 60 L60 90 L38 60 Z" fill="#0f212e" opacity=".92"/>
+</svg>
+</template>
+
+<!-- ===== Comparison sheet ===== -->
+<div id="sheet" class="sheet">
+    <div class="option">
+        <div class="label">1</div>
+        <div class="logo"><div class="mark" data-mark="mark1"></div><div class="w1">YourStake</div></div>
+        <div class="small"><div class="tab"><div class="mark" data-mark="mark1"></div>YourStake</div><div class="mark" data-mark="mark1"></div></div>
+    </div>
+    <div class="option">
+        <div class="label">2</div>
+        <div class="logo"><div class="mark" data-mark="mark2"></div><div class="w2">your<span>stake</span></div></div>
+        <div class="small"><div class="tab"><div class="mark" data-mark="mark2"></div>YourStake</div><div class="mark" data-mark="mark2"></div></div>
+    </div>
+    <div class="option">
+        <div class="label">3</div>
+        <div class="logo"><div class="mark" data-mark="mark3"></div><div class="w3">YOURSTAKE</div></div>
+        <div class="small"><div class="tab"><div class="mark" data-mark="mark3"></div>YourStake</div><div class="mark" data-mark="mark3"></div></div>
+    </div>
+</div>
+
+<!-- ===== Export frames (transparent) ===== -->
+<div id="export1" class="export"><div class="mark" data-mark="mark1"></div><div class="w1">YourStake</div></div>
+<div id="export2" class="export"><div class="mark" data-mark="mark2"></div><div class="w2">your<span>stake</span></div></div>
+<div id="export3" class="export"><div class="mark" data-mark="mark3"></div><div class="w3">YOURSTAKE</div></div>
+<div id="square1" class="square" data-mark="mark1"></div>
+<div id="square2" class="square" data-mark="mark2"></div>
+<div id="square3" class="square" data-mark="mark3"></div>
+
+<script>
+    // Each placeholder gets its own copy of the mark; gradient ids are made unique per copy
+    let n = 0;
+    for (const el of document.querySelectorAll('[data-mark]')) {
+        const id = '_' + (n++);
+        el.innerHTML = document.getElementById(el.dataset.mark).innerHTML
+            .replace(/id="([^"]+)"/g, 'id="$1' + id + '"')
+            .replace(/url\(#([^)]+)\)/g, 'url(#$1' + id + ')');
+    }
+</script>
+</body>
+</html>

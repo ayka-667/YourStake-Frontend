@@ -1,0 +1,1191 @@
+/*
+ * Stake-like skin for the game pages.
+ * Loaded after the component styles; !important is needed to beat the
+ * scoped [data-v-*] selectors of the original components.
+ */
+
+:root {
+    --bg-darkest: #0f212e;
+    --bg-main: #1a2c38;
+    --bg-panel: #213743;
+    --bg-hover: #2f4553;
+    --text-main: #ffffff;
+    --text-muted: #b1bad3;
+    --text-dim: #557086;
+    --green: #00e701;
+    --green-text: #05080a;
+    --blue: #1475e1;
+    --red: #ed4163;
+}
+
+/* ---------- Crash ---------- */
+
+.crash .crash-container {
+    max-width: 1200px !important;
+    border-radius: 8px !important;
+    background: var(--bg-panel) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+    overflow: hidden;
+}
+
+.crash .container-data {
+    flex-direction: row-reverse;
+    padding: 0 !important;
+}
+
+.crash .data-left {
+    width: calc(100% - 300px) !important;
+    padding: 16px;
+    background: var(--bg-darkest);
+}
+
+.crash-controls {
+    width: 300px !important;
+    height: auto !important;
+    min-height: 100%;
+    padding: 16px !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: var(--bg-panel) !important;
+}
+
+.crash-game {
+    border: none !important;
+    border-radius: 8px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.crash-game .game-inner {
+    background-image: none !important;
+}
+
+.crash-game .rolling-multiplier,
+.crash-game .rolling-multiplier span,
+.crash-game .completed-multiplier,
+.crash-game .waiting-timer {
+    font-size: 72px !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background: none !important;
+}
+
+.crash-game .completed-multiplier {
+    color: var(--red) !important;
+    -webkit-text-fill-color: var(--red) !important;
+}
+
+.crash-game .rolling-payout,
+.crash-game .completed-over,
+.crash-game .waiting-status {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: var(--text-muted) !important;
+    letter-spacing: .04em;
+}
+
+.crash-game .info-network span,
+.crash-game .info-profit button {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: var(--text-muted) !important;
+}
+
+.crash-game .info-profit button svg {
+    fill: var(--text-muted) !important;
+}
+
+/* ---------- Shared controls (bet panels of every game) ---------- */
+
+/* panel */
+[class$="-controls"] {
+    border: none !important;
+    border-radius: 8px !important;
+    background: var(--bg-panel) !important;
+    box-shadow: none !important;
+}
+
+/* segmented toggles: manual/auto, easy/medium/hard */
+[class$="-controls"] .controls-mode {
+    display: flex !important;
+    gap: 4px;
+    padding: 4px !important;
+    border: none !important;
+    border-radius: 999px !important;
+    background: var(--bg-darkest) !important;
+}
+
+[class$="-controls"] .controls-mode::before,
+[class$="-controls"] .controls-mode::after,
+[class$="-controls"] .controls-mode button::before,
+[class$="-controls"] .controls-mode button::after {
+    display: none !important;
+}
+
+[class$="-controls"] .controls-mode button {
+    flex: 1 1 0;
+    width: auto !important;
+    height: 40px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    border-radius: 999px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    filter: none !important;
+}
+
+[class$="-controls"] .controls-mode button .button-inner {
+    position: static !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    border: none !important;
+    border-radius: 999px !important;
+    background: transparent !important;
+    transition: background .15s ease;
+}
+
+[class$="-controls"] .controls-mode button .button-inner,
+[class$="-controls"] .controls-mode button .button-inner span {
+    -webkit-background-clip: border-box !important;
+    background-clip: border-box !important;
+    -webkit-text-fill-color: #ffffff !important;
+    color: #ffffff !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+}
+
+[class$="-controls"] .controls-mode button .button-inner span {
+    background: transparent !important;
+}
+
+[class$="-controls"] .controls-mode button:hover:not(:disabled) .button-inner {
+    background: rgba(47, 69, 83, 0.5) !important;
+}
+
+[class$="-controls"] .controls-mode button.button-active .button-inner {
+    background: var(--bg-hover) !important;
+}
+
+/* amount / cashout fields: one dark box, borderless input inside */
+[class$="-controls"] .controls-amount,
+[class$="-controls"] .controls-cashout,
+[class$="-controls"] .top-amount,
+[class$="-controls"] .stop-lose,
+[class$="-controls"] .auto-count {
+    padding: 0 !important;
+    border: 2px solid var(--bg-hover) !important;
+    border-radius: 4px !important;
+    background: var(--bg-darkest) !important;
+    filter: none !important;
+    transition: border-color .15s ease;
+}
+
+[class$="-controls"] .controls-amount:hover,
+[class$="-controls"] .controls-cashout:hover,
+[class$="-controls"] .top-amount:hover {
+    border-color: var(--text-dim) !important;
+}
+
+[class$="-controls"] .controls-amount::before,
+[class$="-controls"] .controls-amount::after,
+[class$="-controls"] .controls-cashout::before,
+[class$="-controls"] .controls-cashout::after,
+[class$="-controls"] .top-amount::before,
+[class$="-controls"] .top-amount::after,
+[class$="-controls"] .stop-lose::before,
+[class$="-controls"] .stop-lose::after,
+[class$="-controls"] .auto-count::before,
+[class$="-controls"] .auto-count::after {
+    display: none !important;
+}
+
+[class$="-controls"] .controls-amount input,
+[class$="-controls"] .controls-cashout input,
+[class$="-controls"] .top-amount input,
+[class$="-controls"] .stop-lose input,
+[class$="-controls"] .auto-count input {
+    border: none !important;
+    border-radius: 4px !important;
+    background: transparent !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+}
+
+[class$="-controls"] input::placeholder {
+    color: var(--text-dim) !important;
+}
+
+/* small helper buttons (2x, max, 10x ...) */
+.cashout-buttons button,
+.amount-buttons button {
+    border: none !important;
+    border-radius: 4px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    filter: none !important;
+}
+
+.cashout-buttons button::before,
+.cashout-buttons button::after,
+.amount-buttons button::before,
+.amount-buttons button::after {
+    display: none !important;
+}
+
+.cashout-buttons button .button-inner,
+.amount-buttons button .button-inner {
+    position: static !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    border: none !important;
+    border-radius: 4px !important;
+    background: var(--bg-hover) !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+.cashout-buttons button:hover .button-inner,
+.amount-buttons button:hover .button-inner {
+    background: #3d5564 !important;
+}
+
+/* mines count picker */
+.mines-controls .mines-title {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: var(--text-muted) !important;
+}
+
+.mines-controls .mines-content button,
+.mines-controls .mines-content .content-input {
+    border: none !important;
+    border-radius: 4px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.mines-controls .mines-content button::before,
+.mines-controls .mines-content button::after,
+.mines-controls .mines-content .content-input::before,
+.mines-controls .mines-content .content-input::after {
+    display: none !important;
+}
+
+.mines-controls .mines-content button .button-inner {
+    position: static !important;
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px !important;
+    border: 2px solid var(--bg-hover) !important;
+    background: var(--bg-darkest) !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+.mines-controls .mines-content button:hover .button-inner {
+    border-color: var(--text-dim) !important;
+}
+
+.mines-controls .mines-content button.button-active .button-inner {
+    border-color: var(--bg-hover) !important;
+    background: var(--bg-hover) !important;
+}
+
+.mines-controls .mines-content .content-input input {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 4px !important;
+    border: 2px solid var(--bg-hover) !important;
+    background: var(--bg-darkest) !important;
+    text-align: center;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+}
+
+/* range slider */
+[class$="-controls"] input[type="range"] {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    height: 6px !important;
+    border: none !important;
+    border-radius: 999px !important;
+    background: var(--bg-darkest) !important;
+}
+
+[class$="-controls"] input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    width: 18px !important;
+    height: 18px !important;
+    border: none !important;
+    border-radius: 50% !important;
+    background: #ffffff !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+    cursor: pointer;
+}
+
+.mines-controls .top-slider,
+.mines-controls .top-slider::before,
+.mines-controls .top-slider::after {
+    border: none !important;
+    background: transparent !important;
+}
+
+/* secondary buttons: random tile, fairness, mute */
+.mines-controls button.button-auto,
+.mines-controls .controls-info button,
+.towers-controls .bottom-info button {
+    border: none !important;
+    border-radius: 4px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.mines-controls button.button-auto::before,
+.mines-controls button.button-auto::after,
+.mines-controls .controls-info button::before,
+.mines-controls .controls-info button::after,
+.towers-controls .bottom-info button::before,
+.towers-controls .bottom-info button::after {
+    display: none !important;
+}
+
+.mines-controls button.button-auto .button-inner,
+.mines-controls .controls-info button .button-inner,
+.towers-controls .bottom-info button .button-inner {
+    border-radius: 4px !important;
+    background: var(--bg-hover) !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+.mines-controls button.button-auto:hover:not(:disabled) .button-inner,
+.mines-controls .controls-info button:hover .button-inner,
+.towers-controls .bottom-info button:hover .button-inner {
+    background: #3d5564 !important;
+}
+
+.mines-controls .controls-info svg path,
+.towers-controls .bottom-info svg path {
+    fill: #ffffff !important;
+}
+
+
+/* main action buttons: place bet / cashout / play */
+button.button-bet,
+button.button-cashout,
+button.button-play,
+button.button-start,
+button.button-create {
+    border-radius: 4px !important;
+    box-shadow: none !important;
+    filter: none !important;
+}
+
+button.button-bet::before,
+button.button-cashout::before,
+button.button-play::before,
+button.button-start::before,
+button.button-create::before {
+    display: none !important;
+}
+
+button.button-bet .button-inner,
+button.button-play .button-inner,
+button.button-start .button-inner,
+button.button-create .button-inner {
+    border-radius: 4px !important;
+    background: var(--green) !important;
+    color: var(--green-text) !important;
+    -webkit-text-fill-color: var(--green-text) !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    text-transform: none;
+    transition: filter .15s ease;
+}
+
+button.button-cashout .button-inner {
+    border-radius: 4px !important;
+    background: #ffa600 !important;
+    color: var(--green-text) !important;
+    font-weight: 700 !important;
+}
+
+button.button-bet:hover .button-inner,
+button.button-cashout:hover .button-inner,
+button.button-play:hover .button-inner,
+button.button-start:hover .button-inner,
+button.button-create:hover .button-inner {
+    filter: brightness(1.1);
+}
+
+/* ---------- Bets table (bottom of pages) ---------- */
+
+.bets {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+}
+
+.bets .bets-content,
+.bets .bets-list,
+.bets .content-header {
+    border-radius: 8px !important;
+}
+
+/* ---------- Generic leftovers ---------- */
+
+.gradient-green,
+.text-green-gradient,
+.text-green-gradient-exact {
+    background: none !important;
+    -webkit-text-fill-color: var(--green) !important;
+    color: var(--green) !important;
+}
+
+.bets {
+    max-width: 1200px !important;
+    margin-top: 32px;
+    padding: 0 !important;
+}
+
+.bets .bets-nav {
+    width: fit-content !important;
+    justify-content: flex-start !important;
+    gap: 4px;
+    padding: 5px !important;
+    margin-bottom: 14px !important;
+    border-radius: 999px !important;
+    background: var(--bg-darkest) !important;
+}
+
+.bets .bets-nav button.nav-link {
+    height: 38px;
+    margin: 0 !important;
+    padding: 0 18px !important;
+    border-radius: 999px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    text-transform: none !important;
+}
+
+.bets .bets-nav button.nav-link::after {
+    display: none !important;
+}
+
+.bets .bets-nav button.nav-link.link-active,
+.bets .bets-nav button.nav-link:hover {
+    background: var(--bg-hover) !important;
+}
+
+.bets .bets-list {
+    border-radius: 8px !important;
+    background: transparent !important;
+    overflow: hidden;
+}
+
+.bets .bets-list::after {
+    display: none !important;
+}
+
+.bets .list-head {
+    height: 44px !important;
+    background: transparent !important;
+}
+
+.bets .list-head > div {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: var(--text-muted) !important;
+    text-transform: none !important;
+}
+
+.bets .list-content {
+    min-height: 120px;
+}
+
+.bets .content-empty {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: var(--text-dim) !important;
+    text-transform: none !important;
+}
+
+.bets-element:nth-child(odd),
+.bets .content-list > *:nth-child(odd) {
+    background: var(--bg-panel) !important;
+    border-radius: 4px;
+}
+
+.bets .content-list > * {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* ---------- Chat ---------- */
+
+aside#chat .chat-header {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    padding: 0 12px 12px 12px !important;
+    border-bottom: 1px solid var(--bg-panel);
+}
+
+aside#chat .header-online {
+    position: static !important;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    order: 2;
+    margin-left: auto;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: var(--text-muted) !important;
+}
+
+aside#chat .header-online svg {
+    width: 16px;
+}
+
+aside#chat .header-online svg path {
+    fill: var(--text-muted) !important;
+}
+
+aside#chat .header-online span {
+    -webkit-text-fill-color: var(--green) !important;
+}
+
+aside#chat .chat-room-dropdown,
+aside#chat .rain-tip-dropdown {
+    width: auto !important;
+    margin: 0 !important;
+}
+
+aside#chat .chat-room-dropdown button.button-toggle,
+aside#chat .rain-tip-dropdown button.button-toggle {
+    width: auto !important;
+    height: 36px !important;
+    padding: 0 !important;
+    border-radius: 4px !important;
+    background: var(--bg-panel) !important;
+    filter: none !important;
+}
+
+aside#chat .chat-room-dropdown button.button-toggle::before,
+aside#chat .rain-tip-dropdown button.button-toggle::before {
+    display: none !important;
+}
+
+aside#chat .chat-room-dropdown .button-inner,
+aside#chat .rain-tip-dropdown .button-inner {
+    height: 100% !important;
+    padding: 0 12px !important;
+    gap: 6px;
+    border-radius: 4px !important;
+    background: transparent !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+aside#chat .chat-room-dropdown .button-inner img {
+    width: 16px !important;
+    height: 16px !important;
+}
+
+aside#chat .chat-content {
+    height: calc(100% - 200px) !important;
+}
+
+aside#chat .chat-message-element {
+    margin: 0 12px 8px 12px !important;
+    padding: 10px 12px !important;
+    border-radius: 4px !important;
+    background: var(--bg-panel) !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+aside#chat .chat-message-element::before,
+aside#chat .chat-message-element::after {
+    display: none !important;
+}
+
+aside#chat .chat-message-element .element-text {
+    margin-top: 4px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: #ffffff !important;
+}
+
+aside#chat .chat-message-element .user-username {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: var(--text-muted) !important;
+}
+
+aside#chat .chat-footer {
+    height: auto !important;
+    gap: 10px;
+    padding: 12px 12px 0 12px !important;
+    border-top: 1px solid var(--bg-panel);
+}
+
+aside#chat .footer-input {
+    height: 44px !important;
+    padding: 0 !important;
+    filter: none !important;
+}
+
+aside#chat .footer-input::before {
+    display: none !important;
+}
+
+aside#chat .footer-input input {
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 48px 0 14px !important;
+    border-radius: 4px !important;
+    border: 2px solid var(--bg-hover) !important;
+    background: var(--bg-main) !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: #ffffff !important;
+}
+
+aside#chat .footer-input input::placeholder {
+    color: var(--text-dim) !important;
+}
+
+aside#chat .footer-input button.button-send {
+    right: 6px !important;
+}
+
+aside#chat .footer-actions button,
+aside#chat .footer-actions .chat-emojis-dropdown button {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: var(--text-muted) !important;
+    -webkit-text-fill-color: var(--text-muted) !important;
+    text-transform: none !important;
+}
+
+aside#chat .footer-actions svg path {
+    fill: var(--text-muted) !important;
+}
+
+.crash-game .waiting-timer {
+    font-size: 56px !important;
+}
+
+.crash-game .waiting-status,
+.crash-game .rolling-payout,
+.crash-game .completed-over {
+    -webkit-text-fill-color: var(--text-muted) !important;
+    background: none !important;
+}
+
+aside#chat .chat-header {
+    flex-wrap: nowrap !important;
+}
+
+aside#chat .chat-header > * {
+    flex-shrink: 0;
+}
+
+aside#chat .rain-tip-dropdown .button-inner span,
+aside#chat .rain-tip-dropdown .button-inner div {
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* history pills under the crash graph */
+button.crash-history-element::before,
+button.crash-history-element::after {
+    display: none !important;
+}
+
+button.crash-history-element .element-inner {
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 999px !important;
+    background: var(--bg-panel) !important;
+}
+
+button.crash-history-element .element-inner span {
+    font-size: 13px !important;
+    font-weight: 700 !important;
+}
+
+button.crash-history-element.element-mid .element-inner {
+    background: var(--green) !important;
+}
+
+button.crash-history-element.element-mid .element-inner span {
+    color: var(--green-text) !important;
+    -webkit-text-fill-color: var(--green-text) !important;
+}
+
+button.crash-history-element.element-high .element-inner {
+    background: #ffa600 !important;
+}
+
+button.crash-history-element.element-high .element-inner span {
+    color: var(--green-text) !important;
+    -webkit-text-fill-color: var(--green-text) !important;
+    background: none !important;
+}
+
+/* ---------- Modals ---------- */
+
+.modals .modals-overlay {
+    background-color: rgba(7, 15, 22, 0.75) !important;
+}
+
+.modals .body-modal {
+    border-radius: 8px !important;
+    background: var(--bg-main) !important;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45) !important;
+    overflow: hidden;
+}
+
+.modals .body-modal > div[class^="modal-"] {
+    border-radius: 8px !important;
+    background: var(--bg-main) !important;
+    border: none !important;
+}
+
+.modals .body-modal > div[class^="modal-"]::before,
+.modals .body-modal > div[class^="modal-"]::after {
+    display: none !important;
+}
+
+.modals .body-modal button.button-close {
+    width: 32px !important;
+    height: 32px !important;
+    top: 16px !important;
+    right: 16px !important;
+    border-radius: 4px;
+}
+
+.modals .body-modal button.button-close .button-inner,
+.modals .body-modal button.button-close::before {
+    background: transparent !important;
+    border: none !important;
+}
+
+.modals .body-modal button.button-close svg,
+.modals .body-modal button.button-close svg path {
+    fill: var(--text-muted) !important;
+}
+
+.modals .body-modal button.button-close:hover {
+    background: var(--bg-panel);
+}
+
+/* login */
+.modal-login {
+    width: 440px !important;
+    max-width: 100%;
+}
+
+.modal-login .login-sidebar {
+    display: none !important;
+}
+
+.modal-login .login-content {
+    width: 100% !important;
+    padding: 24px !important;
+}
+
+.modal-login .content-title {
+    justify-content: flex-start !important;
+    margin-bottom: 20px !important;
+}
+
+.modal-login .content-title span {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background: none !important;
+}
+
+.login-credentials .credentials-element {
+    margin-top: 16px !important;
+}
+
+.login-credentials .element-title {
+    margin-bottom: 6px !important;
+    text-align: left !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: var(--text-muted) !important;
+}
+
+.login-credentials .element-input {
+    height: 44px !important;
+    padding: 0 !important;
+}
+
+.login-credentials .element-input::before {
+    display: none !important;
+}
+
+.login-credentials .element-input input {
+    height: 100% !important;
+    padding: 0 12px !important;
+    border-radius: 4px !important;
+    border: 2px solid var(--bg-hover) !important;
+    background: var(--bg-darkest) !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+}
+
+.login-credentials .element-input input:focus {
+    border-color: var(--text-dim) !important;
+}
+
+.login-credentials .element-input input::placeholder {
+    color: var(--text-dim) !important;
+}
+
+.login-credentials button.button-forgot {
+    height: 32px !important;
+    right: 6px !important;
+}
+
+.login-credentials button.button-forgot::before,
+.login-credentials button.button-forgot::after {
+    display: none !important;
+}
+
+.login-credentials button.button-forgot .button-inner {
+    padding: 0 10px !important;
+    border-radius: 4px !important;
+    background: var(--bg-panel) !important;
+}
+
+.login-credentials button.button-forgot .button-inner span {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: var(--text-muted) !important;
+}
+
+.login-credentials .credentials-info {
+    margin-top: 18px !important;
+    text-align: left !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    color: var(--text-dim) !important;
+}
+
+.login-credentials .credentials-info button.button-terms {
+    color: var(--text-muted) !important;
+    text-decoration: underline;
+}
+
+.login-credentials .credentials-buttons {
+    flex-direction: column-reverse;
+    gap: 10px;
+    margin-top: 20px !important;
+}
+
+.login-credentials button.button-toggle,
+.login-credentials button.button-action {
+    width: 100% !important;
+    height: 44px !important;
+    margin: 0 !important;
+}
+
+.login-credentials button.button-toggle::before,
+.login-credentials button.button-toggle::after,
+.login-credentials button.button-action::before {
+    display: none !important;
+}
+
+.login-credentials button.button-toggle .button-inner,
+.login-credentials button.button-action .button-inner {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    text-transform: none !important;
+}
+
+.login-credentials button.button-toggle .button-inner {
+    background: transparent !important;
+    color: var(--text-muted) !important;
+    -webkit-text-fill-color: var(--text-muted) !important;
+}
+
+.login-credentials button.button-toggle:hover .button-inner {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+.login-credentials button.button-action .button-inner {
+    background: var(--blue) !important;
+    color: #ffffff !important;
+}
+
+/* chat header: two compact rows */
+aside#chat .chat-header {
+    flex-wrap: wrap !important;
+}
+
+aside#chat .chat-room-dropdown {
+    order: 1;
+}
+
+aside#chat .header-online {
+    order: 2;
+}
+
+aside#chat .rain-tip-dropdown {
+    order: 3;
+    flex: 1 1 100%;
+}
+
+aside#chat .rain-tip-dropdown button.button-toggle {
+    width: 100% !important;
+}
+
+.modal-login .content-title {
+    height: auto !important;
+    margin-bottom: 4px !important;
+    text-align: left !important;
+}
+
+.modal-login .content-auth,
+.login-credentials,
+.login-credentials .credentials-element {
+    width: 100% !important;
+    align-items: stretch !important;
+    text-align: left !important;
+}
+
+.login-credentials .element-title {
+    width: 100%;
+    justify-content: flex-start !important;
+}
+
+.login-credentials .credentials-buttons {
+    width: 100% !important;
+    display: flex !important;
+    align-items: stretch !important;
+}
+
+/* ---------- Mines ---------- */
+
+.mines-tile button.button-reveal {
+    border-radius: 8px !important;
+    border-bottom: none !important;
+    background: var(--bg-hover) !important;
+    box-shadow: 0 5px 0 #1f3341 !important;
+    transition: transform .12s ease, background .12s ease !important;
+}
+
+.mines-tile button.button-reveal:not(:disabled):hover {
+    background: #557086 !important;
+    transform: translateY(-3px);
+}
+
+.mines-tile button.button-reveal::after {
+    display: none !important;
+}
+
+.mines-tile .tile-coin,
+.mines-tile .tile-mine {
+    border-radius: 8px !important;
+    background: var(--bg-darkest) !important;
+    box-shadow: none !important;
+}
+
+.mines-tile .tile-coin .coin-box,
+.mines-tile .tile-coin .box-inner {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.mines-tile .tile-coin .coin-box::before,
+.mines-tile .tile-coin .coin-box::after {
+    display: none !important;
+}
+
+.mines-tile .box-inner img {
+    width: 56% !important;
+    min-width: 30px;
+    transform: none !important;
+}
+
+.mines-tile .tile-mine img {
+    width: 56% !important;
+}
+
+/* ---------- Roll reel: hide the old item art, keep the numbers ---------- */
+
+.roll-card .inner-win,
+.roll-card .inner-lose {
+    display: none !important;
+}
+
+.roll-card .card-inner {
+    justify-content: center !important;
+    gap: 10px;
+}
+
+.roll-card .inner-multiplier {
+    font-size: 26px !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+}
+
+/* ---------- Section headings in lobbies ---------- */
+
+.blackjack-overview .left-title span,
+.blackjack-tables .left-title span {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background: none !important;
+}
+
+.mines-tile .tile-coin,
+.mines-tile .tile-coin * {
+    border: none !important;
+    border-bottom: none !important;
+}
+
+/* crash auto mode fields */
+.crash-controls .adjust-win,
+.crash-controls .adjust-lose,
+.crash-controls .stop-profit {
+    padding: 0 !important;
+    border: 2px solid var(--bg-hover) !important;
+    border-radius: 4px !important;
+    background: var(--bg-darkest) !important;
+    filter: none !important;
+}
+
+.crash-controls .adjust-win::before,
+.crash-controls .adjust-win::after,
+.crash-controls .adjust-lose::before,
+.crash-controls .adjust-lose::after,
+.crash-controls .stop-profit::before,
+.crash-controls .stop-profit::after {
+    display: none !important;
+}
+
+.crash-controls .adjust-win input,
+.crash-controls .adjust-lose input,
+.crash-controls .stop-profit input {
+    border: none !important;
+    background: transparent !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+}
+
+.crash-controls .adjust-win:hover,
+.crash-controls .adjust-lose:hover,
+.crash-controls .stop-profit:hover,
+.crash-controls .stop-lose:hover,
+.crash-controls .auto-count:hover {
+    border-color: var(--text-dim) !important;
+}
+
+/* auto start / stop buttons */
+.crash-controls .controls-auto button.button-auto,
+.crash-controls .controls-auto button.button-stop {
+    border: none !important;
+    border-radius: 4px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    filter: none !important;
+}
+
+.crash-controls .controls-auto button.button-auto::before,
+.crash-controls .controls-auto button.button-auto::after,
+.crash-controls .controls-auto button.button-stop::before,
+.crash-controls .controls-auto button.button-stop::after {
+    display: none !important;
+}
+
+.crash-controls .controls-auto button.button-auto .button-inner,
+.crash-controls .controls-auto button.button-stop .button-inner {
+    border-radius: 4px !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: var(--green-text) !important;
+    -webkit-text-fill-color: var(--green-text) !important;
+}
+
+.crash-controls .controls-auto button.button-auto .button-inner {
+    background: var(--green) !important;
+}
+
+.crash-controls .controls-auto button.button-stop .button-inner {
+    background: #ffa600 !important;
+}
+
+/* roll: eight quick buttons share the field, keep them compact */
+.roll-controls .amount-buttons button .button-inner {
+    padding: 0 !important;
+    font-size: 12px !important;
+}
+
+.roll-controls .bet-multiplier {
+    border: 2px solid var(--bg-hover) !important;
+    border-radius: 4px !important;
+    background: var(--bg-darkest) !important;
+}
+
+.roll-controls .bet-multiplier::before,
+.roll-controls .bet-multiplier::after {
+    display: none !important;
+}
+
+.roll-controls .bet-multiplier input {
+    border: none !important;
+    background: transparent !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+}
+
+.roll-controls .recent-title {
+    white-space: nowrap;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: var(--text-muted) !important;
+}
