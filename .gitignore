@@ -25,3 +25,7 @@ pnpm-debug.log*
 /dist
 
 .vercel
+
+# Local env files (development only, never commit)
+.env
+env.local
