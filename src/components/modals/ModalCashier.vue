@@ -71,7 +71,7 @@
 
                 <div class="withdraw-summary">
                     <div><span>Network fee</span><span>0.0001 LTC</span></div>
-                    <div><span>Estimated arrival</span><span>~ 5 min</span></div>
+                    <div><span>Estimated arrival</span><span>~ 4 hours</span></div>
                 </div>
 
                 <button v-on:click="modalWithdrawButton()" v-bind:disabled="!modalCanWithdraw" class="button-withdraw">
