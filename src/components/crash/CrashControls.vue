@@ -20,7 +20,7 @@
                     <div class="button-inner">2x</div>
                 </button>
                 <button v-on:click="crashSetInput('crashAmount', 'max')" class="button-max" v-bind:disabled="crashAutoRunning === true">
-                    <div class="button-inner">MAX</div>
+                    <div class="button-inner">Max</div>
                 </button>
             </div>
         </div>

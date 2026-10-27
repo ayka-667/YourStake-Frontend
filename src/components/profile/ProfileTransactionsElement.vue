@@ -1,19 +1,19 @@
 <template>
     <div class="profile-transactions-element">
         <div class="element-date">
-            <div class="date-title">DATE</div>
+            <div class="date-title">Date</div>
             <div class="date-content">
                 {{ new Date(transaction.createdAt).toLocaleString('en-US', { hour12: true, year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute:'2-digit' }) }}
             </div>
         </div>
         <div class="element-method">
-            <div class="method-title">METHOD</div>
+            <div class="method-title">Method</div>
             <div class="method-content">
                 {{profileGetMethod}}
             </div>
         </div>
         <div class="element-type">
-            <div class="type-title">TYPE</div>
+            <div class="type-title">Type</div>
             <div class="type-content">
                 {{profileGetType}}
             </div>

@@ -1,10 +1,10 @@
 <template>
     <div class="admin-user-transactions">
         <div class="transactions-head">
-            <div class="head-date">DATE</div>
-            <div class="head-method">METHOD</div>
-            <div class="head-type">TYPE</div>
-            <div class="head-amount">AMOUNT</div>
+            <div class="head-date">Date</div>
+            <div class="head-method">Method</div>
+            <div class="head-type">Type</div>
+            <div class="head-amount">Amount</div>
         </div>
         <div class="transactions-content">
             <transition name="fade" mode="out-in">
@@ -28,7 +28,7 @@
                 </div>
             </button>
             <div class="pagination-info">
-                PAGE <span class="text-green-gradient">{{adminUserTransactionList.page}}</span> / {{Math.ceil(adminUserTransactionList.count / 14) <= 0 ? '1' : Math.ceil(adminUserTransactionList.count / 14)}}
+                Page <span class="text-green-gradient">{{adminUserTransactionList.page}}</span> / {{Math.ceil(adminUserTransactionList.count / 14) <= 0 ? '1' : Math.ceil(adminUserTransactionList.count / 14)}}
             </div>
             <button v-on:click="adminSetPage(adminUserTransactionList.page + 1)" class="button-next" v-bind:disabled="adminUserTransactionList.page >= Math.ceil(adminUserTransactionList.count / 14)">
                 <div class="button-inner">

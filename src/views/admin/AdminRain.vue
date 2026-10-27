@@ -2,10 +2,10 @@
     <div class="admin-rain">
         <div class="rain-list">
             <div class="list-header">
-                <div class="header-type">TYPE</div>
-                <div class="header-amount">AMOUNT</div>
-                <div class="header-state">STATE</div>
-                <div class="header-option">OPTION</div>
+                <div class="header-type">Type</div>
+                <div class="header-amount">Amount</div>
+                <div class="header-state">State</div>
+                <div class="header-option">Option</div>
             </div>
             <div class="list-content">
                 <transition name="fade" mode="out-in">
@@ -29,7 +29,7 @@
                     </div>
                 </button>
                 <div class="pagination-info">
-                    PAGE <span class="text-green-gradient">{{adminRainList.page}}</span> / {{Math.ceil(adminRainList.count / 12) <= 0 ? '1' : Math.ceil(adminRainList.count / 12)}}
+                    Page <span class="text-green-gradient">{{adminRainList.page}}</span> / {{Math.ceil(adminRainList.count / 12) <= 0 ? '1' : Math.ceil(adminRainList.count / 12)}}
                 </div>
                 <button v-on:click="adminSetPage(adminRainList.page + 1)" class="button-next" v-bind:disabled="adminRainList.page >= Math.ceil(adminRainList.count / 12)">
                     <div class="button-inner">
@@ -53,13 +53,13 @@
                 ]" v-bind:disabled="socketSendLoading !== null">
                     <transition name="fade" mode="out-in">
                         <ButtonLoading v-if="socketSendLoading === 'AdminRainAmount'" key="loading" />
-                        <div v-else class="button-content" key="content">{{ adminChange === true ? 'SAVE' : 'UPDATE' }} RAIN AMOUNT</div>
+                        <div v-else class="button-content" key="content">{{ adminChange === true ? 'Save' : 'Update' }} rain amount</div>
                     </transition>
                 </button>
             </div>
             <div class="filter-stats">
                 <div class="stats-pot">
-                    <div class="pot-title">RAIN POT</div>
+                    <div class="pot-title">Rain pot</div>
                     <div class="pot-amount">
                         <img src="@/assets/img/icons/coin.svg" alt="icon" />
                         <div class="amount-value">

@@ -18,7 +18,7 @@
                     </div>
                 </div>
             </div>
-            <div class="header-title">POTENTIAL DROPS</div>
+            <div class="header-title">Potential drops</div>
         </div>
         <div class="box-items">
 

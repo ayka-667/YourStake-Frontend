@@ -3,23 +3,23 @@
         <div class="vault-header">
             <div class="header-icon">
                 <div class="icon-inner">
-                    <img src="@/assets/img/vault.png" alt="vault" />
+                    <UiIcon name="vault" />
                 </div>
             </div>
             <div class="header-title">
-                <span>YourStake</span> VAULT
+                Vault
             </div>
         </div>
         <div class="vault-stats">
             <div class="stats-balance">
-                <div class="balance-title">BALANCE</div>
+                <div class="balance-title">Balance</div>
                 <div class="balance-inner">
                     <img src="@/assets/img/icons/coin.svg" alt="coin" />
                     <AmountNumber v-bind:amount="authUser.user.balance" />
                 </div>
             </div>
             <div class="stats-vaulted">
-                <div class="vaulted-title">VAULTED</div>
+                <div class="vaulted-title">Vaulted</div>
                 <div class="vaulted-inner">
                     <img src="@/assets/img/icons/coin.svg" alt="coin" />
                     <AmountNumber v-bind:amount="authUser.user.vault.amount" />
@@ -31,14 +31,14 @@
             <input v-model="modalAmount" v-on:input="modalValidateInput" type="text" placeholder="Enter transfer amount..." />
         </div>
         <button v-on:click="modalDepositButton()" class="button-deposit" v-bind:disabled="socketSendLoading !== null">
-            <div class="button-inner">DEPOSIT TO VAULT</div>
+            <div class="button-inner">Deposit to vault</div>
         </button>
         <button v-on:click="modalWithdrawButton()" class="button-withdraw" v-bind:disabled="socketSendLoading !== null">
-            <div class="button-inner">WITHDRAW FROM VAULT</div>
+            <div class="button-inner">Withdraw from vault</div>
         </button>
         <div class="vault-footer">
             <div v-if="modalCountdownText === null" class="footer-unlocked">
-                <div class="unlocked-title">LOCK VAULT FOR</div>
+                <div class="unlocked-title">Lock vault for</div>
                 <div class="unlocked-content">
                     <select v-model="modalTime">
                         <option value="10">10 Minutes</option>
@@ -73,10 +73,12 @@
 <script>
     import { mapGetters, mapActions } from 'vuex';
     import AmountNumber from '@/components/AmountNumber';
+    import UiIcon from '@/components/UiIcon';
 
     export default {
         name: 'ModalVault',
         components: {
+            UiIcon,
             AmountNumber
         },
         data() {

@@ -1,0 +1,719 @@
+/*
+ * "Pro" layer: one consistent look for every page header, label, list, empty state
+ * and secondary control that still carried the original neon / uppercase style.
+ * Loaded after theme-games.css (and before motion.css).
+ */
+
+/* ---------- Page headers: white title, muted icon ---------- */
+
+.duels-controls .controls-title,
+.battles-header-overview .overview-title,
+.battles-header-create .create-title,
+.unbox-header-overview .overview-title,
+.blackjack-overview .left-title,
+.blackjack-tables .left-title {
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.01em;
+    text-transform: none !important;
+    color: #ffffff !important;
+}
+
+.duels-controls .controls-title span,
+.battles-header-overview .overview-title span,
+.battles-header-create .create-title span,
+.unbox-header-overview .overview-title span,
+.blackjack-overview .left-title span,
+.blackjack-tables .left-title span {
+    background: none !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    text-transform: none !important;
+}
+
+.duels-controls .controls-title svg,
+.battles-header-overview .overview-title svg,
+.battles-header-create .create-title svg,
+.unbox-header-overview .overview-title svg,
+.blackjack-overview .left-title svg,
+.blackjack-tables .left-title svg {
+    width: 22px !important;
+    height: 22px !important;
+}
+
+.duels-controls .controls-title svg path,
+.battles-header-overview .overview-title svg path,
+.battles-header-create .create-title svg path,
+.unbox-header-overview .overview-title svg path,
+.blackjack-overview .left-title svg path,
+.blackjack-tables .left-title svg path {
+    fill: #b1bad3 !important;
+}
+
+/* Header bars become flat panels */
+.duels-controls,
+.battles-header-overview,
+.battles-header-create,
+.unbox-header-overview {
+    border: none !important;
+    border-radius: 10px !important;
+    background: #213743 !important;
+    box-shadow: none !important;
+}
+
+.duels-controls::before, .duels-controls::after,
+.battles-header-overview::before, .battles-header-overview::after,
+.battles-header-create::before, .battles-header-create::after,
+.unbox-header-overview::before, .unbox-header-overview::after {
+    display: none !important;
+}
+
+/* ---------- Section titles inside pages ---------- */
+
+.duels-games .header-title,
+.rewards .boxes-title {
+    position: static !important;
+    width: auto !important;
+    height: auto !important;
+    transform: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    text-transform: none !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+.duels-games .header-title span,
+.rewards .boxes-title span {
+    background: none !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+.duels-games .header-title::before, .duels-games .header-title::after,
+.rewards .boxes-title::before, .rewards .boxes-title::after,
+.rewards .rewards-boxes::before, .rewards .rewards-boxes::after {
+    display: none !important;
+}
+
+/* ---------- Empty states ---------- */
+
+.content-empty,
+.overview-empty,
+.leaderboard-empty {
+    padding: 44px 16px !important;
+    border-radius: 10px !important;
+    background: #0f212e !important;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+    text-align: center;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    text-transform: none !important;
+    color: #557086 !important;
+}
+
+.content-empty::first-letter,
+.overview-empty::first-letter {
+    text-transform: uppercase;
+}
+
+/* ---------- Uppercase labels -> sentence case ---------- */
+
+.profile-stats .element-title,
+.profile-header .id-title,
+.affiliates-stats .stats-element .element-title,
+.battles-header-create .info-cases,
+.battles-header-create .info-cost,
+.upgrader-game .controls-title,
+.upgrader-game .items-title,
+.duels-controls .info-element span,
+.towers-controls .bottom-info button,
+.battles-header-overview .info-count,
+.battles-header-overview .info-sort {
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+}
+
+.profile-stats .element-title::first-letter,
+.profile-header .id-title::first-letter,
+.affiliates-stats .stats-element .element-title::first-letter,
+.battles-header-create .info-cases::first-letter,
+.battles-header-create .info-cost::first-letter,
+.upgrader-game .controls-title::first-letter,
+.upgrader-game .items-title::first-letter,
+.battles-header-overview .info-count::first-letter,
+.battles-header-overview .info-sort::first-letter {
+    text-transform: uppercase;
+}
+
+.profile-stats .element-title,
+.profile-stats .element-profit .element-title {
+    background: none !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #b1bad3 !important;
+    -webkit-text-fill-color: #b1bad3 !important;
+}
+
+/* ---------- Generic neon text -> calm accents ---------- */
+
+.gradient-yellow,
+.gradient-orange,
+.gradient-blue,
+.gradient-blue-dark,
+.gradient-purple,
+.gradient-pink,
+.gradient-red,
+.text-orange-gradient,
+.text-green-gradient-active {
+    background: none !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* ---------- Case battles list ---------- */
+
+.battles-game-element {
+    margin-bottom: 8px !important;
+    border: none !important;
+    border-radius: 10px !important;
+    background: #213743 !important;
+    box-shadow: none !important;
+    transition: background .2s ease, transform .2s ease;
+}
+
+.battles-game-element:hover { background: #263f4d !important; }
+
+.battles-game-element::before,
+.battles-game-element::after,
+.battles-game-element .element-inner::before,
+.battles-game-element .element-inner::after {
+    display: none !important;
+}
+
+.battles-game-element .element-inner {
+    background: transparent !important;
+}
+
+.battles-game-element .info-type {
+    border: none !important;
+    border-radius: 999px !important;
+    background: #0f212e !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    color: #b1bad3 !important;
+}
+
+.battles-game-element .info-type::before,
+.battles-game-element .info-type::after { display: none !important; }
+
+.battles-game-element .element-separator svg path { fill: #557086 !important; }
+
+.battles-game-element .inner-cases > * {
+    border-radius: 8px !important;
+    background: #0f212e !important;
+}
+
+.battles-game-element .amount-inner,
+.battles-game-element .inner-real,
+.battles-game-element .inner-effective {
+    border: none !important;
+    border-radius: 6px !important;
+    background: #0f212e !important;
+}
+
+.battles-game-element .amount-inner::before,
+.battles-game-element .amount-inner::after { display: none !important; }
+
+/* ---------- Dice duels cards ---------- */
+
+.duels-games-element {
+    border: none !important;
+    border-radius: 10px !important;
+    background: #213743 !important;
+    box-shadow: none !important;
+    transition: background .2s ease;
+}
+
+.duels-games-element:hover { background: #263f4d !important; }
+
+.duels-games-element::before,
+.duels-games-element::after { display: none !important; }
+
+.duels-games-element .bet-box {
+    border: none !important;
+    border-radius: 6px !important;
+    background: #0f212e !important;
+}
+
+.duels-games-element .bet-box::before,
+.duels-games-element .bet-box::after { display: none !important; }
+
+.duels-games-element .element-users {
+    border: none !important;
+    border-radius: 8px !important;
+    background: #0f212e !important;
+}
+
+.duels-games-element .element-users::before,
+.duels-games-element .element-users::after { display: none !important; }
+
+.duels-games-element .users-progress { background: rgba(0, 231, 1, 0.12) !important; }
+
+.duels-games-element .info-bet span:first-child,
+.duels-games-element .info-creator span:first-child {
+    text-transform: none !important;
+}
+
+/* ---------- Cases page filter tabs ---------- */
+
+.unbox-header-overview .overview-select {
+    gap: 4px;
+    padding: 4px;
+    border-radius: 999px;
+    background: #0f212e;
+}
+
+.unbox-header-overview button.button-select {
+    height: 36px !important;
+    padding: 0 14px !important;
+    border-radius: 999px !important;
+    background: transparent !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    text-transform: capitalize !important;
+    color: #b1bad3 !important;
+}
+
+.unbox-header-overview button.button-select::before,
+.unbox-header-overview button.button-select::after { display: none !important; }
+
+.unbox-header-overview button.button-select svg { display: none !important; }
+
+.unbox-header-overview button.button-select.button-active,
+.unbox-header-overview button.button-select:hover {
+    background: #2f4553 !important;
+    color: #ffffff !important;
+}
+
+/* ---------- Rewards page layout ---------- */
+
+.rewards .rewards-banner {
+    max-width: 1200px !important;
+    gap: 16px;
+}
+
+.rewards .rewards-boxes {
+    max-width: 1200px !important;
+    margin-top: 32px !important;
+    padding: 0 !important;
+    background: none !important;
+}
+
+/* ---------- Upgrader ---------- */
+
+.upgrader-game .game-controls,
+.upgrader-game .game-items {
+    border: none !important;
+    border-radius: 12px !important;
+    background: #213743 !important;
+    box-shadow: none !important;
+}
+
+.upgrader-game .game-controls::before, .upgrader-game .game-controls::after,
+.upgrader-game .game-items::before, .upgrader-game .game-items::after { display: none !important; }
+
+.upgrader-game .controls-title,
+.upgrader-game .items-title {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #b1bad3 !important;
+}
+
+.upgrader-game button.button-upgrade {
+    border: none !important;
+    border-radius: 6px !important;
+    background: #00e701 !important;
+    box-shadow: none !important;
+}
+
+.upgrader-game button.button-upgrade::before,
+.upgrader-game button.button-upgrade::after { display: none !important; }
+
+.upgrader-game button.button-upgrade .button-inner {
+    background: transparent !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: #05080a !important;
+    -webkit-text-fill-color: #05080a !important;
+}
+
+.upgrader-game button.button-upgrade .button-inner svg path { fill: #05080a !important; }
+
+/* ---------- Profile header ---------- */
+
+.profile-header {
+    border: none !important;
+    border-radius: 12px !important;
+    background: #213743 !important;
+}
+
+.profile-header .progress-bar {
+    height: 8px !important;
+    border-radius: 999px !important;
+    background: #0f212e !important;
+    overflow: hidden;
+}
+
+.profile-header .progress-bar > div {
+    border-radius: 999px !important;
+    background: linear-gradient(90deg, #00b300, #00e701) !important;
+}
+
+.profile-header .level-box {
+    border: none !important;
+    border-radius: 6px !important;
+    background: #0f212e !important;
+}
+
+.profile-header .level-box::before,
+.profile-header .level-box::after { display: none !important; }
+
+.profile-stats .element-amount .amount-inner {
+    border-radius: 8px !important;
+    background: #0f212e !important;
+}
+
+/* ---------- Blackjack table: seats ---------- */
+
+.blackjack-game button.button-join {
+    border: 2px dashed rgba(230, 199, 122, 0.45) !important;
+    background: rgba(5, 8, 10, 0.35) !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    color: #e6c77a !important;
+    transition: background .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.blackjack-game button.button-join:hover {
+    border-color: #e6c77a !important;
+    background: rgba(230, 199, 122, 0.15) !important;
+    transform: scale(1.05);
+}
+
+/* ---------- Affiliates ---------- */
+
+.affiliates-code,
+.affiliates-stats .stats-element {
+    border: none !important;
+    border-radius: 10px !important;
+    background: #213743 !important;
+    box-shadow: none !important;
+}
+
+.affiliates-code::before, .affiliates-code::after,
+.affiliates-stats .stats-element::before,
+.affiliates-stats .stats-element::after { display: none !important; }
+
+/* ---------- Fixes after review ---------- */
+
+.affiliates .affiliates-banner,
+.affiliates-banner {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.affiliates-banner .banner-text { max-width: 58% !important; }
+
+.affiliates-banner .banner-art {
+    width: 200px !important;
+    right: 28px !important;
+}
+
+@media only screen and (max-width: 1100px) {
+    .affiliates-banner .banner-art { display: none !important; }
+    .affiliates-banner .banner-text { max-width: 100% !important; }
+}
+
+.unbox-header-overview .overview-select {
+    flex-wrap: nowrap !important;
+    width: auto !important;
+}
+
+.unbox-header-overview button.button-select {
+    flex: none !important;
+    width: auto !important;
+    white-space: nowrap !important;
+}
+
+.unbox-header-overview button.button-select * {
+    white-space: nowrap !important;
+    font-size: 13px !important;
+    background: none !important;
+    -webkit-text-fill-color: currentColor !important;
+}
+
+.upgrader-game button.button-upgrade *,
+.upgrader-game button.button-upgrade .button-inner span {
+    background: none !important;
+    color: #05080a !important;
+    -webkit-text-fill-color: #05080a !important;
+}
+
+.affiliates-code .code-info span,
+.affiliates-code .info-title {
+    background: none !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+/* ---------- Upgrader: calm ring and controls ---------- */
+
+.upgrader-game .mid-spinner {
+    background: #0f212e !important;
+    border: none !important;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04) !important;
+}
+
+.upgrader-game .spinner-graph svg {
+    stroke: #2f4553 !important;
+    stroke-width: 0.9 !important;
+}
+
+.upgrader-game .spinner-inner {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #b1bad3 !important;
+}
+
+.upgrader-game .inner-chance {
+    margin: 2px 0 !important;
+    font-size: 34px !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.02em;
+}
+
+.upgrader-game .inner-chance span,
+.upgrader-game button.button-toggle span { color: inherit !important; }
+
+.upgrader-game .inner-tickets { color: #557086 !important; }
+
+.upgrader-game button.button-toggle {
+    height: 32px;
+    padding: 0 12px !important;
+    border-radius: 6px;
+    background: #2f4553 !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    text-transform: capitalize;
+    color: #ffffff !important;
+}
+
+.upgrader-game button.button-toggle svg { display: none !important; }
+
+.upgrader-game .input-buttons button .button-inner {
+    background: #2f4553 !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+}
+
+.upgrader-game .input-buttons button:hover .button-inner { background: #3d5564 !important; }
+
+.upgrader-game .controls-title,
+.upgrader-game .items-title {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    text-transform: none !important;
+    color: #ffffff !important;
+}
+
+/* ---------- Sort / price filters (cases, upgrader, battles) ---------- */
+
+.unbox-filter-sort, .upgrader-filter-sort, .upgrader-filter-amount,
+.battles-filter-sort, .battles-filter-price {
+    text-transform: none !important;
+}
+
+.unbox-filter-sort .inner-value, .upgrader-filter-sort .inner-value,
+.upgrader-filter-amount .inner-value, .battles-filter-sort .inner-value,
+.battles-filter-price .inner-value {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #b1bad3 !important;
+}
+
+.unbox-filter-sort span, .upgrader-filter-sort span,
+.upgrader-filter-amount span, .battles-filter-sort span,
+.battles-filter-price span {
+    margin-left: 4px;
+    background: none !important;
+    text-transform: capitalize !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+.unbox-filter-sort svg, .upgrader-filter-sort svg,
+.upgrader-filter-amount svg, .battles-filter-sort svg,
+.battles-filter-price svg { fill: #b1bad3 !important; }
+
+/* ---------- Affiliates stats ---------- */
+
+.affiliates-stats .content-name,
+.affiliates-stats .content-info > span {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    text-transform: none !important;
+    background: none !important;
+    color: #b1bad3 !important;
+    -webkit-text-fill-color: #b1bad3 !important;
+}
+
+.affiliates-stats .content-amount,
+.affiliates-stats .amount-value {
+    font-size: 18px !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+}
+
+.affiliates-stats .stats-element.element-available,
+.affiliates-stats .stats-element.element-available .element-inner {
+    background: #213743 !important;
+}
+
+.affiliates-stats .element-available button.button-claim .button-inner {
+    background: #1475e1 !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+}
+
+.affiliates-stats .element-available button.button-claim .button-inner img { display: none !important; }
+
+.affiliates-referred .list-empty {
+    text-transform: none !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: #557086 !important;
+}
+
+.affiliates-referred .list-empty::first-letter { text-transform: none !important; }
+
+/* ---------- Decorative gradient text -> plain text ---------- */
+
+span.gradient-green, span.gradient-yellow, span.gradient-blue,
+span.gradient-orange, span.gradient-red, span.gradient-purple, span.gradient-pink,
+.gradient-green, .gradient-yellow, .gradient-blue,
+.text-green-gradient, .text-orange-gradient, .text-yellow-gradient {
+    background: none !important;
+    color: inherit !important;
+    -webkit-text-fill-color: currentColor !important;
+}
+
+/* ---------- Blackjack lobby ---------- */
+
+.blackjack-overview .header-title {
+    gap: 8px;
+    font-size: 20px !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+}
+
+.blackjack-overview .header-title > svg { display: none !important; }
+
+.blackjack-overview .title-limits {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #b1bad3 !important;
+}
+
+/* ---------- Modal headers (vault, claim, fair) ---------- */
+
+.modal-vault .header-icon,
+.modal-claim .header-icon,
+.modal-fair .header-icon {
+    width: 52px !important;
+    height: 52px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto 14px auto !important;
+    padding: 0 !important;
+    border-radius: 12px !important;
+    background: #2f4553 !important;
+    box-shadow: none !important;
+    color: #ffffff;
+}
+
+.modal-vault .header-icon::before, .modal-vault .header-icon::after,
+.modal-claim .header-icon::before, .modal-claim .header-icon::after,
+.modal-fair .header-icon::before, .modal-fair .header-icon::after,
+.modal-vault .icon-inner::before, .modal-vault .icon-inner::after { display: none !important; }
+
+.modal-vault .icon-inner {
+    width: auto !important;
+    height: auto !important;
+    padding: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+}
+
+.modal-vault .header-icon .ui-icon,
+.modal-claim .header-icon .ui-icon,
+.modal-fair .header-icon .ui-icon { width: 24px; height: 24px; }
+
+.modal-vault .header-title,
+.modal-claim .claim-header span,
+.modal-fair .fair-header span {
+    font-size: 22px !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+}
+
+.modal-vault button.button-deposit .button-inner,
+.modal-vault button.button-withdraw .button-inner { border-radius: 6px !important; font-weight: 700 !important; }
+
+.modal-vault button.button-deposit .button-inner { background: #1475e1 !important; color: #ffffff !important; }
+.modal-vault button.button-withdraw .button-inner { background: #2f4553 !important; color: #ffffff !important; }
+
+.modal-claim button.button-claim .button-inner { background: #1475e1 !important; color: #ffffff !important; }
+
+.modal-claim .input-info { color: #b1bad3 !important; }
+
+.modal-fair button.button-active,
+.modal-fair button.button-active * {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+.modal-fair div[class$="-title"] {
+    background: none !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
+.modal-fair div[class$="-text"] p span { color: #ffffff !important; font-weight: 700; }
+
+.modal-vault button.button-withdraw { padding: 0 !important; background: none !important; }
+
+.modal-vault .balance-title,
+.modal-vault .vaulted-title { color: #b1bad3 !important; }
+
+.modal-vault .balance-inner,
+.modal-vault .vaulted-inner { background: #0f212e !important; }
+
+/* Results keep the win colour */
+.crash-bet-element .info-multiplier span.gradient-green,
+.duels-game-winner span.gradient-green,
+.duels-user-element span.gradient-green,
+.roll-game-win span.text-green-gradient {
+    color: #00e701 !important;
+    -webkit-text-fill-color: #00e701 !important;
+}

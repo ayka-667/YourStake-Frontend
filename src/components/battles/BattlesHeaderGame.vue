@@ -38,7 +38,7 @@
                 <IconCursedGradient v-if="battlesGameData.game.options.cursed === true" />
                 <IconTerminalGradient v-if="battlesGameData.game.options.terminal === true" />
                 <div class="info-option">{{battlesGetOption}}</div>
-                STANDARD
+                Standard
             </div>
             <div class="right-actions">
                 <button v-on:click="battlesFairButton()" class="button-fair">

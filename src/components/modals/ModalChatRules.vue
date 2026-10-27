@@ -1,7 +1,7 @@
 <template>
     <div class="modal-chat-rules">
         <div class="rules-title">
-            <span class="gradient-green">CHAT RULES</span>
+            <span class="gradient-green">Chat rules</span>
         </div>
         <div class="rules-list">
 

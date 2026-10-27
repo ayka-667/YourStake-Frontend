@@ -1,13 +1,13 @@
 <template>
     <div class="modal-remove">
         <div class="remove-title">
-            <span class="gradient-green">REMOVE MESSAGE</span>
+            <span class="gradient-green">Remove message</span>
         </div>
         <div class="remove-message">
             <div class="message-inner">{{modalsData.message.message}}</div>
         </div>
         <button v-on:click="modalRemoveButton()" class="button-remove" v-bind:disabled="socketSendLoading === 'ChatRemove'">
-            <div class="button-inner">REMOVE MESSAGE</div>
+            <div class="button-inner">Remove message</div>
         </button>
     </div>
 </template>

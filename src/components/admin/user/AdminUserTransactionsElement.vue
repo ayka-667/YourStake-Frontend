@@ -1,13 +1,13 @@
 <template>
     <div class="admin-user-transactions-element">
         <div class="element-section section-date">
-            <div class="section-title">DATE</div>
+            <div class="section-title">Date</div>
             <div class="section-content">
                 {{ new Date(transaction.createdAt).toLocaleString('en-US', { hour12: true, year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute:'2-digit' }) }}
             </div>
         </div>
         <div class="element-section section-method">
-            <div class="section-title">METHOD</div>
+            <div class="section-title">Method</div>
             <div class="section-content">
                 {{adminGetMethod}}
                 <button v-on:click="adminInfoButton()" class="button-info">
@@ -18,14 +18,14 @@
             </div>
         </div>
         <div class="element-section section-type" v-bind:class="['type-' + transaction.state]">
-            <div class="section-title">TYPE</div>
+            <div class="section-title">Type</div>
             <div class="section-content">
                 {{adminGetType}}
                 <span>({{ transaction.state }})</span>
             </div>
         </div>
         <div class="element-section section-amount">
-            <div class="section-title">AMOUNT</div>
+            <div class="section-title">Amount</div>
             <div class="section-content">
                 <img src="@/assets/img/icons/coin.svg" alt="icon" />
                 <div class="content-value" v-bind:class="{ 'value-positive': adminGetAmount > 0 }">

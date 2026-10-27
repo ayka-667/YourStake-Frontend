@@ -1,6 +1,6 @@
 <template>
     <div class="fair-crash">
-        <div class="crash-title">CRASH</div>
+        <div class="crash-title">Crash</div>
         <div class="crash-text">
             <p>Our system generates the result for each game by using the SHA-256 hash of 2 separate inputs:</p>
             <p><span>Game ID:</span> The games unique identifier which is generated when the game is created.</p>

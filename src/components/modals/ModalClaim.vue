@@ -2,30 +2,30 @@
     <div class="modal-claim">
         <div class="claim-header">
             <div class="header-icon">
-                <img src="@/assets/img/gift.png" alt="gift" />
+                <UiIcon name="gift" />
             </div>
-            <span class="gradient-green">CLAIM FREE DLS</span>
+            <span>Redeem a code</span>
         </div>
-        <div class="claim-info">Claim free dls by inviting users, playing on our games or by being active in our discord!</div>
+        <div class="claim-info">Enter an affiliate code or a promo code to receive free coins.</div>
         <div class="claim-input input-affiliate">
-            <div class="input-title">Affiliate Code</div>
+            <div class="input-title">Affiliate code</div>
             <div class="input-info">
                 Got invited by a friend? Enter their affiliate code.
             </div>
             <div class="input-content">
-                <input v-model="modalAffiliateCode" type="text" placeholder="Enter a affiliate code..." />
+                <input v-model="modalAffiliateCode" type="text" placeholder="Affiliate code" />
                 <button v-on:click="modalAffiliateButton()" class="button-claim">
                     <div class="button-inner">Claim</div>
                 </button>
             </div>
         </div>
         <div class="claim-input">
-            <div class="input-title">Promotional Code</div>
+            <div class="input-title">Promo code</div>
             <div class="input-info">
-                Be active on our Discord to get access to new promotional codes.
+                Promo codes are shared in the chat and on our socials.
             </div>
             <div class="input-content">
-                <input v-model="modalPromoCode" type="text" placeholder="Enter a promo code..." />
+                <input v-model="modalPromoCode" type="text" placeholder="Promo code" />
                 <button v-on:click="modalPromoButton()" class="button-claim">
                     <div class="button-inner">Claim</div>
                 </button>
@@ -36,9 +36,13 @@
 
 <script>
     import { mapGetters, mapActions } from 'vuex';
+    import UiIcon from '@/components/UiIcon';
 
     export default {
         name: 'ModalClaim',
+        components: {
+            UiIcon
+        },
         data() {
             return {
                 modalAffiliateCode: null,

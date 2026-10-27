@@ -4,7 +4,7 @@
             <div class="header-icon">
                 <img src="@/assets/img/info.png" alt="info" />
             </div>
-            <span>{{ modalsData.mode.toUpperCase() }} MODE</span>
+            <span>{{ modalsData.mode.toUpperCase() }} Mode</span>
         </div>
         <div class="modes-info">
             {{ 

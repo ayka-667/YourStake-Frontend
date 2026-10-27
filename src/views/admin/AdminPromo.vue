@@ -2,10 +2,10 @@
     <div class="admin-promo">
         <div class="promo-list">
             <div class="list-header">
-                <div class="header-code">CODE</div>
-                <div class="header-reward">REWARD</div>
-                <div class="header-redeemptions">REDEEMPTIONS</div>
-                <div class="header-option">OPTION</div>
+                <div class="header-code">Code</div>
+                <div class="header-reward">Reward</div>
+                <div class="header-redeemptions">Redemptions</div>
+                <div class="header-option">Option</div>
             </div>
             <div class="list-content">
                 <transition name="fade" mode="out-in">
@@ -29,7 +29,7 @@
                     </div>
                 </button>
                 <div class="pagination-info">
-                    PAGE <span class="text-green-gradient">{{adminPromoList.page}}</span> / {{Math.ceil(adminPromoList.count / 12) <= 0 ? '1' : Math.ceil(adminPromoList.count / 12)}}
+                    Page <span class="text-green-gradient">{{adminPromoList.page}}</span> / {{Math.ceil(adminPromoList.count / 12) <= 0 ? '1' : Math.ceil(adminPromoList.count / 12)}}
                 </div>
                 <button v-on:click="adminSetPage(adminPromoList.page + 1)" class="button-next" v-bind:disabled="adminPromoList.page >= Math.ceil(adminPromoList.count / 12)">
                     <div class="button-inner">
@@ -60,7 +60,7 @@
                 <button v-on:click="adminGenerateButton" class="button-generate">
                     <transition name="fade" mode="out-in">
                         <ButtonLoading v-if="socketSendLoading === 'AdminPromoCreate'" key="loading" />
-                        <div v-else class="button-content" key="content">GENERATE PROMO CODE</div>
+                        <div v-else class="button-content" key="content">Generate promo code</div>
                     </transition>
                 </button>
             </div>

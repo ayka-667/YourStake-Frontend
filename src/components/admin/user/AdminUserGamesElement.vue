@@ -1,25 +1,25 @@
 <template>
     <div class="admin-user-games-element">
         <div class="element-section section-date">
-            <div class="section-title">DATE</div>
+            <div class="section-title">Date</div>
             <div class="section-content">
                 {{ new Date(game.createdAt).toLocaleString('en-US', { hour12: true, year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute:'2-digit' }) }}
             </div>
         </div>
         <div class="element-section section-game">
-            <div class="section-title">GAME</div>
+            <div class="section-title">Game</div>
             <div class="section-content">
                 {{game.method.charAt(0).toUpperCase() + game.method.slice(1)}}
             </div>
         </div>
         <div class="element-section section-id">
-            <div class="section-title">GAME ID</div>
+            <div class="section-title">Game ID</div>
             <div class="section-content">
                 {{game._id}}
             </div>
         </div>
         <div class="element-section section-amount">
-            <div class="section-title">AMOUNT</div>
+            <div class="section-title">Amount</div>
             <div class="section-content">
                 <img src="@/assets/img/icons/coin.svg" alt="icon" />
                 <div class="content-value" v-bind:class="{ 'value-positive': (game.payout - adminGetAmount) >= 0 }">

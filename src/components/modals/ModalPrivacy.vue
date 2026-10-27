@@ -1,7 +1,7 @@
 <template>
     <div class="modal-privacy">
         <div class="privacy-header">
-            <span class="gradient-green">PRIVACY POLICY</span>
+            <span class="gradient-green">Privacy policy</span>
             <p>This policy explains what information YourStake collects, why, and what you can do about it.</p>
         </div>
         <div class="privacy-list">

@@ -1,7 +1,7 @@
 <template>
     <div class="profile-games">
         <div class="games-head">
-            <div class="head-date">DATE</div>
+            <div class="head-date">Date</div>
             <div class="head-game">Game</div>
             <div class="head-verify">Verify</div>
             <div class="head-amount">Amount</div>
@@ -26,7 +26,7 @@
                 </div>
             </button>
             <div class="pagination-info">
-                PAGE <span class="gradient-green">{{userBetsData.page}}</span> / {{Math.ceil(userBetsData.count / 8) <= 0 ? '1' : Math.ceil(userBetsData.count / 8)}}
+                Page <span class="gradient-green">{{userBetsData.page}}</span> / {{Math.ceil(userBetsData.count / 8) <= 0 ? '1' : Math.ceil(userBetsData.count / 8)}}
             </div>
             <button v-on:click="profileSetPage(userBetsData.page + 1)" class="button-next" v-bind:disabled="userBetsData.page >= Math.ceil(userBetsData.count / 8)">
                 <div class="button-inner">

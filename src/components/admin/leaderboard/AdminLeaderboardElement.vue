@@ -1,25 +1,25 @@
 <template>
     <div class="admin-leaderboard-element">
         <div class="element-section section-type">
-            <div class="section-title">TYPE</div>
+            <div class="section-title">Type</div>
             <div class="section-content">
                 {{leaderboard.type.toUpperCase()}}
             </div>
         </div>
         <div class="element-section section-duration">
-            <div class="section-title">DURATION</div>
+            <div class="section-title">Duration</div>
             <div class="section-content">
-                {{leaderboard.duration}} DAYS
+                {{leaderboard.duration}} Days
             </div>
         </div>
         <div class="element-section section-state" v-bind:class="['state-' + leaderboard.state]">
-            <div class="section-title">STATE</div>
+            <div class="section-title">State</div>
             <div class="section-content">
                 {{leaderboard.state.toUpperCase()}}
             </div>
         </div>
         <div class="element-section section-option">
-            <div class="section-title">OPTION</div>
+            <div class="section-title">Option</div>
             <div class="section-content">
                 <button v-on:click="adminRemoveButton()" v-bind:disabled="socketSendLoading === 'AdminLeaderboardRemove'">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM224 192V320c0 17.7-14.3 32-32 32s-32-14.3-32-32V192c0-17.7 14.3-32 32-32s32 14.3 32 32zm128 0V320c0 17.7-14.3 32-32 32s-32-14.3-32-32V192c0-17.7 14.3-32 32-32s32 14.3 32 32z"/>

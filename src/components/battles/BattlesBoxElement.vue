@@ -14,7 +14,7 @@
                 </div>
             </div>
             <button v-on:click="battlesAddButton()" class="button-add">
-                <div class="button-inner">ADD CASE</div>
+                <div class="button-inner">Add case</div>
             </button>
         </div>
         <div v-else class="element-count">

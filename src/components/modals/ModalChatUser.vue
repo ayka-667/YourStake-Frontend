@@ -38,13 +38,13 @@
                 </div>
             </button>
             <a v-if="generalUserInfo.data.roblox !== undefined" v-bind:href="'https://www.roblox.com/users/' + generalUserInfo.data.roblox.id + '/profile'" target="_blank" class="link-account">
-                <div class="link-inner">VIEW ACCOUNT</div>
+                <div class="link-inner">View account</div>
             </a>
         </div>
         <div class="user-stats">
             <div class="stats-element">
                 <div class="element-inner">
-                    TOTAL DEPOSITED
+                    Total deposited
                     <div class="inner-amount">
                         <img src="@/assets/img/icons/coin.svg" alt="icon" />
                         <div v-if="generalUserInfo.data.stats !== null" class="amount-value">
@@ -56,7 +56,7 @@
             </div>
             <div class="stats-element">
                 <div class="element-inner">
-                    TOTAL WITHDRAWN
+                    Total withdrawn
                     <div class="inner-amount">
                         <img src="@/assets/img/icons/coin.svg" alt="icon" />
                         <div v-if="generalUserInfo.data.stats !== null" class="amount-value">

@@ -1,10 +1,10 @@
 <template>
     <div class="admin-user-games">
         <div class="games-head">
-            <div class="head-date">DATE</div>
-            <div class="head-game">GAME</div>
-            <div class="head-id">GAME ID</div>
-            <div class="head-amount">AMOUNT</div>
+            <div class="head-date">Date</div>
+            <div class="head-game">Game</div>
+            <div class="head-id">Game ID</div>
+            <div class="head-amount">Amount</div>
         </div>
         <div class="games-content">
             <transition name="fade" mode="out-in">
@@ -28,7 +28,7 @@
                 </div>
             </button>
             <div class="pagination-info">
-                PAGE <span class="text-green-gradient">{{adminUserGameList.page}}</span> / {{Math.ceil(adminUserGameList.count / 14) <= 0 ? '1' : Math.ceil(adminUserGameList.count / 14)}}
+                Page <span class="text-green-gradient">{{adminUserGameList.page}}</span> / {{Math.ceil(adminUserGameList.count / 14) <= 0 ? '1' : Math.ceil(adminUserGameList.count / 14)}}
             </div>
             <button v-on:click="adminSetPage(adminUserGameList.page + 1)" class="button-next" v-bind:disabled="adminUserGameList.page >= Math.ceil(adminUserGameList.count / 14)">
                 <div class="button-inner">

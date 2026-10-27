@@ -19,7 +19,7 @@
                     </linearGradient>
                 </defs>
             </svg>
-            BATTLES CREATION
+            Battles creation
         </div>
         <div class="create-info">
             <div class="info-cases">

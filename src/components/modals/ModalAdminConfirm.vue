@@ -1,11 +1,11 @@
 <template>
     <div class="modal-admin-confirm">
         <div class="confirm-title">
-            <span class="gradient-green">ADMIN CONFIRM</span>
+            <span class="gradient-green">Admin confirm</span>
         </div>
         <div class="confirm-info">{{ modalsData.messageConfirm }}</div>
         <button v-on:click="modalConfirmButton()" class="button-confirm" v-bind:disabled="socketSendLoading !== null">
-            <div class="button-inner">CONFIRM ACTION</div>
+            <div class="button-inner">Confirm action</div>
         </button>
     </div>
 </template>

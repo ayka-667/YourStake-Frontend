@@ -1,35 +1,25 @@
 <template>
     <div class="rewards-code">
-        <div class="code-inner">
-            <div class="inner-bg">
-                <img src="@/assets/img/rewards_banner.png" alt="banner" />
-            </div>
-            <div class="inner-image">
-                <img src="@/assets/img/chest_coins.png" alt="chest" />
-            </div>
-            <div class="inner-title">EARN FREE REWARDS</div>
-            <div class="inner-info">Start your journey on YourStake with a little bonus! Redeem a code to earn free coins.</div>
-            <div class="inner-input">
-                <div class="input-content">
-                    <img src="@/assets/img/icons/coin.svg" alt="coin" />
-                    <input v-model="rewardsCode" type="text" placeholder="Enter a code..." />
-                    <button v-on:click="rewardsClaimButton()" class="button-claim">
-                        <div class="button-inner">Claim</div>
-                    </button>
-                </div>
-                <div class="input-info">
-                    Codes are shared in the chat and on our socials.
-                </div>
-            </div>
+        <div class="card-icon"><UiIcon name="gift" /></div>
+        <h3>Redeem a code</h3>
+        <p>Got an affiliate code from a friend? Redeem it to receive free coins.</p>
+        <div class="code-field">
+            <input v-model="rewardsCode" v-on:keyup.enter="rewardsClaimButton()" type="text" placeholder="Enter a code" />
+            <button v-on:click="rewardsClaimButton()" class="button-claim">Redeem</button>
         </div>
+        <div class="code-hint">Codes are shared in the chat and on our socials.</div>
     </div>
 </template>
 
 <script>
+    import UiIcon from '@/components/UiIcon';
     import { mapActions } from 'vuex';
 
     export default {
         name: 'RewardsCode',
+        components: {
+            UiIcon
+        },
         data() {
             return {
                 rewardsCode: null
@@ -56,165 +46,90 @@
 
 <style scoped>
     .rewards-code {
-        width: calc(50% - 6px);
-        height: 208px;
+        flex: 1 1 0;
+        min-width: 300px;
         position: relative;
-        margin-right: 12px;
-        padding: 1px;
-        border-radius: 36px;
-        background: linear-gradient(0deg, rgba(252, 163, 17, 0.35) 0%, rgba(252, 163, 17, 0.2) 100%);
-    }
-
-    .rewards-code .code-inner {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 22px 230px 22px 35px;
-        border-radius: 36px;
-        background: linear-gradient(0deg, rgba(252, 163, 17, 0.12) 0%, rgba(0, 0, 0, 0) 100%), 
-                    radial-gradient(50% 40% at 50% 0%, rgba(252, 163, 17, 0.2) 0%, rgba(0, 0, 0, 0) 100%), 
-                    linear-gradient(90deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.15) 100%), 
-                    linear-gradient(270deg, rgba(3, 26, 46, 0.05) 50%, rgba(70, 99, 122, 0.05) 100%), #021c30;
-    }
-
-    .rewards-code .inner-bg {
-        width: calc(100% - 2px);
-        height: calc(100% - 2px);
-        position: absolute;
-        top: 1px;
-        left: 1px;
-        border-radius: 36px;
+        padding: 26px 28px;
+        border-radius: 12px;
+        background: radial-gradient(90% 120% at 100% 0%, rgba(0, 231, 1, 0.12) 0%, rgba(0, 0, 0, 0) 60%), #213743;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
         overflow: hidden;
-        mix-blend-mode: luminosity;
-        z-index: 0;
     }
 
-    .rewards-code .inner-bg img {
-        height: 100%;
-    }
-
-    .rewards-code .inner-image {
-        width: 231px;
-        height: 100%;
-        position: absolute;
+    .rewards-code .card-icon {
+        width: 44px;
+        height: 44px;
         display: flex;
-        justify-content: center;
         align-items: center;
-        top: 0;
-        right: 0;
+        justify-content: center;
+        margin-bottom: 16px;
+        border-radius: 10px;
+        background: rgba(0, 231, 1, 0.12);
+        color: #00e701;
     }
 
-    .rewards-code .inner-title {
-        font-size: 26px;
-        font-weight: 700;
-        color: #fca311;
-    }
+    .rewards-code .card-icon .ui-icon { width: 22px; height: 22px; }
 
-    .rewards-code .inner-info {
-        font-size: 15px;
+    .rewards-code h3 {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 20px;
         font-weight: 700;
         color: #ffffff;
     }
 
-    .rewards-code .inner-input {
-
+    .rewards-code p {
+        margin: 8px 0 20px 0;
+        max-width: 420px;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.55;
+        color: #b1bad3;
     }
 
-    .rewards-code .input-content {
-        width: 280px;
+    .rewards-code p span { color: #ffffff; font-weight: 700; }
+
+    .rewards-code .code-field {
+        display: flex;
+        max-width: 420px;
+        border-radius: 6px;
+        border: 2px solid #2f4553;
+        background: #0f212e;
+        overflow: hidden;
+        transition: border-color .2s ease;
+    }
+
+    .rewards-code .code-field:focus-within { border-color: #557086; }
+
+    .rewards-code input {
+        flex: 1;
+        min-width: 0;
         height: 44px;
-        position: relative;
-    }
-
-    .rewards-code .input-content input {
-        width: 100%;
-        height: 100%;
-        padding: 0 73px 0 42px;
-        border-radius: 8px;
+        padding: 0 14px;
+        background: transparent;
         font-size: 14px;
         font-weight: 600;
         color: #ffffff;
-        background: rgba(253, 168, 14, 0.05);
-        border: 1px solid rgba(253, 168, 14, 0.27);
     }
 
-    .rewards-code .input-content input::placeholder {
-        color: #c1c1c1;
-    }
-
-    .rewards-code .input-content img {
-        width: 16px;
-        height: 16px;
-        position: absolute;
-        top: 50%;
-        left: 15px; 
-        transform: translate(0, -50%);
-    }
+    .rewards-code input::placeholder { color: #557086; }
 
     .rewards-code button.button-claim {
-        width: 68px;
-        height: 30px;
-        position: absolute;
-        top: 50%;
-        right: 5px;
-        transform: translate(0, -50%);
-        transition: all .2s;
-    }
-
-    .button-claim:hover {
-        transition-duration: .2s; 
-        opacity: .8;
-    }
-    .button-claim:active {
-        transition-duration: .2s;
-        scale: .9;
-    }
-
-    .rewards-code button.button-claim .button-inner {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 13px;
+        padding: 0 22px;
+        background: #00e701;
+        font-size: 14px;
         font-weight: 700;
-        color: #ffffff;
-        background: #fca311;
-        border-radius: 4px;
-        isolation: isolate;
+        color: #05080a;
+        transition: filter .15s ease;
     }
 
-    .rewards-code .input-info {
-        margin-top: 8px;
-        font-size: 11px;
-        font-weight: 700;
-        color: #ffffff;
-    }
+    .rewards-code button.button-claim:hover { filter: brightness(1.1); }
 
-    .rewards-code .input-info span {
-        color: #02be81;
-    }
-
-    @media only screen and (max-width: 1150px) {
-
-        .rewards-code {
-            width: 100%;
-            margin-bottom: 12px;
-        }
-
-    }
-
-    @media only screen and (max-width: 600px) {
-
-        .rewards-code .code-inner {
-            padding: 22px 20px 22px 35px;
-        }
-
-        .rewards-code .inner-image {
-            display: none;
-        }
-
+    .rewards-code .code-hint {
+        margin-top: 10px;
+        font-size: 12px;
+        font-weight: 500;
+        color: #557086;
     }
 </style>

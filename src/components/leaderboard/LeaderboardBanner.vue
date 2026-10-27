@@ -19,7 +19,7 @@
                 <div class="ranks-step">1</div>
                 <div class="ranks-step">3</div>
             </div>
-            <div class="inner-info">COMPETE WITH PLAYERS AND EARN FREE MONEY! REWARDS ARE GIVEN OUT AND RESET WEEKLY</div>
+            <div class="inner-info">Compete with players and earn free money! Rewards are given out and reset weekly</div>
         </div>
     </div>
 </template>

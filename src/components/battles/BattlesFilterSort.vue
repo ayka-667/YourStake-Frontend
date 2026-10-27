@@ -1,6 +1,6 @@
 <template>
     <div class="battles-filter-sort" v-bind:class="[  'sort-' + battlesFilterSortGames ]">
-        Sort by <span>DATE</span>
+        Sort by <span>Date</span>
         <button v-on:click="battlesSetFilterSortGames(battlesFilterSortGames === 'date' ? 'price' : 'date')"></button>
         Sort by <span>Price</span>
     </div>

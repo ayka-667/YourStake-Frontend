@@ -2,7 +2,7 @@
     <div class="admin">
         <div class="admin-container">
             <div class="container-header">
-                <router-link to="/admin" class="header-title text-green-gradient">ADMIN PANEL</router-link>
+                <router-link to="/admin" class="header-title text-green-gradient">Admin panel</router-link>
                 <AdminFilterNavbar />
             </div>
             <div class="container-content">

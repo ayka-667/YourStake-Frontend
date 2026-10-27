@@ -4,7 +4,7 @@
             <span class="gradient-green">Reset Password</span>
         </div>
         <div class="reset-element">
-            <div class="element-title">NEW PASSWORD</div>
+            <div class="element-title">New password</div>
             <div class="element-content">
                 <input v-model="modalPassword" type="password" placeholder="Password" />
             </div>
@@ -16,7 +16,7 @@
             </div>
         </div>
         <button v-on:click="modalResetButton()" class="button-reset">
-            <div class="button-inner">SET NEW PASSWORD</div>
+            <div class="button-inner">Set new password</div>
         </button>
     </div>
 </template>

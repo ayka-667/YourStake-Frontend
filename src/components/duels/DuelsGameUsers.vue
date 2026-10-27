@@ -2,7 +2,7 @@
     <div class="duels-game-users">
         <div class="users-header">
             <div class="header-user">User</div>
-            <div class="header-roll">ROLL</div>
+            <div class="header-roll">Roll</div>
         </div>
         <div class="users-content">
             <div class="content-list">

@@ -28,7 +28,7 @@
                 </div>
             </div>
         </div>
-        <span class="text-green-gradient">YOUR BALANCE HAS BEEN CREDITED!</span>
+        <span class="text-green-gradient">Your balance has been credited!</span>
     </div>
 </template>
 

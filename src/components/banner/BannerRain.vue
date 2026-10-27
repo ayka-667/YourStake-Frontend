@@ -2,11 +2,11 @@
     <div class="banner-rain">
         <div class="rain-text">
             <div class="text-header">
-                RAIN
+                Rain
                 <button v-on:click="rainSetDropdownTip(true)" class="button-tip">
                     <div class="button-inner">
                         <IconRain />
-                        <span class="gradient-green">TIP RAIN</span>
+                        <span class="gradient-green">Tip rain</span>
                     </div>
                 </button>
             </div>

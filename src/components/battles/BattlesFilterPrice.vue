@@ -4,7 +4,7 @@
             <div class="button-inner">
                 <div class="inner-value">
                     <img src="@/assets/img/icons/coin.svg" alt="icon" />
-                    PRICE RANGE:
+                    Price
                     <span>{{battlesFilterPrice}}</span>
                 </div>
                 <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">

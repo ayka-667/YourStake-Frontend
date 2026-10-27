@@ -30,7 +30,7 @@
         <div v-else-if="message.type === 'system'" class="element-system">
             <div class="system-header">
                 <IconSystem />
-                <span class="text-orange-gradient">SYSTEM MESSAGE</span>
+                <span class="text-orange-gradient">System message</span>
             </div>
             <div v-html="message.message" class="system-content"></div>
         </div>

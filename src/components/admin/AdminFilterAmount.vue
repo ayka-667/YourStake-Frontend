@@ -10,14 +10,14 @@
         </button>
         <div class="amount-menu">
             <div class="menu-inner">
-                <button v-on:click="adminSetButton('3')">$3 GIFT CARD</button>
-                <button v-on:click="adminSetButton('5')">$5 GIFT CARD</button>
-                <button v-on:click="adminSetButton('10')">$10 GIFT CARD</button>
-                <button v-on:click="adminSetButton('25')">$25 GIFT CARD</button>
-                <button v-on:click="adminSetButton('50')">$50 GIFT CARD</button>
-                <button v-on:click="adminSetButton('100')">$100 GIFT CARD</button>
-                <button v-on:click="adminSetButton('250')">$250 GIFT CARD</button>
-                <button v-on:click="adminSetButton('500')">$500 GIFT CARD</button>
+                <button v-on:click="adminSetButton('3')">$3 gift card</button>
+                <button v-on:click="adminSetButton('5')">$5 gift card</button>
+                <button v-on:click="adminSetButton('10')">$10 gift card</button>
+                <button v-on:click="adminSetButton('25')">$25 gift card</button>
+                <button v-on:click="adminSetButton('50')">$50 gift card</button>
+                <button v-on:click="adminSetButton('100')">$100 gift card</button>
+                <button v-on:click="adminSetButton('250')">$250 gift card</button>
+                <button v-on:click="adminSetButton('500')">$500 gift card</button>
             </div>
         </div>
     </div>

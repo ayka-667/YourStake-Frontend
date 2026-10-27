@@ -51,35 +51,40 @@
         margin: 10px 10px 0 10px;
         padding-bottom: 14px;
         border-radius: 6px 6px 120px 120px / 6px 6px 70px 70px;
-        background: radial-gradient(110% 120% at 50% 0%, #1b7a4c 0%, #0e4d30 70%, #0a3a24 100%);
-        box-shadow: inset 0 0 0 3px #6b4a2b, inset 0 0 0 5px #8a6440;
+        background: radial-gradient(110% 120% at 50% 0%, #1a6f47 0%, #11553a 60%, #0b3d29 100%);
+        box-shadow: inset 0 0 0 1px rgba(230, 199, 122, 0.45), inset 0 -18px 30px rgba(0, 0, 0, 0.18);
     }
 
     .blackjack-tables-element .felt-label {
-        font-size: 8px;
+        font-size: 9px;
         font-weight: 700;
-        letter-spacing: .14em;
-        color: rgba(255, 255, 255, 0.45);
+        letter-spacing: .08em;
+        color: rgba(230, 199, 122, 0.55);
     }
 
     .blackjack-tables-element .felt-seats {
         position: absolute;
-        top: 16px;
+        top: 22px;
         display: flex;
-        gap: 8px;
+        gap: 10px;
     }
 
     .blackjack-tables-element .seat {
-        width: 14px;
-        height: 14px;
+        width: 12px;
+        height: 12px;
         border-radius: 50%;
-        border: 2px solid rgba(255, 255, 255, 0.35);
+        border: 1.5px solid rgba(255, 255, 255, 0.3);
     }
 
+    .blackjack-tables-element .seat:nth-child(1),
+    .blackjack-tables-element .seat:nth-child(5) { transform: translateY(-6px); }
+    .blackjack-tables-element .seat:nth-child(2),
+    .blackjack-tables-element .seat:nth-child(4) { transform: translateY(2px); }
+    .blackjack-tables-element .seat:nth-child(3) { transform: translateY(5px); }
+
     .blackjack-tables-element .seat.seat-taken {
-        border-color: #00e701;
-        background: #00e701;
-        box-shadow: 0 0 6px rgba(0, 231, 1, 0.7);
+        border-color: #ffffff;
+        background: #ffffff;
     }
 
     .blackjack-tables-element .element-info {
@@ -101,7 +106,7 @@
         background: #0f212e;
         font-size: 12px;
         font-weight: 700;
-        color: #00e701;
+        color: #b1bad3;
     }
 
     .blackjack-tables-element .info-players.players-full {

@@ -21,7 +21,7 @@
         <div class="stats-players">
             <IconUserGradient />
             <div class="players-amount">
-                PLAYERS:
+                Players:
                 <div class="amount-value">
                     <span>{{duelsGame.playerCount}}</span>
                 </div>

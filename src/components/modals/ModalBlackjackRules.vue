@@ -1,74 +1,74 @@
 <template>
     <div class="modal-blackjack-rules">
         <div class="rules-title">
-            <span class="gradient-green">BLACKJACK GAME RULES</span>
+            <span class="gradient-green">Blackjack game rules</span>
         </div>
         <div class="rules-list">
             <div class="list-section">
-                <div class="section-name">21 + 3 PAYOUTS</div>
+                <div class="section-name">21 + 3 payouts</div>
 
                 <div class="section-element">
                     <span class="gradient-green">5X</span>
                     <div class="element-info">
-                        <span class="gradient-green">FLUSH</span>
-                        THREE CARDS IN THE SAME SUIT
+                        <span class="gradient-green">Flush</span>
+                        Three cards in the same suit
                     </div>
                 </div>
                 <div class="section-element">
                     <span class="gradient-green">10X</span>
                     <div class="element-info">
-                        <span class="gradient-green">STRAIGHT</span>
-                        THREE CARDS OF CONSECUTIVE VALUES, SUCH AS 2/3/4. ACES CAN BE HIGH OR LOW.
+                        <span class="gradient-green">Straight</span>
+                        Three cards of consecutive values, such as 2/3/4. Aces can be high or low.
                     </div>
                 </div>
                 <div class="section-element">
                     <span class="gradient-green">30X</span>
                     <div class="element-info">
-                        <span class="gradient-green">THREE OF A KIND</span>
-                        THREE CARDS OF THE SAME VALUE / FACE CARD
+                        <span class="gradient-green">Three of a kind</span>
+                        Three cards of the same value / face card
                     </div>
                 </div>
                 <div class="section-element">
                     <span class="gradient-green">40X</span>
                     <div class="element-info">
-                        <span class="gradient-green">SUITED OF A KIND</span>
-                        THREE CARDS OF CONSECUTIVE VALUES THAT ARE ALL IN THE SAME SUIT
+                        <span class="gradient-green">Suited of a kind</span>
+                        Three cards of consecutive values that are all in the same suit
                     </div>
                 </div>
                 <div class="section-element">
                     <span class="gradient-green">100X</span>
                     <div class="element-info">
-                        <span class="gradient-green">SUITED THREE OF A KIND</span>
-                        THREE CARDS OF THE SAME VALUE / FACE CARD AND THE SAME SUIT
+                        <span class="gradient-green">Suited three of a kind</span>
+                        Three cards of the same value / face card and the same suit
                     </div>
                 </div>
 
             </div>
             <div class="list-section">
-                <div class="section-name">BLACKJACK</div>
+                <div class="section-name">Blackjack</div>
 
                 <div class="section-element">
                     <span class="gradient-green">1.5X</span>
                     <div class="element-info">
-                        <span class="gradient-green">BLACKJACK</span>
-                        GET 21
+                        <span class="gradient-green">Blackjack</span>
+                        Get 21
                     </div>
                 </div>
 
             </div>
             <div class="list-section">
-                <div class="section-name">PERFECT PAIRS: SIDE BET</div>
+                <div class="section-name">Perfect pairs: side bet</div>
 
                 <div class="section-element">
                     <span class="gradient-green">25X</span>
                     <div class="element-info">
-                        <span class="gradient-green">PERFECT PAIR </span>
+                        <span class="gradient-green">Perfect pair </span>
                     </div>
                 </div>
                 <div class="section-element">
                     <span class="gradient-green">10X</span>
                     <div class="element-info">
-                        <span class="gradient-green">COLOURED PAIR</span>
+                        <span class="gradient-green">Coloured pair</span>
                     </div>
                 </div>
 

@@ -11,7 +11,7 @@
                         <AvatarImage v-bind:image="generalRain.active.creator.avatar" />
                     </div>
                     <div class="user-text">
-                        <div v-html="generalRain.active.creator.username" class="text-username"></div>HOSTED A<span class="gradient-green">RAIN</span>
+                        <div v-html="generalRain.active.creator.username" class="text-username"></div>Hosted a<span class="gradient-green">Rain</span>
                     </div>
                 </div>
                 <div v-else class="type-site">
@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <div class="site-text">
-                        <span class="gradient-green">IT’S RAINING!</span>
+                        <span class="gradient-green">It’s raining!</span>
                     </div>
                 </div>
             </div>

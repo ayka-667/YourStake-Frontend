@@ -4,13 +4,13 @@
             <img src="@/assets/img/home_banner.png" />
             <img src="@/assets/img/knight.png" />
             <div v-if="authUser.user === null" class="inner-guest">
-                <span class="gradient-green">SIGN IN TO START</span>
+                <span class="gradient-green">Sign in to start</span>
                 <AuthButton />
             </div>
             <div v-else class="inner-auth" v-bind:class="[
                 'auth-' + homeGetLevelColor
             ]">
-                <span class="gradient-green">WELCOME BACK,</span>
+                <span class="gradient-green">Welcome back,</span>
                 <div class="auth-info">
                     <div class="info-avatar">
                         <AvatarImage v-bind:image="authUser.user.avatar" />

@@ -1,32 +1,32 @@
 <template>
     <div class="modal-admin-user">
         <div class="user-title">
-            <span class="gradient-green">ADMIN USER</span>
+            <span class="gradient-green">Admin user</span>
         </div>
         <div class="user-nav">
             <button v-on:click="modalSetTab('Profile')" class="button-nav" v-bind:class="{ 'button-active': modalTab === 'Profile' }">
                 <div class="button-inner">
-                    <span>PROFILE</span>
+                    <span>Profile</span>
                 </div>
             </button>
             <button v-on:click="modalSetTab('Transactions')" class="button-nav" v-bind:class="{ 'button-active': modalTab === 'Transactions' }">
                 <div class="button-inner">
-                    <span>TRANSACTIONS</span>
+                    <span>Transactions</span>
                 </div>
             </button>
             <button v-on:click="modalSetTab('Games')" class="button-nav" v-bind:class="{ 'button-active': modalTab === 'Games' }">
                 <div class="button-inner">
-                    <span>GAMES</span>
+                    <span>Games</span>
                 </div>
             </button>
             <button v-on:click="modalSetTab('Addresses')" class="button-nav" v-bind:class="{ 'button-active': modalTab === 'Addresses' }">
                 <div class="button-inner">
-                    <span>ADDRESSES</span>
+                    <span>Addresses</span>
                 </div>
             </button>
             <button v-on:click="modalSetTab('Settings')" class="button-nav" v-bind:class="{ 'button-active': modalTab === 'Settings' }">
                 <div class="button-inner">
-                    <span>SETTINGS</span>
+                    <span>Settings</span>
                 </div>
             </button>
         </div>

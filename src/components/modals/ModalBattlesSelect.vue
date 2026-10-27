@@ -17,7 +17,7 @@
                         </linearGradient>
                     </defs>
                 </svg>
-                BATTLES CREATION
+                Battles creation
             </div>
             <div class="header-filters">
                 <BattlesFilterSearch />
@@ -44,7 +44,7 @@
         </div>
         <div class="select-footer">
             <div class="footer-cost">
-                TOTAL COST:
+                Total cost:
                 <img src="@/assets/img/icons/coin.svg" alt="icon" />
                 <div class="cost-value">
                     <span>{{ battlesFormatValue(battlesGetCost).split('.')[0] }}</span>.{{ battlesFormatValue(battlesGetCost).split('.')[1] }}
@@ -55,7 +55,7 @@
                     <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3.47861 7.85824L6.15342 10.5285L5.08395 11.5963L6.15493 12.6649L5.08471 13.7327L3.21144 11.8636L1.07023 14L0 12.9322L2.14121 10.7951L0.267935 8.9268L1.33816 7.859L2.40839 8.92605L3.47861 7.85824ZM0.413256 0L3.09715 0.00226551L12.0412 8.9268L13.1122 7.859L14.1824 8.9268L12.3099 10.7958L14.4503 12.9322L13.3801 14L11.2389 11.8636L9.36561 13.7327L8.29539 12.6649L9.36561 11.5963L0.415526 2.66649L0.413256 0ZM11.3554 0L14.0371 0.00226551L14.0386 2.66271L10.971 5.72264L8.29463 3.05313L11.3554 0Z" />
                     </svg>
-                    ADD
+                    Add
                 </div>
             </button>
         </div>

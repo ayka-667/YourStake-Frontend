@@ -1,7 +1,7 @@
 <template>
     <div class="modal-captcha">
         <div class="captcha-title">
-            <span class="gradient-green">COMPLETE CAPTCHA</span>
+            <span class="gradient-green">Complete captcha</span>
         </div>
         <div class="captcha-content">
             <VueHcaptcha 

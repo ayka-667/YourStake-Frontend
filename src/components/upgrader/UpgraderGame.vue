@@ -1,7 +1,7 @@
 <template>
     <div class="upgrader-game">
         <div class="game-controls">
-            <div class="controls-title">USE YOUR BALANCE TO UPGRADE</div>
+            <div class="controls-title">Upgrade with your balance</div>
             <div class="controls-amount">
                 <div class="amount-input">
                     <input v-model="upgraderAmount" v-on:input="upgraderValidateInput" type="text" placeholder="Bet Amount" />
@@ -14,7 +14,7 @@
                             <div class="button-inner">2x</div>
                         </button>
                         <button v-on:click="upgraderSetAmount('max')">
-                            <div class="button-inner">MAX</div>
+                            <div class="button-inner">Max</div>
                         </button>
                     </div>
                 </div>
@@ -51,19 +51,17 @@
             </div>
             <button v-on:click="upgraderToggleButton()" class="button-toggle" v-bind:class="{ 'button-under': upgraderMode === 'under' }">
                 <IconUpgraderModeGradient />
-                <span>ROLL</span>
-                {{upgraderMode.toUpperCase()}}
+                <span>Roll</span>
+                {{upgraderMode}}
             </button>
             <button class="button-upgrade">
                 <div class="button-inner">
-                    <IconUpgraderGradient />
-                    <IconUpgraderGradient />
                     <span>Upgrade</span>
                 </div>
             </button>
         </div>
         <div class="game-items">
-            <div class="items-title">SELECT ITEMS TO UPGRADE</div>
+            <div class="items-title">Select a target item</div>
             <div class="items-image">
                 <svg width="136" height="86" viewBox="0 0 136 86" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M47.3304 86L20.9692 83.5775L4.19383 74.493L0 60.5634L4.19383 49.662L12.5815 39.9718L16.7753 37.5493L23.3656 32.7042L29.3568 30.2817L32.9515 21.1972L35.9471 10.2958L44.3348 3.02817L47.3304 2.42254L61.7093 1.21127L79.6828 0L94.0617 1.21127L107.242 4.23944L110.238 6.66197L113.233 18.7746L120.423 21.1972L130.608 26.6479L136 35.7324L134.802 48.4507L127.013 58.7465L108.441 70.8592L78.4846 81.1549L47.3304 86Z" fill="url(#paint0_linear_4806_774)" fill-opacity="0.27"/>
@@ -84,13 +82,11 @@
 <script>
     import { mapGetters, mapActions } from 'vuex';
     import IconUpgraderModeGradient from '@/components/icons/IconUpgraderModeGradient';
-    import IconUpgraderGradient from '@/components/icons/IconUpgraderGradient';
 
     export default {
         name: 'UpgraderGame',
         components: {
-            IconUpgraderModeGradient,
-            IconUpgraderGradient
+            IconUpgraderModeGradient
         },
         data() {
             return {

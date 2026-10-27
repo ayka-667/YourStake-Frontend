@@ -1,7 +1,7 @@
 <template>
     <div class="profile-stats">
         <div class="stats-element">
-            <div class="element-title">TOTAL DEPOSITED</div>
+            <div class="element-title">Total deposited</div>
             <div class="element-amount">
                 <div class="amount-inner">
                     <img src="@/assets/img/icons/coin.svg" alt="icon" />
@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="stats-element">
-            <div class="element-title">TOTAL WITHDRAWN</div>
+            <div class="element-title">Total withdrawn</div>
             <div class="element-amount">
                 <div class="amount-inner">
                     <img src="@/assets/img/icons/coin.svg" alt="icon" />

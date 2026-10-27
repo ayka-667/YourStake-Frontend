@@ -2,15 +2,15 @@
     <div class="admin-stats">
         <div class="stats-list">
             <div class="list-header">
-                <div class="header-date">DATE</div>
+                <div class="header-date">Date</div>
                 <div class="header-npc">NPC</div>
-                <div class="header-limiteds">LIMITEDS</div>
-                <div class="header-robux">ROBUX</div>
-                <div class="header-steam">STEAM</div>
-                <div class="header-gift">GIFT CARDS</div>
-                <div class="header-crypto">CRYPTO</div>
+                <div class="header-limiteds">Limiteds</div>
+                <div class="header-robux">Robux</div>
+                <div class="header-steam">Steam</div>
+                <div class="header-gift">Gift cards</div>
+                <div class="header-crypto">Crypto</div>
                 <div class="header-cc">CC</div>
-                <div class="header-profit">NET PROFIT</div>
+                <div class="header-profit">Net profit</div>
             </div>
             <div class="list-content">
                 <transition name="fade" mode="out-in">
@@ -34,7 +34,7 @@
                     </div>
                 </button>
                 <div class="pagination-info">
-                    PAGE <span class="text-green-gradient">{{adminStatsList.page}}</span> / {{Math.ceil(adminStatsList.count / 12) <= 0 ? '1' : Math.ceil(adminStatsList.count / 12)}}
+                    Page <span class="text-green-gradient">{{adminStatsList.page}}</span> / {{Math.ceil(adminStatsList.count / 12) <= 0 ? '1' : Math.ceil(adminStatsList.count / 12)}}
                 </div>
                 <button v-on:click="adminSetPage(adminStatsList.page + 1)" class="button-next" v-bind:disabled="adminStatsList.page >= Math.ceil(adminStatsList.count / 12)">
                     <div class="button-inner">

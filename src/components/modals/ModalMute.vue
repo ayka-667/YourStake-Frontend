@@ -1,7 +1,7 @@
 <template>
     <div class="modal-mute">
         <div class="mute-title">
-            <span class="gradient-green">MUTE USER</span>
+            <span class="gradient-green">Mute user</span>
         </div>
         <div class="mute-avatar">
             <transition name="fade" mode="out-in">
@@ -54,7 +54,7 @@
             <div class="button-inner">
                 <transition name="fade" mode="out-in">
                     <ButtonLoading v-if="socketSendLoading === 'AdminUserMute'" />
-                    <div v-else class="inner-content">MUTE USER</div>
+                    <div v-else class="inner-content">Mute user</div>
                 </transition>
             </div>
         </button>

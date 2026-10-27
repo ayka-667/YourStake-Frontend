@@ -44,7 +44,7 @@
                         <svg width="24" height="23" viewBox="0 0 24 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M5.68826 12.879L10.0621 17.2554L8.31332 19.0054L10.0646 20.7567L8.31456 22.5067L5.25137 19.4435L1.75004 22.9449L0 21.1948L3.50132 17.6923L0.43813 14.6303L2.18817 12.8803L3.93822 14.6291L5.68826 12.879ZM0.675759 0L5.06448 0.00371299L19.6898 14.6303L21.4411 12.8803L23.1912 14.6303L20.1292 17.6935L23.6293 21.1948L21.8793 22.9449L18.3779 19.4435L15.3147 22.5067L13.5647 20.7567L15.3147 19.0054L0.679472 4.37016L0.675759 0ZM18.5685 0L22.9535 0.00371299L22.956 4.36397L17.9398 9.37894L13.5635 5.00384L18.5685 0Z" />
                         </svg>
-                        <div class="completed-text">{{ bet.payout > 0 ? 'WINNER' : 'LOST' }}</div>
+                        <div class="completed-text">{{ bet.payout > 0 ? 'winner' : 'lost' }}</div>
                         <div class="completed-amount">
                             <img src="@/assets/img/icons/coin.svg" alt="icon" />
                             <div class="amount-value">

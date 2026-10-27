@@ -9,7 +9,7 @@
                     Congratulations <span v-html="duelsGame.winner.bot === true ? duelsGetBotName : duelsGame.winner.user.username"></span>!
                 </span>
             </div>
-            <div class="won-info">WINNINGS HAS BEEN CREDITED!</div>
+            <div class="won-info">Winnings has been credited!</div>
             <div class="won-amount">
                 <img src="@/assets/img/icons/coin.svg" alt="icon" />
                 <div class="amount-value">
@@ -18,7 +18,7 @@
             </div>
         </div>
         <div v-else-if="duelsGame.state === 'completed' || duelsGame.winner !== undefined" class="roller-lost">
-            <div class="lost-title">YOU’VE LOST THE DICE DUEL</div>
+            <div class="lost-title">You’ve lost the dice duel</div>
             <svg width="49" height="48" viewBox="0 0 49 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0.604095 43.4843C-0.0848502 45.0768 0.648072 46.9259 2.23956 47.6127C3.8321 48.3038 5.68011 47.5698 6.36906 45.9773C9.39812 38.9737 16.5567 34.4474 24.6094 34.4474C32.8475 34.4474 40.05 38.9705 42.9565 45.9689C43.4591 47.1772 44.6287 47.9059 45.8589 47.9059C46.261 47.9059 46.6683 47.8295 47.063 47.6661C48.665 46.9992 49.4241 45.1606 48.7592 43.5597C44.8747 34.2076 35.3949 28.1652 24.6104 28.1652C14.0511 28.1673 4.62784 34.1793 0.604095 43.4843ZM46.44 6.49265C46.44 2.90866 43.5324 4.77992e-07 39.9474 7.91406e-07C36.3634 1.10473e-06 33.4558 2.90761 33.4558 6.49265C33.4558 10.0798 36.3634 12.9874 39.9474 12.9874C43.5324 12.9863 46.44 10.0787 46.44 6.49265ZM17.0006 6.49265C17.0006 2.90866 14.0909 3.05185e-06 10.5059 3.36526e-06C6.92189 3.67859e-06 4.01428 2.90761 4.01428 6.49265C4.01428 10.0798 6.92084 12.9874 10.5059 12.9874C14.0909 12.9874 17.0006 10.0787 17.0006 6.49265Z" />
             </svg>

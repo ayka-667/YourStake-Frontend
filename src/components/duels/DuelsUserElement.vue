@@ -33,7 +33,7 @@
             <div class="content-bottom">
                 <span v-if="duelsIsRolling === true" class="gradient-green">Rolling</span>
                 <div v-else class="bottom-chance">
-                    CHANCE:
+                    Chance:
                     <span>{{parseFloat(100 / duelsGame.playerCount).toFixed(2)}}%</span>
                 </div>
             </div>

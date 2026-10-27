@@ -2,7 +2,7 @@
     <div class="modal-fair">
         <div class="fair-header">
             <div class="header-icon">
-                <img src="@/assets/img/fair.png" alt="fair" />
+                <UiIcon name="shield" />
             </div>
             <span class="gradient-green">Provably Fair</span>
         </div>
@@ -14,17 +14,17 @@
         <div class="fair-nav">
             <button v-on:click="modalSetGame('Blackjack')" v-bind:class="{ 'button-active': modalGame === 'Blackjack' }">
                 <div class="button-inner">
-                    <span>BLACKJACK</span>
+                    <span>Blackjack</span>
                 </div>
             </button>
             <button v-on:click="modalSetGame('Roll')" v-bind:class="{ 'button-active': modalGame === 'Roll' }">
                 <div class="button-inner">
-                    <span>ROLL</span>
+                    <span>Roll</span>
                 </div>
             </button>
             <button v-on:click="modalSetGame('Crash')" v-bind:class="{ 'button-active': modalGame === 'Crash' }">
                 <div class="button-inner">
-                    <span>CRASH</span>
+                    <span>Crash</span>
                 </div>
             </button>
             <button v-on:click="modalSetGame('Duels')" v-bind:class="{ 'button-active': modalGame === 'Duels' }">
@@ -34,22 +34,22 @@
             </button>
             <button v-on:click="modalSetGame('Mines')" v-bind:class="{ 'button-active': modalGame === 'Mines' }">
                 <div class="button-inner">
-                    <span>MINES</span>
+                    <span>Mines</span>
                 </div>
             </button>
             <button v-on:click="modalSetGame('Towers')" v-bind:class="{ 'button-active': modalGame === 'Towers' }">
                 <div class="button-inner">
-                    <span>TOWERS</span>
+                    <span>Towers</span>
                 </div>
             </button>
             <button v-on:click="modalSetGame('Battles')" v-bind:class="{ 'button-active': modalGame === 'Battles' }">
                 <div class="button-inner">
-                    <span>BATTLES</span>
+                    <span>Battles</span>
                 </div>
             </button>
             <button v-on:click="modalSetGame('Unbox')" v-bind:class="{ 'button-active': modalGame === 'Unbox' }">
                 <div class="button-inner">
-                    <span>UNBOX</span>
+                    <span>Unbox</span>
                 </div>
             </button>
         </div>
@@ -68,10 +68,12 @@
     import FairTowers from '@/components/fair/FairTowers';
     import FairUnbox from '@/components/fair/FairUnbox';
     import FairBattles from '@/components/fair/FairBattles';
+    import UiIcon from '@/components/UiIcon';
 
     export default {
         name: 'ModalFair',
         components: {
+            UiIcon,
             FairBlackjack,
             FairRoll,
             FairCrash,

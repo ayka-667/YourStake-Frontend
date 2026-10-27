@@ -2,11 +2,11 @@
     <div class="admin-cashier">
         <div class="cashier-list">
             <div class="list-header">
-                <div class="header-user">USERNAME</div>
-                <div class="header-method">METHOD</div>
-                <div class="header-type">TYPE</div>
-                <div class="header-amount">AMOUNT</div>
-                <div class="header-option">OPTION</div>
+                <div class="header-user">Username</div>
+                <div class="header-method">Method</div>
+                <div class="header-type">Type</div>
+                <div class="header-amount">Amount</div>
+                <div class="header-option">Option</div>
             </div>
             <div class="list-content">
                 <transition name="fade" mode="out-in">
@@ -30,7 +30,7 @@
                     </div>
                 </button>
                 <div class="pagination-info">
-                    PAGE <span class="text-green-gradient">{{adminCashierList.page}}</span> / {{Math.ceil(adminCashierList.count / 12) <= 0 ? '1' : Math.ceil(adminCashierList.count / 12)}}
+                    Page <span class="text-green-gradient">{{adminCashierList.page}}</span> / {{Math.ceil(adminCashierList.count / 12) <= 0 ? '1' : Math.ceil(adminCashierList.count / 12)}}
                 </div>
                 <button v-on:click="adminSetPage(adminCashierList.page + 1)" class="button-next" v-bind:disabled="adminCashierList.page >= Math.ceil(adminCashierList.count / 12)">
                     <div class="button-inner">
@@ -49,18 +49,18 @@
                 <input v-model="adminCount" type="number" placeholder="Enter card count..." />
                 <textarea v-model="adminGetCodes" rows="10" disabled></textarea>
 
-                <button v-on:click="adminGenerateButton()">GENERATE GIFT CARD</button>
+                <button v-on:click="adminGenerateButton()">Generate gift card</button>
             </div>
             <div class="filters-stats">
                 <div class="stats-deposit">
-                    <div class="deposit-title">DEPOSIT QUEUE</div>
+                    <div class="deposit-title">Deposit queue</div>
                     <div class="deposit-amount">
                         <img src="@/assets/img/icons/coin.svg" alt="icon" />
                         <span class="gradient-green">0</span>
                     </div>
                 </div>
                 <div class="stats-withdraw">
-                    <div class="withdraw-title">WITHDRAW QUEUE</div>
+                    <div class="withdraw-title">Withdraw queue</div>
                     <div class="withdraw-amount">
                         <img src="@/assets/img/icons/coin.svg" alt="icon" />
                         <span>0</span>

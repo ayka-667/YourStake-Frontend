@@ -2,10 +2,10 @@
     <div class="admin-leaderboards">
         <div class="leaderboards-list">
             <div class="list-header">
-                <div class="header-type">TYPE</div>
-                <div class="header-duration">DURATION</div>
-                <div class="header-state">STATE</div>
-                <div class="header-option">OPTION</div>
+                <div class="header-type">Type</div>
+                <div class="header-duration">Duration</div>
+                <div class="header-state">State</div>
+                <div class="header-option">Option</div>
             </div>
             <div class="list-content">
                 <transition name="fade" mode="out-in">
@@ -29,7 +29,7 @@
                     </div>
                 </button>
                 <div class="pagination-info">
-                    PAGE <span class="text-green-gradient">{{adminLeaderboardList.page}}</span> / {{Math.ceil(adminLeaderboardList.count / 12) <= 0 ? '1' : Math.ceil(adminLeaderboardList.count / 12)}}
+                    Page <span class="text-green-gradient">{{adminLeaderboardList.page}}</span> / {{Math.ceil(adminLeaderboardList.count / 12) <= 0 ? '1' : Math.ceil(adminLeaderboardList.count / 12)}}
                 </div>
                 <button v-on:click="adminSetPage(adminLeaderboardList.page + 1)" class="button-next" v-bind:disabled="adminLeaderboardList.page >= Math.ceil(adminLeaderboardList.count / 12)">
                     <div class="button-inner">
@@ -48,12 +48,12 @@
                 <AdminFilterDuration />
 
                 <div class="create-prize">
-                    <div class="prize-title">PRIZES</div>
+                    <div class="prize-title">Prizes</div>
                     <AdminPrizeElement v-for="(prize, index) in adminPrizes" v-bind:key="index" v-bind:pos="index" v-bind:prize="prize" />
                 </div>
 
-                <button v-on:click="adminAddButton()" class="button-add">ADD PRIZE</button>
-                <button v-on:click="adminCreateButton()" class="button-create">CREATE LEADERBOARD</button>
+                <button v-on:click="adminAddButton()" class="button-add">Add prize</button>
+                <button v-on:click="adminCreateButton()" class="button-create">Create leaderboard</button>
             </div>
         </div>
     </div>

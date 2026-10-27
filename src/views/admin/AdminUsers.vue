@@ -2,10 +2,10 @@
     <div class="admin-users">
         <div class="users-list">
             <div class="list-header">
-                <div class="header-username">USERNAME</div>
-                <div class="header-rbxid">RBX ID</div>
-                <div class="header-balance">BALANCE</div>
-                <div class="header-option">OPTION</div>
+                <div class="header-username">Username</div>
+                <div class="header-rbxid">Rbx ID</div>
+                <div class="header-balance">Balance</div>
+                <div class="header-option">Option</div>
             </div>
             <div class="list-content">
                 <transition name="fade" mode="out-in">
@@ -29,7 +29,7 @@
                     </div>
                 </button>
                 <div class="pagination-info">
-                    PAGE <span class="text-green-gradient">{{adminUserList.page}}</span> / {{Math.ceil(adminUserList.count / 12) <= 0 ? '1' : Math.ceil(adminUserList.count / 12)}}
+                    Page <span class="text-green-gradient">{{adminUserList.page}}</span> / {{Math.ceil(adminUserList.count / 12) <= 0 ? '1' : Math.ceil(adminUserList.count / 12)}}
                 </div>
                 <button v-on:click="adminSetPage(adminUserList.page + 1)" class="button-next" v-bind:disabled="adminUserList.page >= Math.ceil(adminUserList.count / 12)">
                     <div class="button-inner">

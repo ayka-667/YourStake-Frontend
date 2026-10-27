@@ -7,7 +7,7 @@
             <span class="gradient-green">Provably Fair</span>
         </div>
         <div class="seed-element">
-            <div class="element-title">ACTIVE CLIENT SEED</div>
+            <div class="element-title">Active client seed</div>
             <div class="element-content">
                 <span v-if="userSeedData.data !== null">{{userSeedData.data.seed.seedClient}}</span>
                 <button v-on:click="modalCopyButton(userSeedData.data.seed.seedClient)" class="button-copy">
@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="seed-element">
-            <div class="element-title">ACTIVE SERVER SEED(HASHED)</div>
+            <div class="element-title">Active server seed(hashed)</div>
             <div class="element-content">
                 <span v-if="userSeedData.data !== null">{{userSeedData.data.seed.hash}}</span>
                 <button v-on:click="modalCopyButton(userSeedData.data.seed.hash)" class="button-copy">
@@ -31,16 +31,16 @@
             </div>
         </div>
         <div class="seed-element element-input">
-            <div class="element-title">NEXT CLIENT SEED</div>
+            <div class="element-title">Next client seed</div>
             <div class="element-content">
                 <input v-model="modalClientSeed" type="text" />
                 <button v-on:click="modalCycleButton()" class="button-cycle" v-bind:disabled="socketSendLoading !== null">
-                    <div class="button-inner">CYCLE</div>
+                    <div class="button-inner">Cycle</div>
                 </button>
             </div>
         </div>
         <div class="seed-element">
-            <div class="element-title">NEXT SERVER SEED(HASHED)</div>
+            <div class="element-title">Next server seed(hashed)</div>
             <div class="element-content">
                 <span v-if="userSeedData.data !== null">{{userSeedData.data.seedNext.hash}}</span>
                 <button v-on:click="modalCopyButton(userSeedData.data.seedNext.hash)" class="button-copy">

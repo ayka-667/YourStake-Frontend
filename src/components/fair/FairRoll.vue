@@ -1,6 +1,6 @@
 <template>
     <div class="fair-roll">
-        <div class="roll-title">ROLL</div>
+        <div class="roll-title">Roll</div>
         <div class="roll-text">
             <p>Our system generates the result for each game by using the SHA-256 hash of 3 separate inputs:</p>
             <p><span>Game ID:</span> The games unique identifier which is generated when the game is created.</p>

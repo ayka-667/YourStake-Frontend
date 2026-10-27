@@ -10,11 +10,11 @@
         </div>
         <div class="admin-growth">
             <div class="growth-header">
-                <div class="header-title">GROWTH</div>
+                <div class="header-title">Growth</div>
                 <div class="header-actions">
-                    <button v-on:click="adminSetMode('daily')" v-bind:class="{ 'button-active': adminMode === 'daily' }">DAILY</button>
-                    <button v-on:click="adminSetMode('weekly')" v-bind:class="{ 'button-active': adminMode === 'weekly' }">WEEKLY</button>
-                    <button v-on:click="adminSetMode('monthly')" v-bind:class="{ 'button-active': adminMode === 'monthly' }">MONTHLY</button>
+                    <button v-on:click="adminSetMode('daily')" v-bind:class="{ 'button-active': adminMode === 'daily' }">Daily</button>
+                    <button v-on:click="adminSetMode('weekly')" v-bind:class="{ 'button-active': adminMode === 'weekly' }">Weekly</button>
+                    <button v-on:click="adminSetMode('monthly')" v-bind:class="{ 'button-active': adminMode === 'monthly' }">Monthly</button>
                 </div>
             </div>
             <div class="growth-content">

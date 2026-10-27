@@ -1,6 +1,6 @@
 <template>
     <div class="fair-towers">
-        <div class="towers-title">TOWERS</div>
+        <div class="towers-title">Towers</div>
         <div class="towers-text">
             <p>Our system generates the result for each game by using the SHA-256 hash of 3 separate inputs:</p>
             <p><span>Server Seed:</span> Is a cryptographically secure pseudo-randomly generated string.</p>

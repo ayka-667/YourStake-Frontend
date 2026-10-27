@@ -1,7 +1,7 @@
 <template>
     <div class="modal-admin-affiliate">
         <div class="affiliate-title">
-            <span class="gradient-green">ADMIN AFFILIATE</span>
+            <span class="gradient-green">Admin affiliate</span>
         </div>
         <div class="affiliate-avatar" v-bind:class="[
             'avatar-' + adminGetLevelColor,
@@ -18,31 +18,31 @@
         <div class="affiliate-id">{{modalsData.affiliate._id}}</div>
         <div class="affiliate-settings">
             <div class="settings-element element-toggle">
-                <div class="element-name">AFFILIATE LOCK</div>
+                <div class="element-name">Affiliate lock</div>
                 <button v-on:click="adminBlockToggle" v-bind:class="{ 'button-active': modalsData.affiliate.limits.blockAffiliate === true }" v-bind:disabled="socketSendLoading !== null"></button>
             </div>
             <div class="settings-element element-button">
-                <div class="element-name">CLEAR AFFILIATES</div>
+                <div class="element-name">Clear affiliates</div>
                 <button v-on:click="adminClearButton">
-                    <div class="button-inner">CLEAR</div>
+                    <div class="button-inner">Clear</div>
                 </button>
             </div>
             <div class="settings-element element-text">
-                <div class="element-name">SET AFFILIATE CODE</div>
+                <div class="element-name">Set affiliate code</div>
                 <div class="element-input">
                     <input v-model="modalCode" type="text" />
                     <button v-on:click="adminCodeButton">
-                        <div class="button-inner">UPDATE</div>
+                        <div class="button-inner">Update</div>
                     </button>
                 </div>
             </div>
             <div class="settings-element element-number">
-                <div class="element-name">SET AVAILABLE EARNINGS</div>
+                <div class="element-name">Set available earnings</div>
                 <div class="element-input">
                     <img src="@/assets/img/icons/coin.svg" alt="icon" />
                     <input v-model="modalAvailable" type="text" />
                     <button v-on:click="adminAvailableToggle">
-                        <div class="button-inner">UPDATE</div>
+                        <div class="button-inner">Update</div>
                     </button>
                 </div>
             </div>
@@ -50,7 +50,7 @@
         <div class="affiliate-stats">
             <div class="stats-element">
                 <div class="element-inner">
-                    TOTAL REFERRED
+                    Total referred
                     <div class="inner-amount">
                         <div class="amount-value">
                             <span>{{modalsData.affiliate.affiliates.referred}}</span>
@@ -60,7 +60,7 @@
             </div>
             <div class="stats-element">
                 <div class="element-inner">
-                    TOTAL DEPOSITED
+                    Total deposited
                     <div class="inner-amount">
                         <img src="@/assets/img/icons/coin.svg" alt="icon" />
                         <div class="amount-value">
@@ -71,7 +71,7 @@
             </div>
             <div class="stats-element element-profit">
                 <div class="element-inner">
-                    TOTAL EARNED
+                    Total earned
                     <div class="inner-amount">
                         <img src="@/assets/img/icons/coin.svg" alt="icon" />
                         <div class="amount-value">

@@ -15,13 +15,13 @@
         <div class="profile-id">{{modalsData.user._id}}</div>
         <div class="profile-actions">
             <a v-if="modalsData.user.roblox !== undefined" v-bind:href="'https://www.roblox.com/users/' + modalsData.user.roblox.id + '/profile'" target="_blank" class="link-account">
-                <div class="button-inner">VIEW ACCOUNT</div>
+                <div class="button-inner">View account</div>
             </a>
         </div>
         <div class="profile-stats">
             <div class="stats-element">
                 <div class="element-inner">
-                    TOTAL DEPOSITED
+                    Total deposited
                     <div class="inner-amount">
                         <img src="@/assets/img/icons/coin.svg" alt="icon" />
                         <div class="amount-value">
@@ -32,7 +32,7 @@
             </div>
             <div class="stats-element">
                 <div class="element-inner">
-                    TOTAL WITHDRAWN
+                    Total withdrawn
                     <div class="inner-amount">
                         <img src="@/assets/img/icons/coin.svg" alt="icon" />
                         <div class="amount-value">
@@ -43,7 +43,7 @@
             </div>
             <div class="stats-element element-profit" v-bind:class="{ 'element-negative': (modalsData.user.stats.withdraw - modalsData.user.stats.deposit) < 0 }">
                 <div class="element-inner">
-                    TOTAL PROFIT
+                    Total profit
                     <div class="inner-amount">
                         <img src="@/assets/img/icons/coin.svg" alt="icon" />
                         <div class="amount-value">

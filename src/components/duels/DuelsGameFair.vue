@@ -1,15 +1,15 @@
 <template>
     <div class="duels-game-fair">
         <div class="fair-hash">
-            <span>SERVER SEED HASH:</span>
+            <span>Server seed hash:</span>
             {{duelsGame.fair.hash}}
         </div>
         <div v-if="duelsGame.state === 'completed'" class="fair-server">
-            <span>SERVER SEED:</span>
+            <span>Server seed:</span>
             {{duelsGame.fair.seedServer}}
         </div>
         <div v-if="duelsGame.state === 'completed'" class="fair-public">
-            <span>PUBLIC SEED:</span>
+            <span>Public seed:</span>
             {{duelsGame.fair.seedPublic}}
         </div>
     </div>

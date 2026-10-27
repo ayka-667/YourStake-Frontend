@@ -5,7 +5,7 @@
     }">
         <div class="element-info">
             <div class="info-bet">
-                BET:
+                Bet:
                 <div class="bet-box">
                     <img src="@/assets/img/icons/coin.svg" alt="icon" />
                     <div class="box-value">
@@ -21,7 +21,7 @@
                 'creator-' + duelsGetRank(game.bets[0].user),
                 'creator-' + duelsGetLevelColor(game.bets[0].user)
             ]">
-                CREATED BY:
+                Created by:
                 <div class="creator-avatar">
                     <AvatarImage v-bind:image="game.bets[0].user.avatar" />
                 </div>

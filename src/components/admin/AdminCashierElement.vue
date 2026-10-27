@@ -1,7 +1,7 @@
 <template>
     <div class="admin-cashier-element">
         <div class="element-section section-user">
-            <div class="section-title">USERNAME</div>
+            <div class="section-title">Username</div>
             <div class="section-content">
                 <div class="content-avatar">
                     <AvatarImage v-bind:image="transaction.user.avatar" />
@@ -11,19 +11,19 @@
             </div>
         </div>
         <div class="element-section section-method">
-            <div class="section-title">METHOD</div>
+            <div class="section-title">Method</div>
             <div class="section-content">
                 {{ transaction.method.charAt(0).toUpperCase() + transaction.method.slice(1) }}
             </div>
         </div>
         <div class="element-section section-type" v-bind:class="[ 'type-' + transaction.type ]">
-            <div class="section-title">TYPE</div>
+            <div class="section-title">Type</div>
             <div class="section-content">
                 {{ transaction.type.charAt(0).toUpperCase() + transaction.type.slice(1) }}
             </div>
         </div>
         <div class="element-section section-amount">
-            <div class="section-title">AMOUNT</div>
+            <div class="section-title">Amount</div>
             <div class="section-content">
                 <img src="@/assets/img/icons/coin.svg" alt="icon" />
                 <div class="content-value">
@@ -32,13 +32,13 @@
             </div>
         </div>
         <div class="element-section section-option">
-            <div class="section-title">OPTION</div>
+            <div class="section-title">Option</div>
             <div class="section-content">
                 <button v-if="transaction.method === 'crypto'" v-on:click="adminApproveButton()">
-                    APPROVE
+                    Approve
                 </button>
                 <button v-else v-on:click="adminCancelButton()">
-                    CANCEL
+                    Cancel
                 </button>
             </div>
         </div>

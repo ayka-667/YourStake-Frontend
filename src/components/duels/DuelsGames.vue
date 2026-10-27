@@ -21,7 +21,7 @@
                         <DuelsGamesElement v-for="game of duelsGetGames.user" v-bind:key="game._id" v-bind:game="game" />
 
                     </div>
-                    <div v-else class="content-empty" key="empty">You dont have any active duels. Start by creating one!</div>
+                    <div v-else class="content-empty" key="empty">You don’t have any active duels. Start by creating one!</div>
                 </transition>
             </div>
         </div>

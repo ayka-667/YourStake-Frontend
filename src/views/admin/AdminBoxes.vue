@@ -2,10 +2,10 @@
     <div class="admin-boxes">
         <div class="boxes-list">
             <div class="list-header">
-                <div class="header-name">NAME</div>
-                <div class="header-amount">AMOUNT</div>
-                <div class="header-state">STATE</div>
-                <div class="header-option">OPTION</div>
+                <div class="header-name">Name</div>
+                <div class="header-amount">Amount</div>
+                <div class="header-state">State</div>
+                <div class="header-option">Option</div>
             </div>
             <div class="list-content">
                 <transition name="fade" mode="out-in">
@@ -29,7 +29,7 @@
                     </div>
                 </button>
                 <div class="pagination-info">
-                    PAGE <span class="text-green-gradient">{{adminBoxList.page}}</span> / {{Math.ceil(adminBoxList.count / 12) <= 0 ? '1' : Math.ceil(adminBoxList.count / 12)}}
+                    Page <span class="text-green-gradient">{{adminBoxList.page}}</span> / {{Math.ceil(adminBoxList.count / 12) <= 0 ? '1' : Math.ceil(adminBoxList.count / 12)}}
                 </div>
                 <button v-on:click="adminSetPage(adminBoxList.page + 1)" class="button-next" v-bind:disabled="adminBoxList.page >= Math.ceil(adminBoxList.count / 12)">
                     <div class="button-inner">
@@ -50,13 +50,13 @@
                 <div class="create-info">Categories: featured, low risk, 50/50, high risk and partners. Separate categories with comma.</div>
                 
                 <div class="create-items">
-                    <div class="items-title">ITEMS</div>
+                    <div class="items-title">Items</div>
                     <AdminItemElement v-for="(item, index) in adminItems" v-bind:key="index" v-bind:item="item" />
                 </div>
 
                 <AdminFilterItem />
 
-                <button v-on:click="adminCreateButton()" class="button-create">CREATE BOX</button>
+                <button v-on:click="adminCreateButton()" class="button-create">Create box</button>
             </div>
         </div>
     </div>

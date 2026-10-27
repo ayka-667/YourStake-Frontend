@@ -1,7 +1,7 @@
 <template>
     <div class="profile-games-element">
         <div class="element-date">
-            <div class="date-title">DATE</div>
+            <div class="date-title">Date</div>
             <div class="date-content">
                 {{ new Date(bet.createdAt).toLocaleString('en-US', { hour12: true, year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute:'2-digit' }) }}
             </div>

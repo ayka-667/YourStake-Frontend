@@ -1,7 +1,7 @@
 <template>
     <div class="modal-ban">
         <div class="ban-title">
-            <span class="gradient-green">BAN USER</span>
+            <span class="gradient-green">Ban user</span>
         </div>
         <div class="ban-avatar">
             <transition name="fade" mode="out-in">
@@ -50,7 +50,7 @@
             <div class="button-inner">
                 <transition name="fade" mode="out-in">
                     <ButtonLoading v-if="socketSendLoading === 'AdminUserBan'" />
-                    <div v-else class="inner-content">BAN USER</div>
+                    <div v-else class="inner-content">Ban user</div>
                 </transition>
             </div>
         </button>

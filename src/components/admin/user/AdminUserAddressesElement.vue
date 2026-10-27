@@ -1,13 +1,13 @@
 <template>
     <div class="admin-user-addresses-element">
         <div class="element-section section-date">
-            <div class="section-title">DATE</div>
+            <div class="section-title">Date</div>
             <div class="section-content">
                 {{ new Date(address.createdAt).toLocaleString('en-US', { hour12: true, year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute:'2-digit' }) }}
             </div>
         </div>
         <div class="element-section section-address">
-            <div class="section-title">ADDRESS</div>
+            <div class="section-title">Address</div>
             <div class="section-content">
                 {{address.address}}
             </div>

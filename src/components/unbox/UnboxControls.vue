@@ -27,7 +27,7 @@
                 </div>
             </button>
             <button v-on:click="unboxDemoButton()" class="button-demo" v-bind:disabled="socketSendLoading !== null || unboxRunning === true">
-                <div class="button-inner">DEMO SPIN</div>
+                <div class="button-inner">Demo spin</div>
             </button>
         </div>
     </div>

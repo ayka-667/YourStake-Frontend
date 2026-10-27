@@ -2,7 +2,7 @@
     <div class="roll-user-bets-element">
         <div class="element-info">
             <div class="info-bet">
-                BET:
+                Bet:
                 <div class="bet-box">
                     <img src="@/assets/img/icons/coin.svg" alt="icon" />
                     <div class="box-value">
@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="info-payout">
-                PAYOUT:
+                Payout:
                 <img src="@/assets/img/icons/coin.svg" alt="icon" />
                 <div class="payout-value">
                     <span>{{rollFormatValue(Math.floor(bet.amount * (bet.multiplier / 100))).split('.')[0]}}</span>.{{rollFormatValue(Math.floor(bet.amount * (bet.multiplier / 100))).split('.')[1]}}

@@ -1,8 +1,8 @@
 <template>
     <div class="admin-user-addresses">
         <div class="addresses-head">
-            <div class="head-date">DATE</div>
-            <div class="head-address">ADDRESS</div>
+            <div class="head-date">Date</div>
+            <div class="head-address">Address</div>
         </div>
         <div class="addresses-content">
             <div class="content-list">
@@ -20,7 +20,7 @@
                 </div>
             </button>
             <div class="pagination-info">
-                PAGE <span class="text-green-gradient">{{adminPage}}</span> / {{Math.ceil(modalsData.user.ips.length / 14) <= 0 ? '1' : Math.ceil(modalsData.user.ips.length / 14)}}
+                Page <span class="text-green-gradient">{{adminPage}}</span> / {{Math.ceil(modalsData.user.ips.length / 14) <= 0 ? '1' : Math.ceil(modalsData.user.ips.length / 14)}}
             </div>
             <button v-on:click="adminSetPage(adminPage + 1)" class="button-next" v-bind:disabled="adminPage >= Math.ceil(modalsData.user.ips.length / 14)">
                 <div class="button-inner">

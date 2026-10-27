@@ -19,7 +19,7 @@
                     <div class="button-inner">2x</div>
                 </button>
                 <button v-on:click="towersSetAmount('max')" v-bind:disabled="towersGame !== null && towersGame.state !== 'completed'">
-                    <div class="button-inner">MAX</div>
+                    <div class="button-inner">Max</div>
                 </button>
             </div>
         </div>

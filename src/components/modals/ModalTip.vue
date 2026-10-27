@@ -1,7 +1,7 @@
 <template>
     <div class="modal-tip">
         <div class="tip-title">
-            <span class="gradient-green">TIP USERS</span>
+            <span class="gradient-green">Tip users</span>
         </div>
         <div class="tip-avatar">
             <transition name="fade" mode="out-in">

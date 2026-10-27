@@ -1,10 +1,10 @@
 <template>
     <div class="modal-admin-crypto">
         <div class="crypto-title">
-            <span class="gradient-green">ADMIN CRYPTO</span>
+            <span class="gradient-green">Admin crypto</span>
         </div>
         <div class="crypto-element element-currency">
-            <div class="element-title">CURRENCY AMOUNT</div>
+            <div class="element-title">Currency amount</div>
             <div class="element-content">
                 <div class="content-inner">{{ (modalsData.transaction.data.cryptoAmount / 100000000).toFixed(8) }}</div>
                 <img v-bind:src="require('@/assets/img/cashier/' + modalsData.transaction.data.currency + '.png')" alt="icon" />
@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="crypto-element">
-            <div class="element-title">ADDRESS</div>
+            <div class="element-title">Address</div>
             <div class="element-content">
                 <div class="content-inner">{{ modalsData.transaction.data.receiver }}</div>
                 <button v-on:click="modalCopyButton(modalsData.transaction.data.receiver)" class="button-copy">
@@ -29,17 +29,17 @@
             </div>
         </div>
         <div class="crypto-element">
-            <div class="element-title">TRANSACTION HASH</div>
+            <div class="element-title">Transaction hash</div>
             <div class="element-content">
                 <input v-model="modalTransactionHash" type="text" placeholder="ENTER TRANSACTION HASH..." />
             </div>
         </div>
         <div class="crypto-buttons">
             <button v-on:click="modalApproveButton()" class="button-approve" v-bind:disabled="socketSendLoading !== null">
-                <div class="button-inner">APPROVE</div>
+                <div class="button-inner">Approve</div>
             </button>
             <button v-on:click="modalCancelButton()" class="button-cancel">
-                <div class="button-inner">CANCEL</div>
+                <div class="button-inner">Cancel</div>
             </button>
         </div>
     </div>

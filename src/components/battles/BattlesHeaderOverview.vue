@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="info-count">
-                <span>{{ battlesGames.length }}</span> BATTLES
+                <span>{{ battlesGames.length }}</span> Battles
             </div>
             <div class="info-sort">
                 <BattlesFilterSort />

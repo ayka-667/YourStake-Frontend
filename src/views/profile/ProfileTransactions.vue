@@ -1,9 +1,9 @@
 <template>
     <div class="profile-transactions">
         <div class="transactions-head">
-            <div class="head-date">DATE</div>
-            <div class="head-method">METHOD</div>
-            <div class="head-type">TYPE</div>
+            <div class="head-date">Date</div>
+            <div class="head-method">Method</div>
+            <div class="head-type">Type</div>
             <div class="head-amount">Amount</div>
         </div>
         <div class="transactions-content">
@@ -26,7 +26,7 @@
                 </div>
             </button>
             <div class="pagination-info">
-                PAGE <span class="gradient-green">{{userTransactionsData.page}}</span> / {{Math.ceil(userTransactionsData.count / 8) <= 0 ? '1' : Math.ceil(userTransactionsData.count / 8)}}
+                Page <span class="gradient-green">{{userTransactionsData.page}}</span> / {{Math.ceil(userTransactionsData.count / 8) <= 0 ? '1' : Math.ceil(userTransactionsData.count / 8)}}
             </div>
             <button v-on:click="profileSetPage(userTransactionsData.page + 1)" class="button-next" v-bind:disabled="userTransactionsData.page >= Math.ceil(userTransactionsData.count / 8)">
                 <div class="button-inner">

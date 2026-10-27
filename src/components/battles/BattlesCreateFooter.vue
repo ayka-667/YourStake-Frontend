@@ -6,19 +6,19 @@
                 <button v-on:click="battlesPrivateToggle()"></button>
             </div>
             <div v-if="battlesFilterPrivate === true" class="left-affiliate" v-bind:class="{ 'affiliate-active': battlesFilterAffiliate === true }">
-                AFFILIATES ONLY
+                Affiliates only
                 <button v-on:click="battlesSetFilterAffiliate(!battlesFilterAffiliate)"></button>
             </div>
         </div>
         <div class="footer-right">
             <div class="right-cursed" v-bind:class="{ 'cursed-active': battlesFilterCursed === true }">
                 <IconCursedGradient />
-                <span>CURSED MODE</span>
+                <span>Cursed mode</span>
                 <button v-on:click="battlesCursedToggle(!battlesFilterCursed)"></button>
             </div>
             <div class="right-terminal" v-bind:class="{ 'terminal-active': battlesFilterTerminal === true }">
                 <IconTerminalGradient />
-                <span>TERMINAL MODE</span>
+                <span>Terminal mode</span>
                 <button v-on:click="battlesTerminalToggle(!battlesFilterTerminal)"></button>
             </div>
         </div>

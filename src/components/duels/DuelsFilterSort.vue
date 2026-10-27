@@ -3,13 +3,13 @@
         <div class="sort-title">Sort by</div>
         <div class="sort-dropdown" v-bind:class="{ 'dropdown-open': duelsDropdown === true }">
             <button v-on:click="duelsToggleDropdown" class="button-toggle">
-                {{duelsFilterSort}}
+                {{ duelsFilterSort.charAt(0) + duelsFilterSort.slice(1).toLowerCase() }}
                 <IconDropdown />
             </button>
             <div class="dropdown-menu">
                 <div class="menu-inner">
-                    <button v-on:click="duelsSetValue('HIGHEST PRICE')">Highest Price</button>
-                    <button v-on:click="duelsSetValue('LOWEST PRICE')">Lowest Price</button>
+                    <button v-on:click="duelsSetValue('HIGHEST PRICE')">Highest price</button>
+                    <button v-on:click="duelsSetValue('LOWEST PRICE')">Lowest price</button>
                     <button v-on:click="duelsSetValue('PARTICIPANTS')">Participants</button>
                     <button v-on:click="duelsSetValue('RECENT')">Recent</button>
                 </div>

@@ -2,10 +2,10 @@
     <div class="admin-affiliates">
         <div class="affiliates-list">
             <div class="list-header">
-                <div class="header-username">USERNAME</div>
-                <div class="header-code">CODE</div>
-                <div class="header-earned">EARNED</div>
-                <div class="header-option">OPTION</div>
+                <div class="header-username">Username</div>
+                <div class="header-code">Code</div>
+                <div class="header-earned">Earned</div>
+                <div class="header-option">Option</div>
             </div>
             <div class="list-content">
                 <transition name="fade" mode="out-in">
@@ -29,7 +29,7 @@
                     </div>
                 </button>
                 <div class="pagination-info">
-                    PAGE <span class="text-green-gradient">{{adminAffiliateList.page}}</span> / {{Math.ceil(adminAffiliateList.count / 12) <= 0 ? '1' : Math.ceil(adminAffiliateList.count / 12)}}
+                    Page <span class="text-green-gradient">{{adminAffiliateList.page}}</span> / {{Math.ceil(adminAffiliateList.count / 12) <= 0 ? '1' : Math.ceil(adminAffiliateList.count / 12)}}
                 </div>
                 <button v-on:click="adminSetPage(adminAffiliateList.page + 1)" class="button-next" v-bind:disabled="adminAffiliateList.page >= Math.ceil(adminAffiliateList.count / 12)">
                     <div class="button-inner">

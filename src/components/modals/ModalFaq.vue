@@ -1,7 +1,7 @@
 <template>
     <div class="modal-faq">
         <div class="faq-header">
-            <span class="gradient-green">QUESTIONS AND ANSWERS</span>
+            <span class="gradient-green">Questions and answers</span>
             <p>Answers to the most common questions. Can't find yours? Contact support@yourstake.fr.</p>
         </div>
         <div class="faq-list">

@@ -2,8 +2,8 @@
     <div class="admin-filter">
         <div class="filter-list">
             <div class="list-header">
-                <div class="header-phrase">BANNED PHRASES</div>
-                <div class="header-option">OPTION</div>
+                <div class="header-phrase">Banned phrases</div>
+                <div class="header-option">Option</div>
             </div>
             <div class="list-content">
                 <transition name="fade" mode="out-in">
@@ -27,7 +27,7 @@
                     </div>
                 </button>
                 <div class="pagination-info">
-                    PAGE <span class="text-green-gradient">{{adminFilterList.page}}</span> / {{Math.ceil(adminFilterList.count / 12) <= 0 ? '1' : Math.ceil(adminFilterList.count / 12)}}
+                    Page <span class="text-green-gradient">{{adminFilterList.page}}</span> / {{Math.ceil(adminFilterList.count / 12) <= 0 ? '1' : Math.ceil(adminFilterList.count / 12)}}
                 </div>
                 <button v-on:click="adminSetPage(adminFilterList.page + 1)" class="button-next" v-bind:disabled="adminFilterList.page >= Math.ceil(adminFilterList.count / 12)">
                     <div class="button-inner">
@@ -43,7 +43,7 @@
 
             <div class="filters-add">
                 <input v-model="adminPhrase" type="text" placeholder="Enter phrase here..." />
-                <button v-on:click="adminAddButton">ADD PHRASE</button>
+                <button v-on:click="adminAddButton">Add phrase</button>
             </div>
         </div>
     </div>

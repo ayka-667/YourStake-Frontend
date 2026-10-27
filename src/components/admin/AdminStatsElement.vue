@@ -1,7 +1,7 @@
 <template>
     <div class="admin-stats-element">
         <div class="element-section section-date">
-            <div class="section-title">DATE</div>
+            <div class="section-title">Date</div>
             <div class="section-content">
                 {{new Date(stat.createdAt).toLocaleDateString('en-US')}}
             </div>
@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="element-section section-limiteds">
-            <div class="section-title">LIMITEDS</div>
+            <div class="section-title">Limiteds</div>
             <div class="section-content">
                 <img src="@/assets/img/icons/coin.svg" alt="icon" />
                 <div class="content-value">
@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="element-section section-robux">
-            <div class="section-title">ROBUX</div>
+            <div class="section-title">Robux</div>
             <div class="section-content">
                 <img src="@/assets/img/icons/coin.svg" alt="icon" />
                 <div class="content-value">
@@ -31,19 +31,19 @@
             </div>
         </div>
         <div class="element-section section-steam" v-bind:class="{ 'section-positive': (stat.stats.steam.deposit - stat.stats.steam.withdraw) >= 0 }">
-            <div class="section-title">STEAM</div>
+            <div class="section-title">Steam</div>
             <div class="section-content">
                 ${{ adminFormatValue(stat.stats.steam.deposit - stat.stats.steam.withdraw) }}
             </div>
         </div>
         <div class="element-section section-gift" v-bind:class="{ 'section-positive': (stat.stats.gift.deposit - stat.stats.gift.withdraw) >= 0 }">
-            <div class="section-title">GIFT CARDS</div>
+            <div class="section-title">Gift cards</div>
             <div class="section-content">
                 ${{ adminFormatValue(stat.stats.gift.deposit - stat.stats.gift.withdraw) }}
             </div>
         </div>
         <div class="element-section section-crypto" v-bind:class="{ 'section-positive': (stat.stats.crypto.deposit - stat.stats.crypto.withdraw) >= 0 }">
-            <div class="section-title">CRYPTO</div>
+            <div class="section-title">Crypto</div>
             <div class="section-content">
                 ${{ adminFormatValue(stat.stats.crypto.deposit - stat.stats.crypto.withdraw) }}
             </div>
@@ -55,7 +55,7 @@
             </div>
         </div>
         <div class="element-section section-profit" v-bind:class="{ 'section-positive': (stat.stats.total.deposit - stat.stats.total.withdraw) >= 0 }">
-            <div class="section-title">NET PROFIT</div>
+            <div class="section-title">Net profit</div>
             <div class="section-content">
                 ${{ adminFormatValue(stat.stats.total.deposit - stat.stats.total.withdraw) }}
             </div>

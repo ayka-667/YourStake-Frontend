@@ -8,10 +8,10 @@
             <img v-bind:src="rewardsImagePath + '/public/img/starter-case.png'" />
         </div>
         <div class="element-info">
-            <div v-if="rewardsGetState === 'ready'" class="info-ready">READY TO OPEN</div>
-            <div v-else-if="rewardsGetState === 'locked'" class="info-locked">UNLOCKS ONCE YOU REACH LVL 5</div>
+            <div v-if="rewardsGetState === 'ready'" class="info-ready">Ready to open</div>
+            <div v-else-if="rewardsGetState === 'locked'" class="info-locked">Unlocks once you reach lvl 5</div>
             <div v-else class="info-cooldown">
-                <span>READY IN</span>
+                <span>Ready in</span>
                 06:02:52
             </div>
         </div>

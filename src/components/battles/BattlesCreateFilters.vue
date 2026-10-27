@@ -3,18 +3,18 @@
         <div class="filters-left">
             <BattlesFilterMode />
             <div class="left-type">
-                <button v-on:click="battlesTypeButton('standard')" v-bind:class="{ 'button-active': battlesFilterType === 'standard' }">STANDARD</button>
-                <button v-on:click="battlesTypeButton('group')" v-bind:class="{ 'button-active': battlesFilterType === 'group' }" v-bind:disabled="battlesFilterMode === '2v2'">GROUP</button>
+                <button v-on:click="battlesTypeButton('standard')" v-bind:class="{ 'button-active': battlesFilterType === 'standard' }">Standard</button>
+                <button v-on:click="battlesTypeButton('group')" v-bind:class="{ 'button-active': battlesFilterType === 'group' }" v-bind:disabled="battlesFilterMode === '2v2'">Group</button>
             </div>
         </div>
         <div class="filters-settings">
             <div class="settings-level" v-bind:class="{ 'level-active': battlesLevel >= 1 }">
-                MIN. LEVEL 
+                Min. level 
                 <span>{{ battlesLevel }}</span>
                 <input v-model="battlesLevel" v-on:input="battlesSetFilterLevel(battlesLevel)" type="range" min="0" max="100" step="1">
             </div>
             <div class="settings-funding" v-bind:class="{ 'funding-active': battlesFunding >= 1 }">
-                BATTLE FUNDING
+                Battle funding
                 <input v-model="battlesFunding" v-on:input="battlesSetFilterFunding(battlesFunding)" type="range" min="0" max="100" step="1">
             </div>
         </div>

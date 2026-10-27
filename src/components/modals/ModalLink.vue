@@ -1,10 +1,10 @@
 <template>
     <div class="modal-link">
         <div class="link-title">
-            <span class="gradient-green">LINK EMAIL</span>
+            <span class="gradient-green">Link email</span>
         </div>
         <div class="link-element">
-            <div class="element-title">EMAIL</div>
+            <div class="element-title">Email</div>
             <div class="element-content">
                 <input v-model="modalEmail" type="text" placeholder="ENTER EMAIL..." />
             </div>
@@ -22,7 +22,7 @@
             </div>
         </div>
         <button v-on:click="modalLinkButton()" class="button-link" v-bind:disabled="authSendLoginLoading">
-            <div class="button-inner">LINK EMAIL</div>
+            <div class="button-inner">Link email</div>
         </button>
     </div>
 </template>

@@ -7,7 +7,7 @@
                 </svg>
                 Dice Duel
             </div>
-            GAME ID = {{duelsGame._id}}
+            Game ID = {{duelsGame._id}}
         </div>
         <div class="header-actions">
             <div class="actions-sound">

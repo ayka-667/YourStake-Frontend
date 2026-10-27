@@ -32,11 +32,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="left-info">LOBBY {{blackjackTable.table + 1}}, GAME ID = {{blackjackTable.game._id}}</div>
+                <div class="left-info">Lobby {{blackjackTable.table + 1}}, Game ID = {{blackjackTable.game._id}}</div>
             </div>
             <button v-on:click="modalsSetShow('BlackjackRules')" class="button-rules">
                 <IconInfo />
-                <span class="gradient-yellow">GAME RULES</span>
+                <span class="gradient-yellow">Game rules</span>
             </button>
         </div>
 

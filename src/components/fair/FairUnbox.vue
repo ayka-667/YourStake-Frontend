@@ -1,6 +1,6 @@
 <template>
     <div class="fair-unbox">
-        <div class="unbox-title">UNBOX</div>
+        <div class="unbox-title">Unbox</div>
         <div class="unbox-text">
             <p>Our system generates the result for each game by using the SHA-256 hash of 3 separate inputs:</p>
             <p><span>Server Seed:</span> Is a cryptographically secure pseudo-randomly generated string.</p>

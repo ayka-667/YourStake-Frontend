@@ -51,7 +51,7 @@
                     <div v-if="affiliatesData.data === null || affiliatesData.loading === true" class="inner-loading" key="loading"></div>
                     <div v-else class="inner-content" key="content">
                         <div class="content-info">
-                            <span class="gradient-green">Available Commission</span>
+                            <span class="gradient-green">Available commission</span>
                             <div class="info-amount">
                                 <img src="@/assets/img/icons/coin.svg" alt="icon" />
                                 <div class="amount-value">
@@ -62,7 +62,7 @@
                         <button v-on:click="affiliatesClaimButton" class="button-claim" v-bind:disabled="socketSendLoading === 'AffiliatesClaimEarnings'">
                             <div class="button-inner">
                                 <img src="@/assets/img/icons/coin.svg" alt="icon" />
-                                Claim Earnings
+                                Claim
                             </div>
                         </button>
                     </div>

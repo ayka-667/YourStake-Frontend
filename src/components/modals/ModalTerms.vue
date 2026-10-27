@@ -1,7 +1,7 @@
 <template>
     <div class="modal-terms">
         <div class="terms-header">
-            <span class="gradient-green">TERMS OF SERVICE</span>
+            <span class="gradient-green">Terms of service</span>
             <p>Welcome to YourStake! By creating an account or using the website, you agree to the following terms. Please read them carefully.</p>
         </div>
         <div class="terms-list">

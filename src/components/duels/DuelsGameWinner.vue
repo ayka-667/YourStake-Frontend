@@ -1,6 +1,6 @@
 <template>
     <div class="duels-game-winner">
-        <span class="gradient-green">DUEL WINNER:</span>
+        <span class="gradient-green">Duel winner:</span>
         <div v-if="duelsGame.state !== 'completed'" class="winner-placeholder"></div>
         <div v-else class="winner-content">
             <div class="content-inner">

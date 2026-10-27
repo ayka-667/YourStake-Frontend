@@ -2,7 +2,7 @@
     <div class="home-links">
         <div class="links-featured">
             <div class="featured-title">
-                <span class="gradient-blue">FEATURED GAMES</span>
+                <span class="gradient-blue">Featured games</span>
             </div>
             <div class="featured-content">
                 <HomeFeaturedLink game="crash" />
@@ -13,7 +13,7 @@
         </div>
         <div class="links-games">
             <div class="games-title">
-                <span class="gradient-green">GAME SELECTION</span>
+                <span class="gradient-green">Game selection</span>
             </div>
             <div class="games-content">
                 <HomePlaceholderElement />
@@ -28,9 +28,9 @@
         </div>
         <div class="links-bottom">
             <div class="bottom-left">
-                <button v-on:click="modalsSetShow('Terms')">TOS</button>
+                <button v-on:click="modalsSetShow('Terms')">Terms</button>
                 <button v-on:click="modalsSetShow('Faq')">FAQ</button>
-                <button v-on:click="modalsSetShow('Support')">SUPPORT</button>
+                <button v-on:click="modalsSetShow('Support')">Support</button>
                 <button v-on:click="modalsSetShow('Fair')" class="button-fair">Provably Fair</button>
             </div>
             <div class="bottom-socials">
@@ -60,7 +60,7 @@
                     <span class="gradient-yellow">Leaderboard</span>
                 </router-link>
                 <router-link to="/affiliates" class="link-affiliates">
-                    <span class="gradient-green">AFFILIATES</span>
+                    <span class="gradient-green">Affiliates</span>
                 </router-link>
             </div>
         </div>

@@ -1,6 +1,6 @@
 <template>
     <div class="fair-blackjack">
-        <div class="blackjack-title">BLACKJACK</div>
+        <div class="blackjack-title">Blackjack</div>
         <div class="blackjack-text">
             <p>Our system generates the result for each game by using the SHA-256 hash of 2 separate inputs:</p>
             <p><span>Game ID:</span> The games unique identifier which is generated when the game is created.</p>

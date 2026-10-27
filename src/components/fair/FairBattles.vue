@@ -1,6 +1,6 @@
 <template>
     <div class="fair-battles">
-        <div class="battles-title">BATTLES</div>
+        <div class="battles-title">Battles</div>
         <div class="battles-text">
             <p>Our system generates the result for each game by using the SHA-256 hash of 5 separate inputs:</p>
             <p><span>Game ID:</span> The games unique identifier which is generated when the game is created.</p>

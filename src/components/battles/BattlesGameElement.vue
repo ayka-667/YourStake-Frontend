@@ -77,7 +77,7 @@
                             </svg>
                             <div class="inner-text">
                                 Join
-                                <span v-if="game.options.levelMin > 0">LVL +{{game.options.levelMin}}</span>
+                                <span v-if="game.options.levelMin > 0">Lvl +{{game.options.levelMin}}</span>
                             </div>
                         </div>
                     </button>

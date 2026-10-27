@@ -26,7 +26,7 @@
                     <div class="button-inner">2x</div>
                 </button>
                 <button v-on:click="rollSetAmount('max')" class="button-max">
-                    <div class="button-inner">MAX</div>
+                    <div class="button-inner">Max</div>
                 </button>
             </div>
         </div>

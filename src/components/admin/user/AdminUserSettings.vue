@@ -1,110 +1,110 @@
 <template>
     <div class="admin-user-settings">
         <div class="settings-element element-toggle">
-            <div class="element-name">RAIN LOCK</div>
+            <div class="element-name">Rain lock</div>
             <button v-on:click="adminValueButton('limits.blockRain', !modalsData.user.limits.blockRain)" v-bind:class="{ 
                 'button-active': modalsData.user.limits.blockRain === true 
             }" v-bind:disabled="socketSendLoading !== null"></button>
         </div>
         <div class="settings-element element-toggle">
-            <div class="element-name">TIP LOCK</div>
+            <div class="element-name">Tip lock</div>
             <button v-on:click="adminValueButton('limits.blockTip', !modalsData.user.limits.blockTip)" v-bind:class="{ 
                 'button-active': modalsData.user.limits.blockTip === true 
             }" v-bind:disabled="socketSendLoading !== null"></button>
         </div>
         <div v-if="modalsData.user.limits.blockTip === true" class="settings-element element-sub element-number">
-            <div class="element-name">SET TIP LIMIT</div>
+            <div class="element-name">Set tip limit</div>
             <div class="element-input">
                 <img src="@/assets/img/icons/coin.svg" alt="icon" />
                 <input v-model="adminLimitTip" type="text" />
                 <button v-on:click="adminValueButton('limits.limitTip', Math.floor(adminLimitTip * 1000))" v-bind:disabled="socketSendLoading !== null">
-                    <div class="button-inner">UPDATE</div>
+                    <div class="button-inner">Update</div>
                 </button>
             </div>
         </div>
         <div class="settings-element element-toggle">
-            <div class="element-name">SPONSORSHIP LOCK</div>
+            <div class="element-name">Sponsorship lock</div>
             <button v-on:click="adminValueButton('limits.blockSponsor', !modalsData.user.limits.blockSponsor)" v-bind:class="{ 
                 'button-active': modalsData.user.limits.blockSponsor === true 
             }" v-bind:disabled="socketSendLoading !== null"></button>
         </div>
         <div class="settings-element element-toggle">
-            <div class="element-name">LEADERBOARD LOCK</div>
+            <div class="element-name">Leaderboard lock</div>
             <button v-on:click="adminValueButton('limits.blockLeaderboard', !modalsData.user.limits.blockLeaderboard)" v-bind:class="{ 
                 'button-active': modalsData.user.limits.blockLeaderboard === true 
             }" v-bind:disabled="socketSendLoading !== null"></button>
         </div>
         <div class="settings-element element-button">
-            <div class="element-name">CLEAR LEADERBOARD</div>
+            <div class="element-name">Clear leaderboard</div>
             <button v-on:click="adminValueButton('leaderboard.points', 0)">
-                <div class="button-inner">CLEAR</div>
+                <div class="button-inner">Clear</div>
             </button>
         </div>
         <div class="settings-element element-select">
-            <div class="element-name">SET RANK</div>
+            <div class="element-name">Set rank</div>
             <div class="element-input">
                 <select v-model="adminRank">
-                    <option value="user">USER</option>
-                    <option value="partner">PARTNER</option>
-                    <option value="mod">MOD</option>
-                    <option value="admin">ADMIN</option>
+                    <option value="user">User</option>
+                    <option value="partner">Partner</option>
+                    <option value="mod">Mod</option>
+                    <option value="admin">Admin</option>
                 </select>
                 <button v-on:click="adminValueButton('rank', adminRank)" v-bind:disabled="socketSendLoading !== null">
-                    <div class="button-inner">UPDATE</div>
+                    <div class="button-inner">Update</div>
                 </button>
             </div>
         </div>
         <AdminUserCredit v-bind:userId="modalsData.user._id" />
         <div class="settings-element element-number">
-            <div class="element-name">SET BALANCE</div>
+            <div class="element-name">Set balance</div>
             <div class="element-input">
                 <img src="@/assets/img/icons/coin.svg" alt="icon" />
                 <input v-model="adminBalance" type="text" />
                 <button v-on:click="adminBalanceButton()" v-bind:disabled="socketSendLoading !== null">
-                    <div class="button-inner">UPDATE</div>
+                    <div class="button-inner">Update</div>
                 </button>
             </div>
         </div>
         <div class="settings-element element-number">
-            <div class="element-name">SET VAULT</div>
+            <div class="element-name">Set vault</div>
             <div class="element-input">
                 <img src="@/assets/img/icons/coin.svg" alt="icon" />
                 <input v-model="adminVault" type="text" />
                 <button v-on:click="adminValueButton('vault.amount', Math.floor(adminVault * 1000))" v-bind:disabled="socketSendLoading !== null">
-                    <div class="button-inner">UPDATE</div>
+                    <div class="button-inner">Update</div>
                 </button>
             </div>
         </div>
         <div class="settings-element element-number">
-            <div class="element-name">SET DEPOSIT</div>
+            <div class="element-name">Set deposit</div>
             <div class="element-input">
                 <img src="@/assets/img/icons/coin.svg" alt="icon" />
                 <input v-model="adminDeposit" type="text" />
                 <button v-on:click="adminValueButton('stats.deposit', Math.floor(adminDeposit * 1000))" v-bind:disabled="socketSendLoading !== null">
-                    <div class="button-inner">UPDATE</div>
+                    <div class="button-inner">Update</div>
                 </button>
             </div>
         </div>
         <div class="settings-element element-number">
-            <div class="element-name">SET WITHDRAW</div>
+            <div class="element-name">Set withdraw</div>
             <div class="element-input">
                 <img src="@/assets/img/icons/coin.svg" alt="icon" />
                 <input v-model="adminWithdraw" type="text" />
                 <button v-on:click="adminValueButton('stats.withdraw', Math.floor(adminWithdraw * 1000))" v-bind:disabled="socketSendLoading !== null">
-                    <div class="button-inner">UPDATE</div>
+                    <div class="button-inner">Update</div>
                 </button>
             </div>
         </div>
         <div class="settings-element element-button">
-            <div class="element-name">MUTE USER</div>
+            <div class="element-name">Mute user</div>
             <button v-on:click="adminMuteButton()" class="button-red">
-                <div class="button-inner">MUTE</div>
+                <div class="button-inner">Mute</div>
             </button>
         </div>
         <div class="settings-element element-button">
-            <div class="element-name">BAN USER</div>
+            <div class="element-name">Ban user</div>
             <button v-on:click="adminBanButton()" class="button-red">
-                <div class="button-inner">BAN</div>
+                <div class="button-inner">Ban</div>
             </button>
         </div>
     </div>
