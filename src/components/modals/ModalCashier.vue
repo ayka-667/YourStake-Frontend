@@ -90,7 +90,7 @@
                     {{ modalDoneAmount }}
                 </div>
                 <div class="done-address">{{ modalDoneAddress }}</div>
-                <p class="done-note">Demo mode: this is play money, so nothing is actually sent on the Litecoin network.</p>
+                <p class="done-note">Sent on the Litecoin network.</p>
                 <button v-on:click="modalResetWithdraw()" class="button-again">Done</button>
             </div>
         </transition>
