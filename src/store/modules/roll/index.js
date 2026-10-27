@@ -1,3 +1,5 @@
+import sfx from '@/utils/sfx';
+
 const state = {
     rollRecent: [],
     rollGame: null,
@@ -66,6 +68,7 @@ const actions = {
         getters.socketRoll.emit('sendBet', data, (res) => {
             if(res.success === true) {
                 commit('auth_update_user', res.user);
+                sfx.chips();
             } else {
                 dispatch('notificationShow', res.error);
             }

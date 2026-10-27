@@ -49,6 +49,7 @@
     import BlackjackSeatElement from '@/components/blackjack/BlackjackSeatElement';
     import BlackjackControlsBet from '@/components/blackjack/BlackjackControlsBet';
     import BlackjackControlsAction from '@/components/blackjack/BlackjackControlsAction';
+    import sfx from '@/utils/sfx';
 
     export default {
         name: 'BlackjackGame',
@@ -162,14 +163,93 @@
 
                 const data = { table: this.table.table, seat: this.table.playersPos };
                 this.blackjackSendDoubleSocket(data);
+            },
+            blackjackGetHands(table, mine) {
+                let hands = [];
+
+                for(const player of table.players) {
+                    if(player.bet === null || player.bet === undefined) { continue; }
+                    if(mine === true && (this.authUser.user === null || player.user._id !== this.authUser.user._id)) { continue; }
+
+                    for(const key of ['cards', 'cardsLeft', 'cardsRight']) {
+                        if(Array.isArray(player.bet[key]) === true && player.bet[key].length > 0) { hands.push({ key: player.seat + key, cards: player.bet[key] }); }
+                    }
+                }
+
+                return hands;
+            },
+            blackjackGetBetTotal(table) {
+                let total = 0;
+
+                for(const player of table.players) {
+                    if(player.bet !== null && player.bet !== undefined) { total = total + player.bet.amount.main + player.bet.amount.sideLeft + player.bet.amount.sideRight; }
+                }
+
+                return total;
+            },
+            // Compares two table snapshots and plays what happened in between:
+            // chips, dealt cards, the hole card flip, a bust, then the final result.
+            blackjackPlaySounds(table, oldTable) {
+                if(oldTable === undefined || oldTable === null || table.table !== oldTable.table) { return; }
+
+                const inPlay = ['running', 'completed'];
+                const dealerCards = (t) => inPlay.includes(t.game.state) === true ? t.game.dealerCards.length : 0;
+                const cardCount = (t) => dealerCards(t) + this.blackjackGetHands(t, false).reduce((sum, hand) => sum + hand.cards.length, 0);
+                const hasHidden = (t) => t.game.dealerCards.some((card) => card.rank === 'hidden');
+
+                if(['created', 'countdown'].includes(table.game.state) === true) {
+                    const added = this.blackjackGetBetTotal(table) - this.blackjackGetBetTotal(oldTable);
+                    if(added > 0) { sfx.chips(added >= 100 * 1000 ? 4 : 2); }
+                    return;
+                }
+
+                const dealt = inPlay.includes(oldTable.game.state) === true ? Math.max(0, cardCount(table) - cardCount(oldTable)) : cardCount(table);
+                for(let i = 0; i < Math.min(dealt, 8); i++) { sfx.deal(i * 0.14); }
+
+                let delay = Math.min(dealt, 8) * 140;
+                if(hasHidden(oldTable) === true && hasHidden(table) === false && table.game.dealerCards.length > 0) {
+                    setTimeout(() => sfx.flip(), delay);
+                    delay = delay + 150;
+                }
+
+                const oldHands = this.blackjackGetHands(oldTable, true);
+                const busted = (hand) => this.blackjackGetCardValue(hand.cards) > 21;
+                const wasBusted = (hand) => oldHands.some((old) => old.key === hand.key && busted(old));
+
+                if(oldTable.game.state !== 'completed' && table.game.state === 'completed') {
+                    const dealer = this.blackjackGetCardValue(table.game.dealerCards);
+                    let result = null;
+
+                    for(const hand of this.blackjackGetHands(table, true)) {
+                        const value = this.blackjackGetCardValue(hand.cards);
+                        let outcome = 'lose';
+
+                        if(value > 21) { outcome = wasBusted(hand) === true ? null : 'lose'; }
+                        else if(dealer > 21 || value > dealer) { outcome = hand.cards.length === 2 && value === 21 && hand.key.endsWith('cards') ? 'blackjack' : 'win'; }
+                        else if(value === dealer) { outcome = 'push'; }
+
+                        const rank = ['lose', 'push', 'win', 'blackjack'];
+                        if(outcome !== null && (result === null || rank.indexOf(outcome) > rank.indexOf(result))) { result = outcome; }
+                    }
+
+                    if(result !== null) { setTimeout(() => sfx[result](), delay + 250); }
+                } else if(table.game.state === 'running') {
+                    const newBust = this.blackjackGetHands(table, true).some((hand) => busted(hand) === true && wasBusted(hand) === false);
+                    if(newBust === true) { setTimeout(() => sfx.lose(), delay + 200); }
+                }
             }
         },
         computed: {
             ...mapGetters([
                 'generalTimeDiff',
-                'socketSendLoading', 
+                'socketSendLoading',
                 'authUser'
             ])
+        },
+        watch: {
+            table(data, oldData) {
+                this.blackjackPlaySounds(data, oldData);
+            }
         }
     }
 </script>

@@ -59,6 +59,7 @@
 import { mapGetters } from 'vuex';
 import CrashGraph from '@/components/crash/CrashGraph';
 import IconInfo from '@/components/icons/IconInfo';
+import sfx from '@/utils/sfx';
 
 export default {
     name: 'CrashGame',
@@ -73,7 +74,9 @@ export default {
             crashWidth: 0,
             crashProfitInfo: false,
             crashText: '20.00s',
-            crashMultiplier: 1.0001
+            crashMultiplier: 1.0001,
+            crashSoundState: null,
+            crashSoundCashed: 0
         }
     },
     methods: {
@@ -131,14 +134,30 @@ export default {
 
                     this.crashMultiplier = 1.0001;
                     this.crashStartMutiplier();
+
+                    if(this.crashSoundState === 'created') { sfx.launch(); }
                 } else if (data.state === 'completed') {
                     CrashGraph.Engine.multi = 1.0001;
                     CrashGraph.Engine.gameState = 'ENDED';
 
                     cancelAnimationFrame(this.crashRunRepeater);
+
+                    if(this.crashSoundState === 'rolling') { sfx.boom(); }
                 }
+
+                this.crashSoundState = data.state;
             },
             deep: true
+        },
+        crashBets: {
+            handler(data) {
+                if(this.authUser.user === null) { return; }
+
+                // Own bet just got a cash-out multiplier (the array is spliced in place, so count instead of diffing).
+                const cashed = data.filter((bet) => bet.user._id === this.authUser.user._id && bet.multiplier !== undefined).length;
+                if(cashed > this.crashSoundCashed) { sfx.cashout(); }
+                this.crashSoundCashed = cashed;
+            }
         }
     },
     mounted() {
@@ -153,6 +172,8 @@ export default {
         });
 
         CrashGraph.Engine.multi = 1;
+        this.crashSoundState = this.crashGame.state;
+        if(this.authUser.user !== null) { this.crashSoundCashed = this.crashBets.filter((bet) => bet.user._id === this.authUser.user._id && bet.multiplier !== undefined).length; }
 
         if (this.crashGame.state === 'created') {
             CrashGraph.Engine.gameState = 'STARTING';

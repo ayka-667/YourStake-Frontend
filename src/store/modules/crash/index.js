@@ -1,3 +1,5 @@
+import sfx from '@/utils/sfx';
+
 const state = {
     crashGame: null,
     crashMultiplier: 1,
@@ -74,6 +76,7 @@ const actions = {
         getters.socketCrash.emit('sendBet', data, (res) => {
             if(res.success === true) {
                 commit('auth_update_user', res.user);
+                sfx.chips();
             } else {
                 dispatch('notificationShow', res.error);
             }

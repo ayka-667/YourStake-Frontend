@@ -11,6 +11,7 @@
 </template>
 
 <script>
+    import sfx from '@/utils/sfx';
     import { mapGetters, mapActions } from 'vuex';
     import UnboxReel from '@/components/unbox/UnboxReel';
 
@@ -130,6 +131,10 @@
                         if(dataOld.length !== 0) { this.unboxAddReels(); }
                         this.unboxGetReelsPos();
 
+                        // Best rarity across all opened cases decides the closing sting.
+                        const rarity = ['blue', 'purple', 'green', 'red', 'yellow'];
+                        const best = Math.max(...this.unboxGames.map((game) => { const item = this.unboxGetOutcomeItem(game); return item !== null ? rarity.indexOf(item.color) : -1; }));
+
                         for(const [index, game] of this.unboxGames.entries()) { 
                             if(this.unboxCount === 1) { this.unboxReelStyle = { transform: 'translateX(2583px) translateY(0px)', transition: 'none' }; }
                             else { this.unboxReelStyle = { transform: 'translateX(0px) translateY(-2450.5px)', transition: 'none' }; }
@@ -158,9 +163,14 @@
                                     setTimeout(() => { 
                                         this.unboxSetRunnning(false);
                                         
+                                        if(index !== 0) { return; }
+
                                         this.soundUnbox.volume = this.soundVolume;
                                         this.soundUnbox.currentTime = 0;
                                         this.soundUnbox.play();
+
+                                        if(best >= 3) { sfx.reveal(); setTimeout(() => sfx.bigWin(), 350); }
+                                        else if(best === 2) { sfx.win(); }
                                     }, 250);
                                 }, timeLeft + 100);
                             }, 250);

@@ -29,6 +29,7 @@
     import { mapGetters } from 'vuex';
     import RollCard from '@/components/roll/RollCard';
     import RollGameWin from '@/components/roll/RollGameWin';
+    import sfx from '@/utils/sfx';
 
     export default {
         name: 'RollGame',
@@ -42,7 +43,9 @@
                 rollTimer: 0,
                 rollText: 'LOADING...',
                 rollReelStyle: { transform: 'translateX(0px)', transition: 'none' },
-                rollWin: false
+                rollWin: false,
+                rollTickRepeater: null,
+                rollTickCard: null
             }
         },
         methods: {
@@ -55,6 +58,27 @@
                 }
 
                 return val === 0;
+            },
+            // Ticks each time a card passes the selector, so the sound follows the reel's easing.
+            rollStartTicks() {
+                const reel = this.$el.querySelector('.inner-reel');
+                if(reel === null) { return; }
+
+                const x = new DOMMatrixReadOnly(getComputedStyle(reel).transform).m41;
+                const card = Math.floor(x / 143);
+
+                if(this.rollTickCard !== null && card !== this.rollTickCard) { sfx.tick(); }
+                this.rollTickCard = card;
+
+                if(this.rollWin === false) { this.rollTickRepeater = requestAnimationFrame(this.rollStartTicks); }
+            },
+            rollPlayResult() {
+                if(this.authUser.user === null) { return; }
+                if(this.rollBets.some((element) => element.user._id === this.authUser.user._id) === false) { return; }
+
+                if(this.rollGetWinAmount <= 0) { sfx.lose(); }
+                else if(this.rollGame.outcome >= 1000) { sfx.bigWin(); }
+                else { sfx.win(); }
             },
             rollStartTimer() {
                 const timeEnding = new Date(this.rollGame.createdAt).getTime() + (1000 * 13);
@@ -144,7 +168,14 @@
 
                         this.rollReelStyle = { transform: 'translateX(' + (-2732.9 - (offset * 13.9)) + 'px)', transition: 'transform ' + timeLeft / 1000 + 's cubic-bezier(0.05, 0.85, 0.25, 1)' };
 
-                        setTimeout(() => { this.rollWin = true; }, timeLeft);
+                        cancelAnimationFrame(this.rollTickRepeater);
+                        this.rollTickCard = null;
+                        if(timeLeft > 0) { this.$nextTick(() => { this.rollTickRepeater = requestAnimationFrame(this.rollStartTicks); }); }
+
+                        setTimeout(() => {
+                            this.rollWin = true;
+                            if(timeLeft > 0) { this.rollPlayResult(); }
+                        }, timeLeft);
                     } else {
                         this.rollTimer = 0;
                         this.rollText = 'Rolling...';
@@ -155,6 +186,7 @@
         },
         beforeDestroy() {
             cancelAnimationFrame(this.rollTimerRepeater);
+            cancelAnimationFrame(this.rollTickRepeater);
         }
     }
 </script>

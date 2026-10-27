@@ -55,6 +55,7 @@
 
 <script>
     import { mapGetters } from 'vuex';
+    import sfx from '@/utils/sfx';
     import DuelsReel from '@/components/duels/DuelsReel';
 
     export default {
@@ -128,6 +129,13 @@
             }
         },
         watch: {
+            'duelsGame.winner'(winner, oldWinner) {
+                if(winner === undefined || oldWinner !== undefined || this.authUser.user === null) { return; }
+                if(this.duelsGame.bets.some((element) => element.user._id === this.authUser.user._id) === false) { return; }
+
+                if(winner.bot === false && winner.user._id === this.authUser.user._id) { sfx.bigWin(); }
+                else { sfx.lose(); }
+            },
             'duelsGame': {
                 handler(data, oldData) {
                     if(this.duelsGame.state === 'countdown') {
