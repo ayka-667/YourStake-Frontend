@@ -1,7 +1,32 @@
 <template>
-    <div class="blackjack-game">
-        <div class="game-table">
-            <img src="@/assets/img/blackjack/table.png" />
+    <div class="blackjack-game" v-bind:class="{ 'game-compact': blackjackScale < 1 }">
+        <div class="game-stage" v-bind:style="{ height: blackjackScale < 1 ? Math.round(blackjackBoardHeight * blackjackScale) + 'px' : null }">
+            <div ref="board" class="game-board" v-bind:style="blackjackScale < 1 ? { width: BOARD_WIDTH + 'px', transform: 'scale(' + blackjackScale + ')' } : null">
+                <div class="game-table">
+                    <img v-on:load="blackjackFit()" src="@/assets/img/blackjack/table.png" />
+                </div>
+                <div v-if="['running', 'completed'].includes(table.game.state) === true" class="game-dealer">
+                    <transition-group name="dealer" tag="div" class="dealer-cards">
+                        <BlackjackCard v-for="(card, index) of table.game.dealerCards" v-bind:key="index + card.suit + card.rank" v-bind:card="card" />
+                    </transition-group>
+                    <BlackjackValue 
+                        v-bind:value="blackjackGetCardValue(table.game.dealerCards)" 
+                        state=""
+                        v-bind:class="{ 
+                            'value-blackjack': table.game.dealerCards.length === 2 && blackjackGetCardValue(table.game.dealerCards) === 21  
+                        }" 
+                        v-bind:style="{ 
+                            top: (84 + (table.game.dealerCards.length - 1) * 15) + 'px', 
+                            left: (60 + (table.game.dealerCards.length - 1) * 20) + 'px'  
+                        }"
+                    />
+                </div>
+                <div class="game-seats">
+
+                    <BlackjackSeatElement v-for="index in 5" v-bind:key="index" v-bind:table="table" v-bind:seat="index - 1" v-bind:player="blackjackGetPlayer(index - 1)" />
+
+                </div>
+            </div>
         </div>
         <div class="game-inner">
             <div v-if="table.game.state === 'created'" class="inner-created">Waiting for players...</div>
@@ -18,27 +43,6 @@
                 (new Date().getTime() + generalTimeDiff) <= (new Date(table.game.updatedAt).getTime() + 1000 * 10)
             " v-bind:table="table" />
         </div>
-        <div v-if="['running', 'completed'].includes(table.game.state) === true" class="game-dealer">
-            <transition-group name="dealer" tag="div" class="dealer-cards">
-                <BlackjackCard v-for="(card, index) of table.game.dealerCards" v-bind:key="index + card.suit + card.rank" v-bind:card="card" />
-            </transition-group>
-            <BlackjackValue 
-                v-bind:value="blackjackGetCardValue(table.game.dealerCards)" 
-                state=""
-                v-bind:class="{ 
-                    'value-blackjack': table.game.dealerCards.length === 2 && blackjackGetCardValue(table.game.dealerCards) === 21  
-                }" 
-                v-bind:style="{ 
-                    top: (84 + (table.game.dealerCards.length - 1) * 15) + 'px', 
-                    left: (60 + (table.game.dealerCards.length - 1) * 20) + 'px'  
-                }"
-            />
-        </div>
-        <div class="game-seats">
-
-            <BlackjackSeatElement v-for="index in 5" v-bind:key="index" v-bind:table="table" v-bind:seat="index - 1" v-bind:player="blackjackGetPlayer(index - 1)" />
-
-        </div>
     </div>
 </template>
 
@@ -50,6 +54,8 @@
     import BlackjackControlsBet from '@/components/blackjack/BlackjackControlsBet';
     import BlackjackControlsAction from '@/components/blackjack/BlackjackControlsAction';
     import sfx from '@/utils/sfx';
+
+    const BOARD_WIDTH = 1090;
 
     export default {
         name: 'BlackjackGame',
@@ -65,7 +71,10 @@
         ],
         data() {
             return {
-                blackjackChip: 0
+                blackjackChip: 0,
+                blackjackScale: 1,
+                blackjackBoardHeight: 0,
+                blackjackObserver: null
             }
         },
         methods: {
@@ -106,6 +115,14 @@
                 }
 
                 return value;
+            },
+            // Below the table's natural width the board is scaled down to fit and the
+            // controls move under it at full size, so they stay usable on phones.
+            blackjackFit() {
+                if(this.$el === undefined || this.$refs.board === undefined) { return; }
+                const width = this.$el.clientWidth;
+                this.blackjackScale = width > 0 && width < BOARD_WIDTH ? width / BOARD_WIDTH : 1;
+                this.blackjackBoardHeight = this.$refs.board.offsetHeight;
             },
             blackjackSetChip(chip) {
                 this.blackjackChip = chip;
@@ -240,6 +257,7 @@
             }
         },
         computed: {
+            BOARD_WIDTH: () => BOARD_WIDTH,
             ...mapGetters([
                 'generalTimeDiff',
                 'socketSendLoading',
@@ -250,6 +268,16 @@
             table(data, oldData) {
                 this.blackjackPlaySounds(data, oldData);
             }
+        },
+        mounted() {
+            this.blackjackFit();
+            if(window.ResizeObserver !== undefined) {
+                this.blackjackObserver = new ResizeObserver(() => this.blackjackFit());
+                this.blackjackObserver.observe(this.$el);
+            }
+        },
+        beforeDestroy() {
+            if(this.blackjackObserver !== null) { this.blackjackObserver.disconnect(); }
         }
     }
 </script>
@@ -260,7 +288,6 @@
         max-width: 1090px;
         position: relative;
         margin-top: 35px;
-        padding-bottom: 55px;
     }
 
     .blackjack-game .game-table {
@@ -322,58 +349,24 @@
         left: 0;
     }
 
-    @media only screen and (max-width: 1110px) {
-
-        .blackjack-game {
-            scale: 0.8;
-            transform-origin: top center;
-            margin-bottom: -100px;
-        }
-
+    .blackjack-game .game-stage {
+        width: 100%;
     }
-    @media only screen and (max-width: 860px) {
 
-        .blackjack-game {
-            scale: 0.7;
-        }
-
+    .blackjack-game .game-board {
+        position: relative;
+        padding-bottom: 55px;
+        transform-origin: top left;
     }
-    @media only screen and (max-width: 760px) {
 
-        .blackjack-game {   
-            scale: 0.5;
-            margin-bottom: -220px;
-        }
-        
+    .blackjack-game.game-compact .game-inner {
+        position: static;
+        margin-top: 12px;
     }
-    @media only screen and (max-width: 540px) {
-        
-        .blackjack-game {   
-            scale: 0.45;
-            margin-bottom: -280px;
-        }
-        
-    }
-    @media only screen and (max-width: 490px) {
-        
-        .blackjack-game {   
-            scale: 0.4;
-            margin-bottom: -350px;
-        }
 
-    }
-    @media only screen and (max-width: 440px) {
-
-        .blackjack-game {   
-            scale: 0.35;
-        }
-
-    }
-    @media only screen and (max-width: 370px) {
-
-        .blackjack-game {   
-            scale: 0.32;
-        }
-
+    .blackjack-game.game-compact .inner-created {
+        width: 100%;
+        margin-top: 0;
+        font-size: 20px;
     }
 </style>

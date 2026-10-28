@@ -3,7 +3,7 @@
         <div class="banner-text">
             <span class="banner-tag">Affiliates</span>
             <h2>Invite your friends, earn on every bet</h2>
-            <p>Share your referral code. You receive 0.5% of everything the players you invite wager, forever.</p>
+            <p>Share your referral code. You receive 10% of every bet the players you invite make, win or lose, forever.</p>
         </div>
         <div class="banner-art" aria-hidden="true">
             <div class="art-node node-main"><UiIcon name="user" /></div>

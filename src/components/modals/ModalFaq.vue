@@ -15,7 +15,7 @@
             <FaqElement title="Is there a maximum bet?" text="Yes, each game has a minimum and maximum bet, shown inside the game." />
             <FaqElement title="How does the leaderboard work?" text="The weekly race ranks players by how much they wager during the week. The top 10 share the prize pool when the timer ends." />
             <FaqElement title="Can I send coins to another player?" text="Yes, click on a player in the chat and use the Tip button." />
-            <FaqElement title="How do referrals work?" text="Share your referral code from the Affiliates page. You earn 0.5% of every bet placed by the players you referred." />
+            <FaqElement title="How do referrals work?" text="Share your referral code from the Affiliates page. You earn 10% of every bet placed by the players you referred, win or lose, and claim it from the Affiliates page." />
             <FaqElement title="I found a bug, what should I do?" text="Please report it to support@yourstake.fr. Abusing a bug instead of reporting it may lead to a ban." />
 
         </div>

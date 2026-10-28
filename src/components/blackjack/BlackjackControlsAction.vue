@@ -283,4 +283,39 @@
     .blackjack-controls-action .container-normal button:disabled .button-inner svg {
         fill: #353f47;
     }
+
+    /* Phones: the controls sit under the scaled table, buttons on a 2x2 grid */
+    .game-compact .blackjack-controls-action {
+        width: 100%;
+        font-size: 20px;
+    }
+
+    .game-compact .blackjack-controls-action .action-container {
+        width: 100%;
+        max-width: 470px;
+        height: auto;
+        position: relative;
+        top: auto;
+        left: auto;
+        bottom: auto;
+        transform: none;
+        margin-top: 10px;
+        padding: 12px;
+        border-radius: 12px;
+    }
+
+    .game-compact .blackjack-controls-action .container-normal {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .game-compact .blackjack-controls-action .container-normal button {
+        width: 100%;
+        margin: 0;
+    }
+
+    .game-compact .blackjack-controls-action .container-insurance button {
+        height: 52px;
+    }
 </style>

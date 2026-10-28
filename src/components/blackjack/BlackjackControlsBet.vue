@@ -120,11 +120,17 @@
         text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         z-index: 1;
     }
-    @media only screen and (max-width: 540px) {
-        .blackjack-controls-bet {
-            scale: 1.3;     
-            margin-top: 130px;       
-        }
+    /* Phones: the table is scaled down and these controls sit under it at full size */
+    .game-compact .blackjack-controls-bet {
+        margin-top: 0;
+        font-size: 22px;
+    }
+
+    .game-compact .blackjack-controls-bet .bet-container {
+        width: 100%;
+        max-width: 400px;
+        background-size: cover;
+        border-radius: 12px;
     }
 
     .blackjack-controls-bet .bet-timer {
