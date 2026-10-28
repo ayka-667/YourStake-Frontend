@@ -196,7 +196,7 @@
     @media only screen and (max-width: 950px) {
 
         .blackjack-table {
-            padding: 25px 10px 443px 10px;
+            padding: 25px 10px 40px 10px;
         }
 
     }

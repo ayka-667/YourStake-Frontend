@@ -152,7 +152,7 @@
     @media only screen and (max-width: 950px) {
 
         .crash {
-            padding: 25px 10px 443px 10px;
+            padding: 25px 10px 40px 10px;
         }
 
         .crash .container-loading,

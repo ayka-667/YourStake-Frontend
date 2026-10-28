@@ -1,6 +1,7 @@
 <template>
     <div class="rewards">
         <div class="rewards-banner">
+            <RewardsDaily />
             <RewardsCode />
             <RewardsRakeback />
         </div>
@@ -8,6 +9,7 @@
 </template>
 
 <script>
+    import RewardsDaily from '@/components/rewards/RewardsDaily';
     import RewardsCode from '@/components/rewards/RewardsCode';
     import RewardsRakeback from '@/components/rewards/RewardsRakeback';
 
@@ -17,6 +19,7 @@
             title: 'Rewards - YourStake.fr'
         },
         components: {
+            RewardsDaily,
             RewardsCode,
             RewardsRakeback
         },
@@ -37,6 +40,7 @@
         width: 100%;
         max-width: 1250px;
         display: flex;
+        gap: 16px;
         /* font-family: Rubik; */
     }
 
@@ -169,6 +173,11 @@
 
         .rewards .rewards-banner {
             flex-direction: column;
+        }
+
+        .rewards .rewards-banner > div {
+            flex: none;
+            min-width: 0;
         }
 
     }

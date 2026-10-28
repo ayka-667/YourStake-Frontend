@@ -260,10 +260,7 @@
    @media only screen and (max-width: 950px) {
 
        .bets {
-           position: absolute;
-           left: 0;
-           bottom: 0;
-           margin-top: 0;
+           margin-top: 25px;
        }
 
        .bets .bets-nav button.nav-link {

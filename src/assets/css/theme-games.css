@@ -49,6 +49,29 @@
     background: var(--bg-panel) !important;
 }
 
+@media only screen and (max-width: 950px) {
+
+    .crash .container-data {
+        flex-direction: column;
+    }
+
+    .crash .data-left {
+        width: 100% !important;
+        padding: 10px;
+    }
+
+    .crash-controls {
+        width: 100% !important;
+        min-height: 0;
+        margin-top: 0 !important;
+    }
+
+    .crash-game {
+        height: 300px !important;
+    }
+
+}
+
 .crash-game {
     border: none !important;
     border-radius: 8px !important;

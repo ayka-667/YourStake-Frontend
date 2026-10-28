@@ -358,6 +358,19 @@ nav#navbar a.link-logo img {
 
 nav#navbar a.link-logo:hover img { transform: rotate(-60deg); }
 
+/* Phones: chip only, so the wallet and icons fit on one line */
+@media only screen and (max-width: 650px) {
+    nav#navbar a.link-logo { gap: 0; font-size: 0 !important; }
+    nav#navbar .navbar-left, nav#navbar .navbar-right { gap: 4px !important; }
+    nav#navbar .button-icon { width: 36px !important; }
+}
+
+@media only screen and (max-width: 380px) {
+    nav#navbar { padding: 0 8px !important; }
+    nav#navbar .navbar-left, nav#navbar .navbar-right { gap: 2px !important; }
+    nav#navbar .button-icon { width: 32px !important; }
+}
+
 aside#sidebar .head-tab {
     justify-content: flex-start !important;
     padding: 0 14px;

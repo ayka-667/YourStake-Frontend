@@ -7,6 +7,7 @@
             <AdminSettingsToggle name="Leaderboard" setting="general.leaderboard.enabled" />
             <AdminSettingsToggle name="Tip" setting="general.tip.enabled" />
             <AdminSettingsToggle name="Rewarded Ads" setting="general.ads.enabled" />
+            <AdminSettingsToggle name="Daily Reward" setting="general.daily.enabled" />
             <AdminSettingsToggle name="Affiliate Redeem" setting="general.affiliate.enabled" />
             <AdminSettingsSelect name="Reward Multiplier" setting="general.reward.multiplier" />
         </div>
