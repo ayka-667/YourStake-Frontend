@@ -6,11 +6,11 @@
                     <div class="option-label">Pick a side</div>
                     <div class="option-segment">
                         <button v-on:click="flipSide = 'heads'" v-bind:class="{ 'segment-active': flipSide === 'heads' }" v-bind:disabled="flipSpinning">
-                            <span class="side-dot dot-heads"></span>
+                            <FlipCoinFace class="side-dot" side="heads" v-bind:mini="true" />
                             Heads
                         </button>
                         <button v-on:click="flipSide = 'tails'" v-bind:class="{ 'segment-active': flipSide === 'tails' }" v-bind:disabled="flipSpinning">
-                            <span class="side-dot dot-tails"></span>
+                            <FlipCoinFace class="side-dot" side="tails" v-bind:mini="true" />
                             Tails
                         </button>
                     </div>
@@ -20,21 +20,18 @@
 
         <div class="flip-stage" v-bind:class="{ 'stage-won': flipOutcome === 'won', 'stage-lost': flipOutcome === 'lost' }">
             <transition-group name="history" tag="div" class="flip-history">
-                <span v-for="item in flipHistory" v-bind:key="item.id" class="history-coin" v-bind:class="'coin-' + item.result"></span>
+                <FlipCoinFace v-for="item in flipHistory" v-bind:key="item.id" class="history-coin" v-bind:side="item.result" v-bind:mini="true" />
             </transition-group>
 
             <div class="flip-scene">
                 <div class="scene-toss" v-bind:class="{ 'toss-active': flipSpinning }">
                     <div class="flip-coin" v-bind:style="{ transform: 'rotateX(' + flipRotation + 'deg)', transition: flipTransition }">
+                        <div v-for="layer in 13" v-bind:key="layer" class="coin-edge" v-bind:style="{ transform: 'translateZ(' + (layer - 7) + 'px)' }"></div>
                         <div class="coin-face face-heads">
-                            <div class="face-ring">
-                                <img src="@/assets/img/logo-chip.png" alt="" />
-                            </div>
+                            <FlipCoinFace side="heads" />
                         </div>
                         <div class="coin-face face-tails">
-                            <div class="face-ring">
-                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3l-5.5 2.9 1-6.2L3 9.6l6.2-.9z" /></svg>
-                            </div>
+                            <FlipCoinFace side="tails" />
                         </div>
                     </div>
                 </div>
@@ -60,6 +57,7 @@
     import { mapGetters, mapActions } from 'vuex';
     import OriginalsShell from '@/components/originals/OriginalsShell';
     import OriginalsPanel from '@/components/originals/OriginalsPanel';
+    import FlipCoinFace from '@/components/originals/FlipCoinFace';
     import sfx from '@/utils/sfx';
 
     const FLIP_TIME = 1100;
@@ -71,7 +69,8 @@
         },
         components: {
             OriginalsShell,
-            OriginalsPanel
+            OriginalsPanel,
+            FlipCoinFace
         },
         data() {
             return {
@@ -147,17 +146,9 @@
 
 <style scoped>
     .flip .side-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-    }
-
-    .flip .side-dot.dot-heads {
-        background: linear-gradient(145deg, #ffe082, #e0a21a);
-    }
-
-    .flip .side-dot.dot-tails {
-        background: linear-gradient(145deg, #eef2f7, #8f9db0);
+        width: 16px;
+        height: 16px;
+        filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.4));
     }
 
     .flip-stage {
@@ -189,18 +180,9 @@
     }
 
     .flip-history .history-coin {
-        width: 22px;
-        height: 22px;
-        border-radius: 50%;
-        box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.25);
-    }
-
-    .flip-history .history-coin.coin-heads {
-        background: linear-gradient(145deg, #ffe082, #e0a21a);
-    }
-
-    .flip-history .history-coin.coin-tails {
-        background: linear-gradient(145deg, #eef2f7, #8f9db0);
+        width: 24px;
+        height: 24px;
+        filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.45));
     }
 
     .flip-history .history-enter-active {
@@ -246,47 +228,35 @@
         transform-style: preserve-3d;
     }
 
+    .flip-coin .coin-edge {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: linear-gradient(180deg, #d9a52a 0%, #8a5a00 55%, #5e3c00 100%);
+        box-shadow: inset 0 0 0 1px rgba(255, 230, 150, 0.25);
+    }
+
     .flip-coin .coin-face {
         position: absolute;
         inset: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         border-radius: 50%;
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
+        transform: translateZ(7px);
     }
 
-    .flip-coin .face-heads {
-        background: radial-gradient(circle at 32% 28%, #fff4c4 0%, #ffd34d 30%, #e0a21a 70%, #a86a00 100%);
-        box-shadow: inset 0 0 0 6px rgba(255, 255, 255, 0.25), inset 0 -10px 20px rgba(120, 70, 0, 0.45), 0 0 40px rgba(245, 183, 10, 0.25);
+    .flip-coin .face-heads::after,
+    .flip-coin .face-tails::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: linear-gradient(125deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0) 38%, rgba(0, 0, 0, 0) 62%, rgba(0, 0, 0, 0.18) 100%);
+        pointer-events: none;
     }
 
     .flip-coin .face-tails {
-        transform: rotateX(180deg);
-        background: radial-gradient(circle at 32% 28%, #ffffff 0%, #dfe6ee 30%, #9aa9ba 70%, #5b6b7d 100%);
-        box-shadow: inset 0 0 0 6px rgba(255, 255, 255, 0.35), inset 0 -10px 20px rgba(30, 40, 55, 0.45), 0 0 40px rgba(200, 215, 230, 0.2);
-    }
-
-    .flip-coin .face-ring {
-        width: 72%;
-        height: 72%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 50%;
-        border: 3px dashed rgba(0, 0, 0, 0.18);
-    }
-
-    .flip-coin .face-heads img {
-        width: 62%;
-        filter: drop-shadow(0 2px 2px rgba(120, 70, 0, 0.5));
-    }
-
-    .flip-coin .face-tails svg {
-        width: 58%;
-        fill: #4a5868;
-        filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.6));
+        transform: rotateX(180deg) translateZ(7px);
     }
 
     .flip-scene .scene-shadow {
