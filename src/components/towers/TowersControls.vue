@@ -173,18 +173,18 @@
 </script>
 
 <style scoped>
+    /* Sits flush at the bottom of the board, so drop the global floating-panel radius */
     .towers-controls {
         width: 100%;
-        margin-top: 15px;
-        padding: 0 30px;
+        margin-top: 22px;
+        padding: 18px 30px 22px 30px;
+        border-radius: 0 !important;
     }
 
     .towers-controls .controls-mode {
         width: 100%;
         display: flex;
         justify-content: space-between;
-        padding-top: 15px;
-        border-top: 1px solid rgba(255, 255, 255, 0.04);
     }
 
     .towers-controls .controls-mode button {
@@ -342,21 +342,20 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-top: 20px;
+        gap: 12px;
+        margin-top: 16px;
     }
 
     .towers-controls .bottom-info {
         display: flex;
+        flex-shrink: 0;
+        gap: 8px;
     }
 
     .towers-controls .bottom-info button {
-        width: 110px;
-        height: 32px;
+        width: 104px;
+        height: 40px;
         filter: none;
-    }
-
-    .towers-controls .bottom-info button:first-of-type {
-        margin-right: 12px;
     }
 
     .towers-controls .bottom-info button .button-inner {
@@ -390,8 +389,9 @@
 
     .towers-controls button.button-bet,
     .towers-controls button.button-cashout {
-        width: calc(100% - 257px);
-        height: 36px;
+        flex: 1 1 auto;
+        min-width: 0;
+        height: 40px;
         position: relative;
         padding: 1px;
         filter: none;
@@ -534,21 +534,18 @@
     @media only screen and (max-width: 550px) {
 
         .towers-controls {
-            padding: 0 15px;
+            padding: 16px 15px 18px 15px;
         }
 
         .towers-controls .controls-bottom {
             flex-direction: column-reverse;
-            margin-top: 16px;
-        }
-
-        .towers-controls .bottom-info {
-            width: 100%;
-            margin-top: 12px;
+            align-items: stretch;
+            gap: 10px;
         }
 
         .towers-controls .bottom-info button {
-            width: calc(50% - 6px);
+            flex: 1 1 0;
+            width: auto;
         }
 
         .towers-controls button.button-bet,

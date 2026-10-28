@@ -60,11 +60,10 @@
 
     .towers .towers-container {
         width: 525px;
-        padding: 20px 0;
-        border-radius: 25px;
-        background: rgba(3, 20, 33, 0.66);
-        border: 1px solid rgba(20, 68, 104, 0.35);
-        box-shadow: 0px 4px 10px rgba(7, 26, 41, 0.25);
+        padding-top: 22px;
+        border-radius: 12px;
+        background: var(--bg-darkest);
+        overflow: hidden;
     }
 
     .towers .container-game {
@@ -84,7 +83,13 @@
     @media only screen and (max-width: 950px) {
 
         .towers {
-            padding: 25px 10px 443px 10px;
+            padding: 25px 10px 45px 10px;
+        }
+
+        /* Bets docks itself to the bottom on small screens and overlapped the controls */
+        .towers .bets {
+            position: static;
+            margin-top: 30px;
         }
 
     }
