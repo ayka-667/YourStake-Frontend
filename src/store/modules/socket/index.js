@@ -9,6 +9,7 @@ const state = {
     socketDuels: socketIo(process.env.VUE_APP_SOCKET_URL+'/duels', { auth: {}, autoConnect: false, reconnection: true, reconnectionDelay: 5000, transports: ['websocket']}),
     socketMines: socketIo(process.env.VUE_APP_SOCKET_URL+'/mines', { auth: {}, autoConnect: false, reconnection: true, reconnectionDelay: 5000, transports: ['websocket']}),
     socketTowers: socketIo(process.env.VUE_APP_SOCKET_URL+'/towers', { auth: {}, autoConnect: false, reconnection: true, reconnectionDelay: 5000, transports: ['websocket']}),
+    socketRoulette: socketIo(process.env.VUE_APP_SOCKET_URL+'/roulette', { auth: {}, autoConnect: false, reconnection: true, reconnectionDelay: 5000, transports: ['websocket']}),
     socketOriginals: socketIo(process.env.VUE_APP_SOCKET_URL+'/originals', { auth: {}, autoConnect: false, reconnection: true, reconnectionDelay: 5000, transports: ['websocket']}),
     socketCashier: socketIo(process.env.VUE_APP_SOCKET_URL+'/cashier', { auth: {}, autoConnect: false, reconnection: true, reconnectionDelay: 5000, transports: ['websocket']}),
     socketAdmin: socketIo(process.env.VUE_APP_SOCKET_URL+'/admin', { auth: {}, autoConnect: false, reconnection: true, reconnectionDelay: 5000, transports: ['websocket']})
@@ -23,6 +24,7 @@ const getters = {
     socketDuels: state => state.socketDuels,
     socketMines: state => state.socketMines,
     socketTowers: state => state.socketTowers,
+    socketRoulette: state => state.socketRoulette,
     socketOriginals: state => state.socketOriginals,
     socketCashier: state => state.socketCashier,
     socketAdmin: state => state.socketAdmin
@@ -128,6 +130,24 @@ const actions = {
     socketListenBlackjack({ getters, dispatch }) {
         getters.socketBlackjack.on('init', (data) => { dispatch('blackjackSocketInit', data); });
         getters.socketBlackjack.on('table', (data) => { dispatch('blackjackSocketTable', data); });
+    },
+    socketConnectRoulette({ getters, dispatch }) {
+        if(getters.socketRoulette.connected === true) { getters.socketRoulette.removeAllListeners(); }
+        if(getters.authToken !== null) { getters.socketRoulette.auth.token = getters.authToken; }
+
+        getters.socketRoulette.disconnect().connect();
+
+        dispatch('socketListenRoulette');
+    },
+    socketDisconnectRoulette({ getters }) {
+        getters.socketRoulette.removeAllListeners();
+        getters.socketRoulette.disconnect();
+    },
+    socketListenRoulette({ getters, dispatch }) {
+        getters.socketRoulette.on('init', (data) => { dispatch('rouletteSocketInit', data); });
+        getters.socketRoulette.on('table', (data) => { dispatch('rouletteSocketTable', data); });
+        getters.socketRoulette.on('game', (data) => { dispatch('rouletteSocketGame', data); });
+        getters.socketRoulette.on('bet', (data) => { dispatch('rouletteSocketBet', data); });
     },
     socketConnectDuels({ getters, dispatch }) {
         if(getters.socketDuels.connected === true) { getters.socketDuels.removeAllListeners(); }

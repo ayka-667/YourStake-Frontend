@@ -17,7 +17,9 @@ import Mines from '../views/Mines';
 import Plinko from '../views/Plinko';
 import Dice from '../views/Dice';
 import Flip from '../views/Flip';
-import Roulette from '../views/Roulette';
+import Roulette from '../views/roulette/Roulette';
+import RouletteLobby from '../views/roulette/RouletteLobby';
+import RouletteRoom from '../views/roulette/RouletteRoom';
 import Towers from '../views/Towers';
 import Leaderboard from '../views/Leaderboard';
 
@@ -106,8 +108,19 @@ const routes = [
     },
     {
         path: '/roulette',
-        name: 'Roulette',
-        component: Roulette
+        component: Roulette,
+        children: [
+            {
+                path: '',
+                name: 'RouletteLobby',
+                component: RouletteLobby
+            },
+            {
+                path: 'table/:tableId',
+                name: 'RouletteRoom',
+                component: RouletteRoom
+            }
+        ]
     },
     {
         path: '/towers',

@@ -54,7 +54,7 @@
                 </button>
             </div>
         </div>
-        <div v-if="['mines', 'towers', 'plinko', 'dice', 'flip', 'roulette'].includes(modalsData.game.method) === true" class="game-group">
+        <div v-if="['mines', 'towers', 'plinko', 'dice', 'flip'].includes(modalsData.game.method) === true" class="game-group">
             <div class="group-element">
                 <div class="element-title">Client Seed</div>
                 <div class="element-content">

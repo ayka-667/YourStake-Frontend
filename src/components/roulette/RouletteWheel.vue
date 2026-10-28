@@ -113,9 +113,20 @@
                 this.wheelTimers.forEach((timer) => clearTimeout(timer));
                 this.wheelTimers = [];
             },
+            // Shows the ball already resting in `number`, e.g. when joining mid spin.
+            place(number) {
+                this.wheelClearTimers();
+                this.wheelTransition = 'none';
+                this.wheelBallTransition = 'none';
+                this.wheelBallDrop = 'none';
+                this.wheelBallAngle = this.wheelAngle + WHEEL_ORDER.indexOf(number) * this.wheelStep;
+                this.wheelBallTop = BALL_POCKET;
+                this.wheelSpinning = false;
+                this.wheelResult = number;
+            },
             // Spins the rotor clockwise and the ball the other way, landing on `number`.
             // Resolves once the ball has settled.
-            spin(number) {
+            spin(number, duration = SPIN_TIME) {
                 this.wheelClearTimers();
                 this.wheelResult = null;
                 this.wheelSpinning = true;
@@ -132,22 +143,22 @@
 
                 this.$nextTick(() => {
                     requestAnimationFrame(() => {
-                        this.wheelTransition = 'transform ' + SPIN_TIME + 'ms cubic-bezier(.12, .62, .22, 1)';
+                        this.wheelTransition = 'transform ' + duration + 'ms cubic-bezier(.12, .62, .22, 1)';
                         this.wheelAngle = wheelEnd;
-                        this.wheelBallTransition = 'transform ' + SPIN_TIME + 'ms cubic-bezier(.08, .58, .18, 1)';
+                        this.wheelBallTransition = 'transform ' + duration + 'ms cubic-bezier(.08, .58, .18, 1)';
                         this.wheelBallAngle = ballEnd;
-                        this.wheelBallDrop = 'top 1.1s cubic-bezier(.5, 0, .75, 1.35) ' + (SPIN_TIME - 1450) + 'ms';
+                        this.wheelBallDrop = 'top 1.1s cubic-bezier(.5, 0, .75, 1.35) ' + Math.max(0, duration - 1450) + 'ms';
                         this.wheelBallTop = BALL_POCKET;
                     });
                 });
 
-                sfx.ball(SPIN_TIME / 1000);
+                sfx.ball(duration / 1000);
 
                 // Fret clicks once the ball drops in, slowing down until it settles.
-                let at = SPIN_TIME - 1150;
+                let at = Math.max(0, duration - 1150);
                 let gap = 70;
-                while(at < SPIN_TIME - 60) {
-                    const pitch = 1 - (at / SPIN_TIME) * 0.25;
+                while(at < duration - 60) {
+                    const pitch = 1 - (at / duration) * 0.25;
                     this.wheelTimers.push(setTimeout(() => sfx.fret(pitch), at));
                     at += gap;
                     gap *= 1.32;
@@ -158,7 +169,7 @@
                         this.wheelSpinning = false;
                         this.wheelResult = number;
                         resolve(number);
-                    }, SPIN_TIME));
+                    }, duration));
                 });
             }
         },

@@ -22,6 +22,7 @@ import affiliates from './modules/affiliates';
 import leaderboard from './modules/leaderboard';
 import admin from './modules/admin';
 import originals from './modules/originals';
+import roulette from './modules/roulette';
 
 Vue.use(Vuex);
 
@@ -47,6 +48,7 @@ export default new Vuex.Store({
         affiliates,
         leaderboard,
         admin,
+        roulette,
         originals
     }
 });
