@@ -13,7 +13,6 @@
                 <router-link to="/admin/affiliates" v-on:click.native="adminToggleDropdown()">Affiliates</router-link>
                 <router-link to="/admin/promo" v-on:click.native="adminToggleDropdown()">Promo</router-link>
                 <router-link to="/admin/cashier" v-on:click.native="adminToggleDropdown()">Cashier</router-link>
-                <router-link to="/admin/boxes" v-on:click.native="adminToggleDropdown()">Boxes</router-link>
                 <router-link to="/admin/rain" v-on:click.native="adminToggleDropdown()">Rain</router-link>
                 <router-link to="/admin/leaderboard" v-on:click.native="adminToggleDropdown()">Leaderboard</router-link>
                 <router-link to="/admin/filter" v-on:click.native="adminToggleDropdown()">Filter</router-link>

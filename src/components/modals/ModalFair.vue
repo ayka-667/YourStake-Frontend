@@ -42,16 +42,6 @@
                     <span>Towers</span>
                 </div>
             </button>
-            <button v-on:click="modalSetGame('Battles')" v-bind:class="{ 'button-active': modalGame === 'Battles' }">
-                <div class="button-inner">
-                    <span>Battles</span>
-                </div>
-            </button>
-            <button v-on:click="modalSetGame('Unbox')" v-bind:class="{ 'button-active': modalGame === 'Unbox' }">
-                <div class="button-inner">
-                    <span>Unbox</span>
-                </div>
-            </button>
         </div>
         <div class="fair-content">
             <component v-bind:is="'Fair' + modalGame" />
@@ -66,8 +56,6 @@
     import FairDuels from '@/components/fair/FairDuels';
     import FairMines from '@/components/fair/FairMines';
     import FairTowers from '@/components/fair/FairTowers';
-    import FairUnbox from '@/components/fair/FairUnbox';
-    import FairBattles from '@/components/fair/FairBattles';
     import UiIcon from '@/components/UiIcon';
 
     export default {
@@ -79,9 +67,7 @@
             FairCrash,
             FairDuels,
             FairMines,
-            FairTowers,
-            FairUnbox,
-            FairBattles
+            FairTowers
         },  
         data() {
             return {

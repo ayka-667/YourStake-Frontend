@@ -54,7 +54,7 @@
             appHasBackground() {
                 let background = true;
 
-                if(['ProfileTransactions', 'ProfileGames', 'ProfileSettings', 'UnboxOverview', 'UnboxBox', 'BattlesOverview', 'BattlesCreate', 'BattlesGame', 'CashierLimiteds'].includes(this.appGetRouteName) === true) {
+                if(['ProfileTransactions', 'ProfileGames', 'ProfileSettings', 'CashierLimiteds'].includes(this.appGetRouteName) === true) {
                     background = false;
                 }   
 

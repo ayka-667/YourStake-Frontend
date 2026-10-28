@@ -4,38 +4,12 @@
             <RewardsCode />
             <RewardsRakeback />
         </div>
-        <div class="rewards-boxes">
-            <div class="boxes-title">Daily Cases</div>
-            <div class="boxes-content">
-                <transition name="fade" mode="out-in">
-                    <div v-if="rakebackData.loading === true" class="content-loading" key="loading">
-
-                        <div class="loading-placeholder"></div>
-                        <div class="loading-placeholder"></div>
-                        <div class="loading-placeholder"></div>
-                        <div class="loading-placeholder"></div>
-                        <div class="loading-placeholder"></div>
-                        <div class="loading-placeholder"></div>
-                        <div class="loading-placeholder"></div>
-
-                    </div>
-                    <div v-else-if="rakebackData.boxes.length > 0" class="content-list" key="data">
-
-                        <RewardsBoxElement v-for="box of rakebackData.boxes" v-bind:key="box._id" v-bind:box="box" />
-
-                    </div>
-                    <div v-else class="content-empty" key="empty">There are no cases.</div>
-                </transition>
-            </div>
-        </div>
     </div>
 </template>
 
 <script>
-    import { mapGetters, mapActions } from 'vuex';
     import RewardsCode from '@/components/rewards/RewardsCode';
     import RewardsRakeback from '@/components/rewards/RewardsRakeback';
-    import RewardsBoxElement from '@/components/rewards/RewardsBoxElement';
 
     export default {
         name: 'Rewards',
@@ -44,25 +18,8 @@
         },
         components: {
             RewardsCode,
-            RewardsRakeback,
-            RewardsBoxElement
+            RewardsRakeback
         },
-        methods: {
-            ...mapActions([
-                'rakebackGetDataSocket'
-            ])
-        },
-        computed: {
-            ...mapGetters([
-                'rakebackData'
-            ])
-        },
-        created() {
-            if(this.rakebackData.loading === false) {
-                const data = {};
-                this.rakebackGetDataSocket(data);
-            }
-        }
     }
 </script>
 

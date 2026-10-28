@@ -29,8 +29,6 @@
             homeGetLink() {
                 let link = this.game;
 
-                if(link === 'cases') { link = 'unbox'; }
-
                 return link;
             }
         },

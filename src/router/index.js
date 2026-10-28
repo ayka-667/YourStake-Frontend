@@ -18,14 +18,6 @@ import Plinko from '../views/Plinko';
 import Dice from '../views/Dice';
 import Flip from '../views/Flip';
 import Towers from '../views/Towers';
-import Unbox from '../views/unbox/Unbox';
-import UnboxOverview from '../views/unbox/UnboxOverview';
-import UnboxBox from '../views/unbox/UnboxBox';
-import Battles from '../views/battles/Battles';
-import BattlesOverview from '../views/battles/BattlesOverview';
-import BattlesGame from '../views/battles/BattlesGame';
-import BattlesCreate from '../views/battles/BattlesCreate';
-import Upgrader from '../views/Upgrader';
 import Leaderboard from '../views/Leaderboard';
 
 const Profile = () => import(/* webpackChunkName: "group-user" */ '../views/profile/Profile');
@@ -41,7 +33,6 @@ const AdminUsers = () => import(/* webpackChunkName: "group-admin" */ '../views/
 const AdminAffiliates = () => import(/* webpackChunkName: "group-admin" */ '../views/admin/AdminAffiliates');
 const AdminPromo = () => import(/* webpackChunkName: "group-admin" */ '../views/admin/AdminPromo');
 const AdminCashier = () => import(/* webpackChunkName: "group-admin" */ '../views/admin/AdminCashier');
-const AdminBoxes = () => import(/* webpackChunkName: "group-admin" */ '../views/admin/AdminBoxes');
 const AdminRain = () => import(/* webpackChunkName: "group-admin" */ '../views/admin/AdminRain');
 const AdminLeaderboards = () => import(/* webpackChunkName: "group-admin" */ '../views/admin/AdminLeaderboards');
 const AdminFilter = () => import(/* webpackChunkName: "group-admin" */ '../views/admin/AdminFilter');
@@ -117,51 +108,10 @@ const routes = [
         name: 'Towers',
         component: Towers
     },
-    {
-        path: '/unbox',
-        component: Unbox,
-        children: [
-            {
-                path: '',
-                name: 'UnboxOverview',
-                component: UnboxOverview
-            },
-            {
-                path: ':boxId',
-                name: 'UnboxBox',
-                component: UnboxBox
-            }
-        ]
-    },
-    {
-        path: '/battles',
-        component: Battles,
-        children: [
-            {
-                path: '',
-                name: 'BattlesOverview',
-                component: BattlesOverview
-            },
-            {
-                path: 'create',
-                name: 'BattlesCreate',
-                meta: {
-                    auth: true
-                },
-                component: BattlesCreate
-            },
-            {
-                path: ':gameId',
-                name: 'BattlesGame',
-                component: BattlesGame
-            }
-        ]
-    },
-    {
-        path: '/upgrader',
-        name: 'Upgrader',
-        component: Upgrader
-    },
+    // Cases, battles and upgrader were removed; old links land on the home page
+    { path: '/unbox*', redirect: '/' },
+    { path: '/battles*', redirect: '/' },
+    { path: '/upgrader', redirect: '/' },
     {
         path: '/profile',
         component: Profile,
@@ -239,11 +189,6 @@ const routes = [
                 path: 'cashier',
                 name: 'AdminCashier',
                 component: AdminCashier
-            },
-            {
-                path: 'boxes',
-                name: 'AdminBoxes',
-                component: AdminBoxes
             },
             {
                 path: 'rain',

@@ -45,8 +45,6 @@
     import IconDuels from '@/components/icons/IconDuels';
     import IconMines from '@/components/icons/IconMines';
     import IconTowers from '@/components/icons/IconTowers';
-    import IconUnbox from '@/components/icons/IconUnbox';
-    import IconBattles from '@/components/icons/IconBattles';
 
     export default {
         name: 'BetsElement',
@@ -58,9 +56,7 @@
             IconBlackjack,
             IconDuels,
             IconMines,
-            IconTowers,
-            IconUnbox,
-            IconBattles
+            IconTowers
         },
         props: [
             'bet'

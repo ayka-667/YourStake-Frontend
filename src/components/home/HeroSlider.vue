@@ -39,10 +39,8 @@
                         <span v-for="n in 6" v-bind:key="n" class="art-spark" v-bind:style="{ '--i': n }"></span>
                     </template>
 
-                    <template v-else-if="slide.id === 'battles'">
-                        <CaseArt v-for="(caseName, n) in ['silver-case', 'gold-case', 'gem-case']" v-bind:key="caseName"
-                            class="art-case" v-bind:class="'case-' + n"
-                            v-bind:slug="caseName" v-bind:interactive="false" v-bind:float="true" />
+                    <template v-else-if="slide.id === 'plinko'">
+                        <GameArt class="art-game" game="plinko" />
                     </template>
 
                     <template v-else>
@@ -71,14 +69,14 @@
 
 <script>
     import { mapGetters, mapActions } from 'vuex';
-    import CaseArt from '@/components/CaseArt';
+    import GameArt from '@/components/home/GameArt';
 
     const SLIDE_DURATION = 6500;
 
     export default {
         name: 'HeroSlider',
         components: {
-            CaseArt
+            GameArt
         },
         data() {
             return {
@@ -177,12 +175,12 @@
                         to: '/leaderboard'
                     },
                     {
-                        id: 'battles',
-                        tag: 'Multiplayer',
-                        title: 'Open cases in <span>Case Battles</span>',
-                        text: 'Face up to 4 players. The highest total takes every item in the battle.',
-                        cta: 'Start a Battle',
-                        to: '/battles'
+                        id: 'plinko',
+                        tag: 'Originals',
+                        title: 'Drop the ball in <span>Plinko</span>',
+                        text: 'Pick your risk and rows, then watch it bounce off the pegs into a multiplier.',
+                        cta: 'Play Plinko',
+                        to: '/plinko'
                     },
                     {
                         id: 'rewards',
@@ -245,7 +243,7 @@
 
     .slide-crash { background: radial-gradient(120% 140% at 85% 30%, rgba(255, 166, 0, 0.22) 0%, rgba(255, 166, 0, 0) 55%), linear-gradient(120deg, #213743 0%, #1a2c38 60%, #17303a 100%); }
     .slide-race { background: radial-gradient(90% 120% at 80% 40%, rgba(245, 183, 10, 0.28) 0%, rgba(245, 183, 10, 0) 60%), linear-gradient(120deg, #213743 0%, #1d2a2e 100%); }
-    .slide-battles { background: radial-gradient(100% 140% at 80% 50%, rgba(193, 60, 255, 0.28) 0%, rgba(193, 60, 255, 0) 60%), linear-gradient(120deg, #213743 0%, #1f2440 100%); }
+    .slide-plinko { background: radial-gradient(100% 140% at 80% 50%, rgba(193, 60, 255, 0.28) 0%, rgba(193, 60, 255, 0) 60%), linear-gradient(120deg, #213743 0%, #1f2440 100%); }
     .slide-rewards { background: radial-gradient(100% 140% at 80% 50%, rgba(20, 117, 225, 0.4) 0%, rgba(20, 117, 225, 0) 60%), linear-gradient(120deg, #1a3a6b 0%, #0f2847 100%); }
 
     /* ----- text: slides in when the slide becomes active ----- */
@@ -291,7 +289,7 @@
 
     .slide h2 >>> span { color: #00e701; }
     .slide-race h2 >>> span { color: #f5b70a; }
-    .slide-battles h2 >>> span { color: #d07bff; }
+    .slide-plinko h2 >>> span { color: #d07bff; }
     .slide-rewards h2 >>> span { color: #7cc0ff; }
 
     .slide p {
@@ -317,7 +315,7 @@
 
     .slide-button:hover { filter: brightness(1.08); box-shadow: 0 6px 20px rgba(0, 231, 1, 0.35); }
     .slide-race .slide-button { background: #f5b70a; }
-    .slide-battles .slide-button { background: #c13cff; color: #ffffff; }
+    .slide-plinko .slide-button { background: #c13cff; color: #ffffff; }
     .slide-rewards .slide-button { background: #ffffff; color: #0f212e; }
 
     /* ----- art ----- */
@@ -417,20 +415,15 @@
 
     .slide-active .art-spark { animation: sparkle 2.4s ease-in-out calc(var(--i) * .35s) infinite; }
 
-    .art-case {
-        width: 150px;
+    .art-game {
+        width: 210px;
+        height: 210px;
         position: absolute;
         top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.45));
     }
-
-    .art-case.case-0 { left: 6%; width: 110px; transform: translateY(-30%) rotate(-10deg); opacity: .85; }
-    .art-case.case-1 { left: 32%; transform: translateY(-58%); z-index: 1; }
-    .art-case.case-2 { left: 64%; width: 110px; transform: translateY(-36%) rotate(10deg); opacity: .85; }
-
-    .slide-active .art-case.case-0 { animation: float-a 5s ease-in-out infinite; }
-    .slide-active .art-case.case-1 { animation: float-b 4.2s ease-in-out infinite; }
-    .slide-active .art-case.case-2 { animation: float-c 5.6s ease-in-out infinite; }
 
     .art-coin {
         width: 120px;

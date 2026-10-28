@@ -90,7 +90,7 @@
                         </linearGradient>
                         </defs>
                     </svg>
-                    {{ chatGetGameLink.includes('duels') ? 'DICE DUEL' : 'CASE BATTLE' }}
+                    DICE DUEL
                 </div>
             </button>
         </div>
@@ -172,7 +172,6 @@
                 let link = null;
 
                 if(
-                    this.message.message.replace(/&#x2F;/g, '/').match(/(yourstake\.(fr|online|info|store)\/battles\/[0-9a-fA-F]{24})/) !== null ||
                     this.message.message.replace(/&#x2F;/g, '/').match(/(yourstake\.(fr|online|info|store)\/duels\?game=[0-9a-fA-F]{24})$/) !== null
                 ) {
                     link = this.message.message.replace(/&#x2F;/g, '/').replace(/.*yourstake\.(fr|online|info|store)/, '');

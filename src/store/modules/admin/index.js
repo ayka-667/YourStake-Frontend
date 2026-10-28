@@ -42,13 +42,6 @@ const state = {
       loading: false,
       page: 1
     },
-    adminBoxList: {
-        data: null,
-        count: null,
-        items: null,
-        loading: false,
-        page: 1
-    },
     adminRainList: {
         data: null,
         count: null,
@@ -92,7 +85,6 @@ const getters = {
     adminAffiliateList: state => state.adminAffiliateList,
     adminPromoList: state => state.adminPromoList,
     adminCashierList: state => state.adminCashierList,
-    adminBoxList: state => state.adminBoxList,
     adminRainList: state => state.adminRainList,
     adminLeaderboardList: state => state.adminLeaderboardList,
     adminFilterList: state => state.adminFilterList,
@@ -203,20 +195,6 @@ const mutations = {
     admin_set_cashier_list_page(state, page) {
         state.adminCashierList.page = page;
     },
-    admin_set_box_list(state, data) {
-        state.adminBoxList.data = data.boxes;
-        state.adminBoxList.count = data.count;
-        state.adminBoxList.items = data.items;
-    },
-    admin_add_box_list(state, box) {
-        state.adminBoxList.data.unshift(box);
-    },
-    admin_set_box_list_loading(state, status) {
-        state.adminBoxList.loading = status;
-    },
-    admin_set_box_list_page(state, page) {
-        state.adminBoxList.page = page;
-    },
     admin_set_rain_list(state, data) {
         state.adminRainList.data = data.rains;
         state.adminRainList.count = data.count;
@@ -317,9 +295,6 @@ const actions = {
     adminSetCashierListPage({ commit }, page) {
         commit('admin_set_cashier_list_page', page);
     },
-    adminSetBoxListPage({ commit }, page) {
-        commit('admin_set_box_list_page', page);
-    },
     adminSetRainListPage({ commit }, page) {
         commit('admin_set_rain_list_page', page);
     },
@@ -414,20 +389,6 @@ const actions = {
             }
 
             commit('admin_set_cashier_list_loading', false);
-        });
-    },
-    adminGetBoxListSocket({ getters, commit, dispatch }, data) {
-        if(getters.socketAdmin === null || getters.adminBoxList.loading === true) { return; }
-        commit('admin_set_box_list_loading', true);
-
-        getters.socketAdmin.emit('getBoxList', data, (res) => {
-            if(res.success === true) {
-                commit('admin_set_box_list', res);
-            } else {
-                dispatch('notificationShow', res.error);
-            }
-
-            commit('admin_set_box_list_loading', false);
         });
     },
     adminGetRainListSocket({ getters, commit, dispatch }, data) {
@@ -760,36 +721,6 @@ const actions = {
         getters.socketAdmin.emit('sendCashierRobuxCancel', data, (res) => {
             if(res.success === true) {
                 commit('admin_remove_cashier_list', res.offer);
-            } else {
-                dispatch('notificationShow', res.error);
-            }
-
-            commit('socket_set_send_loading', null);
-        });
-    },
-    adminSendBoxCreateSocket({ getters, commit, dispatch }, data) {
-        if(getters.socketAdmin === null || getters.socketSendLoading !== null) { return; }
-        commit('socket_set_send_loading', 'AdminBoxCreate');
-
-        getters.socketAdmin.emit('sendBoxCreate', data, (res) => {
-            if(res.success === true) {
-                commit('admin_add_box_list', res.box);
-
-                dispatch('notificationShow', { type: 'success', message: 'You have successfully created a new box.' });
-            } else {
-                dispatch('notificationShow', res.error);
-            }
-
-            commit('socket_set_send_loading', null);
-        });
-    },
-    adminSendBoxRemoveSocket({ getters, commit, dispatch }, data) {
-        if(getters.socketAdmin === null || getters.socketSendLoading !== null) { return; }
-        commit('socket_set_send_loading', 'AdminBoxRemove');
-
-        getters.socketAdmin.emit('sendBoxRemove', data, (res) => {
-            if(res.success === true) {
-                commit('admin_remove_box_list', res.box);
             } else {
                 dispatch('notificationShow', res.error);
             }

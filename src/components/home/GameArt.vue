@@ -92,14 +92,6 @@
             </g>
         </g>
 
-        <!-- ================= CASE BATTLES ================= -->
-        <g v-else-if="game === 'battles'">
-            <ellipse cx="100" cy="178" rx="80" ry="9" v-bind:fill="url('shadow')"/>
-            <image v-bind:href="caseImage('silver-case')" x="2" y="54" width="104" height="104" transform="rotate(-8 54 106)"/>
-            <image v-bind:href="caseImage('gold-case')" x="94" y="48" width="104" height="104" transform="rotate(8 146 100)"/>
-            <circle cx="100" cy="100" r="22" fill="#0f212e" stroke="#ed4163" stroke-width="3"/>
-            <text x="100" y="108" text-anchor="middle" font-family="Figtree, sans-serif" font-size="20" font-weight="800" fill="#ffffff">VS</text>
-        </g>
 
         <!-- ================= PLINKO ================= -->
         <g v-else-if="game === 'plinko'">
@@ -184,28 +176,11 @@
             </g>
         </g>
 
-        <!-- ================= CASES (UNBOX) ================= -->
-        <g v-else-if="game === 'unbox'">
-            <circle cx="100" cy="98" r="64" fill="#c13cff" opacity=".18"/>
-            <ellipse cx="100" cy="176" rx="64" ry="8" v-bind:fill="url('shadow')"/>
-            <image v-bind:href="caseImage('gem-case')" x="24" y="22" width="152" height="152"/>
-        </g>
 
-        <!-- ================= UPGRADER ================= -->
-        <g v-else-if="game === 'upgrader'">
-            <circle cx="100" cy="100" r="66" fill="none" stroke="#0f212e" stroke-width="14"/>
-            <circle cx="100" cy="100" r="66" fill="none" stroke="#3d7bff" stroke-width="14" stroke-linecap="round"
-                stroke-dasharray="290 415" transform="rotate(-90 100 100)" style="filter: drop-shadow(0 0 8px rgba(61,123,255,.7))"/>
-            <circle cx="100" cy="100" r="50" fill="#0f212e"/>
-            <path d="M100 76 L118 98 H107 V122 H93 V98 H82 Z" fill="#ffffff"/>
-            <text x="100" y="148" text-anchor="middle" font-family="Figtree, sans-serif" font-size="14" font-weight="800" fill="#7fa8ff">70%</text>
-        </g>
     </svg>
 </template>
 
 <script>
-    import { caseImageUrl } from '@/utils/caseTheme';
-
     let counter = 0;
 
     export default {
@@ -241,7 +216,6 @@
         methods: {
             uid(name) { return this.artId + '-' + name; },
             url(name) { return 'url(#' + this.uid(name) + ')'; },
-            caseImage(slug) { return caseImageUrl(slug); },
             wedge(cx, cy, outer, inner, startDeg, endDeg) {
                 const rad = (deg) => (deg - 90) * Math.PI / 180;
                 const p = (r, deg) => [cx + r * Math.cos(rad(deg)), cy + r * Math.sin(rad(deg))].map((v) => v.toFixed(2)).join(' ');

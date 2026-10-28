@@ -9,9 +9,6 @@ const state = {
     socketDuels: socketIo(process.env.VUE_APP_SOCKET_URL+'/duels', { auth: {}, autoConnect: false, reconnection: true, reconnectionDelay: 5000, transports: ['websocket']}),
     socketMines: socketIo(process.env.VUE_APP_SOCKET_URL+'/mines', { auth: {}, autoConnect: false, reconnection: true, reconnectionDelay: 5000, transports: ['websocket']}),
     socketTowers: socketIo(process.env.VUE_APP_SOCKET_URL+'/towers', { auth: {}, autoConnect: false, reconnection: true, reconnectionDelay: 5000, transports: ['websocket']}),
-    socketUnbox: socketIo(process.env.VUE_APP_SOCKET_URL+'/unbox', { auth: {}, autoConnect: false, reconnection: true, reconnectionDelay: 5000, transports: ['websocket']}),
-    socketBattles: socketIo(process.env.VUE_APP_SOCKET_URL+'/battles', { auth: {}, autoConnect: false, reconnection: true, reconnectionDelay: 5000, transports: ['websocket']}),
-    socketUpgrader: socketIo(process.env.VUE_APP_SOCKET_URL+'/upgrader', { auth: {}, autoConnect: false, reconnection: true, reconnectionDelay: 5000, transports: ['websocket']}),
     socketOriginals: socketIo(process.env.VUE_APP_SOCKET_URL+'/originals', { auth: {}, autoConnect: false, reconnection: true, reconnectionDelay: 5000, transports: ['websocket']}),
     socketCashier: socketIo(process.env.VUE_APP_SOCKET_URL+'/cashier', { auth: {}, autoConnect: false, reconnection: true, reconnectionDelay: 5000, transports: ['websocket']}),
     socketAdmin: socketIo(process.env.VUE_APP_SOCKET_URL+'/admin', { auth: {}, autoConnect: false, reconnection: true, reconnectionDelay: 5000, transports: ['websocket']})
@@ -26,9 +23,6 @@ const getters = {
     socketDuels: state => state.socketDuels,
     socketMines: state => state.socketMines,
     socketTowers: state => state.socketTowers,
-    socketUnbox: state => state.socketUnbox,
-    socketBattles: state => state.socketBattles,
-    socketUpgrader: state => state.socketUpgrader,
     socketOriginals: state => state.socketOriginals,
     socketCashier: state => state.socketCashier,
     socketAdmin: state => state.socketAdmin
@@ -180,52 +174,6 @@ const actions = {
     },
     socketListenTowers({ getters, dispatch }) {
         getters.socketTowers.on('init', (data) => { dispatch('towersSocketInit', data); });
-    },
-    socketConnectUnbox({ getters, dispatch }) {
-        if(getters.socketUnbox.connected === true) { getters.socketUnbox.removeAllListeners(); }
-        if(getters.authToken !== null) { getters.socketUnbox.auth.token = getters.authToken; }
-
-        getters.socketUnbox.disconnect().connect();
-
-        dispatch('socketListenUnbox');
-    },
-    socketDisconnectUnbox({ getters }) {
-        getters.socketUnbox.removeAllListeners();
-        getters.socketUnbox.disconnect();
-    },
-    socketListenUnbox({ getters, dispatch }) {
-        getters.socketUnbox.on('init', (data) => { dispatch('unboxSocketInit', data); });
-    },
-    socketConnectBattles({ getters, dispatch }) {
-        if(getters.socketBattles.connected === true) { getters.socketBattles.removeAllListeners(); }
-        if(getters.authToken !== null) { getters.socketBattles.auth.token = getters.authToken; }
-
-        getters.socketBattles.disconnect().connect();
-
-        dispatch('socketListenBattles');
-    },
-    socketDisconnectBattles({ getters }) {
-        getters.socketBattles.removeAllListeners();
-        getters.socketBattles.disconnect();
-    },
-    socketListenBattles({ getters, dispatch }) {
-        getters.socketBattles.on('init', (data) => { dispatch('battlesSocketInit', data); });
-        getters.socketBattles.on('game', (data) => { dispatch('battlesSocketGame', data); });
-    },
-    socketConnectUpgrader({ getters, dispatch }) {
-        if(getters.socketUpgrader.connected === true) { getters.socketUpgrader.removeAllListeners(); }
-        if(getters.authToken !== null) { getters.socketUpgrader.auth.token = getters.authToken; }
-
-        getters.socketUpgrader.disconnect().connect();
-
-        dispatch('socketListenUpgrader');
-    },
-    socketDisconnectUpgrader({ getters }) {
-        getters.socketUpgrader.removeAllListeners();
-        getters.socketUpgrader.disconnect();
-    },
-    socketListenUpgrader({ getters, dispatch }) {
-        
     },
     socketConnectCashier({ getters, dispatch }) {
         if(getters.socketCashier.connected === true) { getters.socketCashier.removeAllListeners(); }

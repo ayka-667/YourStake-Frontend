@@ -16,9 +16,6 @@ import blackjack from './modules/blackjack';
 import duels from './modules/duels';
 import mines from './modules/mines';
 import towers from './modules/towers';
-import unbox from './modules/unbox';
-import battles from './modules/battles';
-import upgrader from './modules/upgrader';
 import cashier from './modules/cashier';
 import rakeback from './modules/rakeback';
 import affiliates from './modules/affiliates';
@@ -45,9 +42,6 @@ export default new Vuex.Store({
         duels,
         mines,
         towers,
-        unbox,
-        battles,
-        upgrader,
         cashier,
         rakeback,
         affiliates,

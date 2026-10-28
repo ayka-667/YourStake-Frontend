@@ -1,38 +1,11 @@
-const state = {
-    rakebackData: {
-        boxes: null,
-        loading: false
-    }
-}
 
-const getters = {
-    rakebackData: state => state.rakebackData
-}
+const state = {}
 
-const mutations = {
-    rakeback_set_data(state, data) {
-        state.rakebackData.boxes = data.boxes;
-    },
-    rakeback_set_data_loading(state, status) {
-        state.rakebackData.loading = status;
-    }
-}
+const getters = {}
+
+const mutations = {}
 
 const actions = {
-    rakebackGetDataSocket({ getters, commit, dispatch }, data) {
-        if(getters.socketGeneral === null || getters.rakebackData.loading === true) { return; }
-        commit('rakeback_set_data_loading', true);
-
-        getters.socketGeneral.emit('getRakebackData', data, (res) => {
-            if(res.success === true) {
-                commit('rakeback_set_data', res);
-            } else {
-                dispatch('notificationShow', res.error);
-            }
-
-            commit('rakeback_set_data_loading', false);
-        });
-    },
     rakebackSendClaimSocket({ getters, commit, dispatch }, data) {
         if(getters.socketGeneral === null || getters.socketSendLoading !== null) { return; }
         commit('socket_set_send_loading', 'RakebackClaim');

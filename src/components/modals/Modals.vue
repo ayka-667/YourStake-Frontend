@@ -8,7 +8,7 @@
                 <div class="holder-body">
 
                     <div class="body-modal">
-                        <button v-if="['DuelsGame', 'BattlesSelect', 'Box'].includes(modalsShow) !== true" v-on:click="modalsSetShow(null)" class="button-close">
+                        <button v-if="['DuelsGame'].includes(modalsShow) !== true" v-on:click="modalsSetShow(null)" class="button-close">
                             <div class="button-inner">
                                 <IconClose />
                             </div>
@@ -47,9 +47,6 @@
     import ModalPrivacy from '@/components/modals/ModalPrivacy';
     import ModalBlackjackRules from '@/components/modals/ModalBlackjackRules';
     import ModalDuelsGame from '@/components/modals/ModalDuelsGame';
-    import ModalBattlesModes from '@/components/modals/ModalBattlesModes';
-    import ModalBattlesSelect from '@/components/modals/ModalBattlesSelect';
-    import ModalBox from '@/components/modals/ModalBox';
     import ModalAdminConfirm from '@/components/modals/ModalAdminConfirm';
     import ModalAdminUser from '@/components/modals/ModalAdminUser';
     import ModalAdminAffiliate from '@/components/modals/ModalAdminAffiliate';
@@ -79,9 +76,6 @@
             ModalPrivacy,
             ModalBlackjackRules,
             ModalDuelsGame,
-            ModalBattlesModes,
-            ModalBattlesSelect,
-            ModalBox,
             ModalAdminConfirm,
             ModalAdminUser,
             ModalAdminAffiliate,

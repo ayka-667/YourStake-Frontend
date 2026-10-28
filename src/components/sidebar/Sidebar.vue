@@ -73,17 +73,14 @@
                     { name: 'Crash', to: '/crash', icon: 'crash' },
                     { name: 'Roulette', to: '/roll', icon: 'roll' },
                     { name: 'Blackjack', to: '/blackjack', icon: 'blackjack' },
-                    { name: 'Dice Duels', to: '/duels', icon: 'duels' },
-                    { name: 'Case Battles', to: '/battles', icon: 'battles' }
+                    { name: 'Dice Duels', to: '/duels', icon: 'duels' }
                 ],
                 sidebarOriginals: [
                     { name: 'Plinko', to: '/plinko', icon: 'plinko' },
                     { name: 'Dice', to: '/dice', icon: 'dice' },
                     { name: 'Flip', to: '/flip', icon: 'flip' },
                     { name: 'Mines', to: '/mines', icon: 'mines' },
-                    { name: 'Towers', to: '/towers', icon: 'towers' },
-                    { name: 'Cases', to: '/unbox', icon: 'unbox' },
-                    { name: 'Upgrader', to: '/upgrader', icon: 'upgrader' }
+                    { name: 'Towers', to: '/towers', icon: 'towers' }
                 ]
             }
         },

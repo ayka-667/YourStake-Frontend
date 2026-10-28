@@ -47,7 +47,7 @@
                 return parseFloat(Math.floor(value / 10) / 100).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
             },
             profileVerifyButton() {
-                this.modalsSetData({ game: (['mines', 'towers', 'unbox', 'plinko', 'dice', 'flip'].includes(this.bet.method) === true ? this.bet : this.bet.game) });
+                this.modalsSetData({ game: (['mines', 'towers', 'plinko', 'dice', 'flip'].includes(this.bet.method) === true ? this.bet : this.bet.game) });
                 this.modalsSetShow('FairGame');
             }
         },

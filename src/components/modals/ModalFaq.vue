@@ -6,7 +6,7 @@
         </div>
         <div class="faq-list">
 
-            <FaqElement title="What is YourStake?" text="YourStake is a free casino-style gaming website: Crash, Roulette, Blackjack, Dice Duels, Case Battles, Mines, Towers and more, all played with play money." />
+            <FaqElement title="What is YourStake?" text="YourStake is a free casino-style gaming website: Crash, Roulette, Blackjack, Dice Duels, Mines, Towers and more, all played with play money." />
             <FaqElement title="Are the coins real money?" text="No. Coins are play money with no real-world value. They cannot be bought, sold or withdrawn." />
             <FaqElement title="How do I get coins?" text="Claim your rewards, join the chat rain, or redeem a bonus code in your Wallet." />
             <FaqElement title="Can I withdraw my winnings?" text="No. Since coins have no value, there is nothing to withdraw: winnings only count for fun, levels and leaderboards." />

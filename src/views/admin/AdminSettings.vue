@@ -21,9 +21,6 @@
             <AdminSettingsToggle name="Dice Duels" setting="games.duels.enabled" />
             <AdminSettingsToggle name="Mines" setting="games.mines.enabled" />
             <AdminSettingsToggle name="Towers" setting="games.towers.enabled" />
-            <AdminSettingsToggle name="Unbox" setting="games.unbox.enabled" />
-            <AdminSettingsToggle name="Battles" setting="games.battles.enabled" />
-            <AdminSettingsToggle name="Upgrader" setting="games.upgrader.enabled" />
         </div>
         <div class="settings-section">
             <div class="section-title">Robux</div>
