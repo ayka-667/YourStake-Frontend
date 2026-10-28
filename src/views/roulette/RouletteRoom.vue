@@ -1,5 +1,5 @@
 <template>
-    <OriginalsShell class="roulette-room">
+    <OriginalsShell class="roulette-room" v-bind:class="{ 'room-fullscreen': roomFullscreen }">
         <template v-slot:panel>
             <OriginalsPanel amount-label="Chip Value" v-bind:show-profit="false" v-bind:label="roomButtonLabel"
                 v-bind:busy="socketSendLoading === 'RouletteBet'" v-bind:disabled="roomCanBet === false || roomPendingTotal === 0"
@@ -40,6 +40,9 @@
                 <div class="header-history">
                     <span v-for="(number, n) in roomHistory" v-bind:key="n" class="history-number" v-bind:class="'number-' + roomColor(number)">{{ number }}</span>
                 </div>
+                <button v-on:click="roomToggleFullscreen()" class="header-fullscreen" v-bind:title="roomFullscreen ? 'Exit full screen' : 'Full screen'">
+                    <UiIcon v-bind:name="roomFullscreen ? 'shrink' : 'expand'" />
+                </button>
             </div>
 
             <div class="stage-timer" v-bind:class="'timer-' + roomPhase.key">
@@ -122,7 +125,8 @@
                 roomShownResult: null,
                 roomSettled: null,
                 roomNow: Date.now(),
-                roomTimer: null
+                roomTimer: null,
+                roomFullscreen: false
             }
         },
         methods: {
@@ -137,6 +141,27 @@
             },
             roomColor(number) {
                 return rouletteColor(number);
+            },
+            // Fills the window with the table and, where the browser allows it, hides the browser UI too.
+            roomToggleFullscreen() {
+                if(this.roomFullscreen === true) { this.roomExitFullscreen(); return; }
+
+                this.roomFullscreen = true;
+                const root = document.documentElement;
+                if(root.requestFullscreen !== undefined) { root.requestFullscreen().catch(() => {}); }
+                else if(root.webkitRequestFullscreen !== undefined) { root.webkitRequestFullscreen(); }
+            },
+            roomExitFullscreen() {
+                this.roomFullscreen = false;
+                if(document.fullscreenElement) { document.exitFullscreen().catch(() => {}); }
+                else if(document.webkitFullscreenElement) { document.webkitExitFullscreen(); }
+            },
+            roomOnFullscreenChange() {
+                // Leaving native full screen (Esc, browser button) also leaves the expanded table
+                if(!document.fullscreenElement && !document.webkitFullscreenElement) { this.roomFullscreen = false; }
+            },
+            roomOnKey(event) {
+                if(event.key === 'Escape' && this.roomFullscreen === true) { this.roomExitFullscreen(); }
             },
             async roomJoin() {
                 const index = Number(this.$route.params.tableId) - 1;
@@ -327,6 +352,9 @@
             }
         },
         watch: {
+            roomFullscreen(value) {
+                document.body.classList.toggle('roulette-fullscreen', value);
+            },
             roomGame(game) {
                 if(game !== null) { this.$nextTick(() => this.roomSync(false)); }
             },
@@ -341,12 +369,20 @@
         },
         created() {
             this.roomTimer = setInterval(() => { this.roomNow = Date.now(); }, 200);
+            document.addEventListener('fullscreenchange', this.roomOnFullscreenChange);
+            document.addEventListener('webkitfullscreenchange', this.roomOnFullscreenChange);
+            window.addEventListener('keydown', this.roomOnKey);
         },
         mounted() {
             this.roomJoin();
         },
         beforeDestroy() {
             clearInterval(this.roomTimer);
+            document.removeEventListener('fullscreenchange', this.roomOnFullscreenChange);
+            document.removeEventListener('webkitfullscreenchange', this.roomOnFullscreenChange);
+            window.removeEventListener('keydown', this.roomOnKey);
+            if(this.roomFullscreen === true) { this.roomExitFullscreen(); }
+            document.body.classList.remove('roulette-fullscreen');
             this.rouletteLeaveTable();
         }
     }
@@ -489,6 +525,86 @@
     .room-stage .number-red { background: #d0233a; }
     .room-stage .number-black { background: #2f4553; }
     .room-stage .number-green { background: #0f9d58; }
+
+    .room-stage button.header-fullscreen {
+        width: 32px;
+        height: 32px;
+        flex: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 6px;
+        background: #213743;
+        color: #b1bad3;
+        transition: color .2s ease, background .2s ease;
+    }
+
+    .room-stage button.header-fullscreen:hover {
+        color: #ffffff;
+        background: #2f4553;
+    }
+
+    .room-stage button.header-fullscreen .ui-icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* Full screen: the table covers the page (above navbar and sidebar, below modals) */
+    .roulette-room.room-fullscreen {
+        position: fixed;
+        inset: 0;
+        z-index: 99;
+        padding: 0;
+        background: #0f212e;
+        overflow-y: auto;
+    }
+
+    .roulette-room.room-fullscreen >>> .shell-game {
+        flex: none;
+        max-width: none;
+        min-height: 100%;
+        border-radius: 0;
+        box-shadow: none;
+        animation: none;
+    }
+
+    .roulette-room.room-fullscreen >>> .shell-stage,
+    .roulette-room.room-fullscreen >>> .originals-panel {
+        border-radius: 0;
+    }
+
+    .roulette-room.room-fullscreen >>> .bets {
+        display: none;
+    }
+
+    .roulette-room.room-fullscreen .room-stage {
+        min-height: 100%;
+        justify-content: center;
+        gap: 24px;
+        padding: 24px 40px 32px 40px;
+    }
+
+    .roulette-room.room-fullscreen .room-stage .stage-middle {
+        grid-template-columns: minmax(260px, 38vh) 160px minmax(0, 1fr);
+    }
+
+    .roulette-room.room-fullscreen .room-stage .middle-players {
+        height: min(38vh, 400px);
+    }
+
+    .roulette-room.room-fullscreen .room-stage .card-number {
+        width: 100px;
+        height: 100px;
+        font-size: 44px;
+    }
+
+    .roulette-room.room-fullscreen >>> .roulette-board .table-grid {
+        grid-template-rows: repeat(3, minmax(46px, 7vh)) minmax(40px, 5.5vh) minmax(40px, 5.5vh);
+    }
+
+    .roulette-room.room-fullscreen >>> .roulette-board button.table-cell {
+        font-size: 15px;
+    }
 
     .room-stage .stage-timer {
         position: relative;
@@ -679,5 +795,49 @@
         .room-stage .header-history .history-number:nth-child(n + 6) {
             display: none;
         }
+    }
+
+    @media only screen and (max-width: 1100px) {
+        .roulette-room.room-fullscreen .room-stage .stage-middle {
+            grid-template-columns: minmax(220px, 34vh) minmax(0, 1fr);
+        }
+
+        .roulette-room.room-fullscreen .room-stage .middle-players {
+            grid-column: 1 / -1;
+            height: 160px;
+        }
+    }
+
+    @media only screen and (max-width: 850px) {
+        .roulette-room.room-fullscreen .room-stage {
+            min-height: 0;
+            justify-content: flex-start;
+            padding: 14px;
+            gap: 14px;
+        }
+
+        .roulette-room.room-fullscreen >>> .shell-stage {
+            min-height: 0;
+        }
+
+        .roulette-room.room-fullscreen >>> .roulette-board .table-grid {
+            grid-template-rows: repeat(3, 46px) 40px 40px;
+        }
+
+        .roulette-room.room-fullscreen .room-stage .stage-middle {
+            grid-template-columns: 180px minmax(0, 1fr);
+        }
+
+        .roulette-room.room-fullscreen .room-stage .middle-players {
+            height: 128px;
+        }
+    }
+</style>
+
+<style>
+    /* The page container is position: fixed, which is its own stacking context; lift it above
+       the navbar (50) and sidebar (60) while the table is full screen, keeping modals (101+) on top. */
+    body.roulette-fullscreen .main-background {
+        z-index: 99;
     }
 </style>
