@@ -244,6 +244,48 @@ const sfx = {
         noise({ attack: 0.003, decay: 0.45, gain: 0.3, filter: 'lowpass', freq: 2400, to: 160, wet: 0.4 });
     },
 
+    // Plinko ball touching a peg: tiny glassy tick, pitch varies by row.
+    peg(pitch = 1) {
+        if(ready() === null) { return; }
+        tone({ freq: 1500 * pitch * jitter(0.03), attack: 0.001, decay: 0.045, gain: 0.035, type: 'triangle', wet: 0.25 });
+    },
+
+    // Plinko ball landing in a slot: brighter and higher the bigger the multiplier.
+    slot(multiplier) {
+        if(ready() === null) { return; }
+        if(multiplier >= 10) { sfx.bigWin(); return; }
+        if(multiplier >= 2) { sfx.win(); return; }
+
+        const pitch = multiplier >= 1 ? 1 : 0.75;
+        tone({ freq: 620 * pitch, attack: 0.002, decay: 0.16, gain: 0.08, type: 'triangle', wet: 0.3 });
+        tone({ freq: 930 * pitch, start: 0.05, attack: 0.002, decay: 0.2, gain: multiplier >= 1 ? 0.07 : 0.04, wet: 0.35 });
+    },
+
+    // Dice: a quick rattle of short knocks.
+    roll() {
+        if(ready() === null) { return; }
+        for(let i = 0; i < 6; i++) {
+            const start = i * 0.045 + Math.random() * 0.015;
+            noise({ start, decay: 0.03, gain: 0.12 - i * 0.012, freq: 1700 * jitter(0.2), q: 3, wet: 0.2 });
+            tone({ freq: 380 * jitter(0.15), start, attack: 0.001, decay: 0.04, gain: 0.06, type: 'triangle', wet: 0.15 });
+        }
+    },
+
+    // Coin toss: thumb flick then a fast spinning shimmer.
+    toss() {
+        if(ready() === null) { return; }
+        noise({ decay: 0.03, gain: 0.18, filter: 'highpass', freq: 3000, wet: 0.2 });
+        for(let i = 0; i < 9; i++) { tone({ freq: 3400 + (i % 2) * 500, start: 0.05 + i * 0.07, attack: 0.002, decay: 0.05, gain: 0.025 * (1 - i / 10), wet: 0.4 }); }
+    },
+
+    // Coin landing on the table.
+    land() {
+        if(ready() === null) { return; }
+        tone({ freq: 2900, attack: 0.001, decay: 0.35, gain: 0.07, wet: 0.4 });
+        tone({ freq: 4400, attack: 0.001, decay: 0.2, gain: 0.04, wet: 0.4 });
+        noise({ decay: 0.04, gain: 0.12, filter: 'lowpass', freq: 1200, wet: 0.1 });
+    },
+
     // Rare drop reveal (cases): rising sweep into a bell.
     reveal() {
         if(ready() === null) { return; }

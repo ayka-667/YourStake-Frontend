@@ -24,6 +24,7 @@ import rakeback from './modules/rakeback';
 import affiliates from './modules/affiliates';
 import leaderboard from './modules/leaderboard';
 import admin from './modules/admin';
+import originals from './modules/originals';
 
 Vue.use(Vuex);
 
@@ -51,6 +52,7 @@ export default new Vuex.Store({
         rakeback,
         affiliates,
         leaderboard,
-        admin
+        admin,
+        originals
     }
 });

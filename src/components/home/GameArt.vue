@@ -101,6 +101,50 @@
             <text x="100" y="108" text-anchor="middle" font-family="Figtree, sans-serif" font-size="20" font-weight="800" fill="#ffffff">VS</text>
         </g>
 
+        <!-- ================= PLINKO ================= -->
+        <g v-else-if="game === 'plinko'">
+            <g v-for="peg in plinkoPegs" v-bind:key="peg.x + '-' + peg.y">
+                <circle v-bind:cx="peg.x" v-bind:cy="peg.y" r="4" fill="#ffffff" v-bind:opacity="peg.lit ? 1 : .85"/>
+                <circle v-if="peg.lit" v-bind:cx="peg.x" v-bind:cy="peg.y" r="9" fill="#ffffff" opacity=".18"/>
+            </g>
+            <path d="M100 26 Q 108 48 112 62 Q 96 78 88 96 Q 104 112 112 128" fill="none" stroke="#ff2d55" stroke-opacity=".35" stroke-width="3" stroke-dasharray="2 6" stroke-linecap="round"/>
+            <circle cx="112" cy="128" r="9" fill="#ff2d55" style="filter: drop-shadow(0 0 8px rgba(255,45,85,.9))"/>
+            <circle cx="109" cy="125" r="3" fill="#ffffff" opacity=".6"/>
+            <g v-for="(slot, i) in plinkoSlots" v-bind:key="'slot' + i">
+                <rect v-bind:x="15 + i * 25" y="158" width="21" height="16" rx="3" v-bind:fill="slot"/>
+            </g>
+        </g>
+
+        <!-- ================= DICE ================= -->
+        <g v-else-if="game === 'dice'">
+            <rect x="20" y="128" width="160" height="22" rx="11" fill="#2f4553"/>
+            <rect x="30" y="135" width="84" height="8" rx="4" fill="#ff3b5c"/>
+            <rect x="114" y="135" width="56" height="8" rx="4" fill="#00e701"/>
+            <rect x="104" y="124" width="18" height="30" rx="4" fill="#4d8fd6" style="filter: drop-shadow(0 3px 4px rgba(0,0,0,.4))"/>
+            <g transform="translate(100 74) rotate(-12)">
+                <rect x="-34" y="-34" width="68" height="68" rx="14" fill="#ffffff" style="filter: drop-shadow(0 10px 14px rgba(0,0,0,.45))"/>
+                <circle cx="-15" cy="-15" r="6.5" fill="#0f212e"/>
+                <circle cx="0" cy="0" r="6.5" fill="#0f212e"/>
+                <circle cx="15" cy="15" r="6.5" fill="#0f212e"/>
+                <circle cx="15" cy="-15" r="6.5" fill="#0f212e"/>
+                <circle cx="-15" cy="15" r="6.5" fill="#0f212e"/>
+            </g>
+        </g>
+
+        <!-- ================= FLIP ================= -->
+        <g v-else-if="game === 'flip'">
+            <defs>
+                <radialGradient v-bind:id="uid('coin')" cx=".32" cy=".28" r=".8">
+                    <stop offset="0" stop-color="#fff4c4"/><stop offset=".35" stop-color="#ffd34d"/><stop offset=".75" stop-color="#e0a21a"/><stop offset="1" stop-color="#a86a00"/>
+                </radialGradient>
+            </defs>
+            <ellipse cx="100" cy="176" rx="46" ry="7" v-bind:fill="url('shadow')"/>
+            <ellipse cx="100" cy="98" rx="62" ry="64" fill="#a86a00"/>
+            <ellipse cx="100" cy="92" rx="62" ry="64" v-bind:fill="url('coin')"/>
+            <ellipse cx="100" cy="92" rx="44" ry="46" fill="none" stroke="#000" stroke-opacity=".16" stroke-width="3" stroke-dasharray="5 5"/>
+            <path d="m100 62 9 18.5 20.2 2.9-14.6 14.3 3.5 20.1L100 108.3l-18.1 9.5 3.5-20.1-14.6-14.3 20.2-2.9z" fill="#a86a00" opacity=".75"/>
+        </g>
+
         <!-- ================= MINES ================= -->
         <g v-else-if="game === 'mines'">
             <g v-for="cell in mineGrid" v-bind:key="cell.x + '-' + cell.y">
@@ -180,6 +224,15 @@
                     { x: 14, y: 18 }, { x: 58, y: 18 }, { x: 102, y: 18 }, { x: 146, y: 18 },
                     { x: 14, y: 142 }, { x: 58, y: 142 }, { x: 102, y: 142 }, { x: 146, y: 142 }
                 ],
+                plinkoPegs: [
+                    { x: 100, y: 40 },
+                    { x: 88, y: 62 }, { x: 112, y: 62, lit: true },
+                    { x: 76, y: 84 }, { x: 100, y: 84, lit: true }, { x: 124, y: 84 },
+                    { x: 64, y: 106 }, { x: 88, y: 106 }, { x: 112, y: 106, lit: true }, { x: 136, y: 106 },
+                    { x: 52, y: 128 }, { x: 76, y: 128 }, { x: 100, y: 128 }, { x: 124, y: 128 }, { x: 148, y: 128 },
+                    { x: 40, y: 150 }, { x: 64, y: 150 }, { x: 88, y: 150 }, { x: 112, y: 150 }, { x: 136, y: 150 }, { x: 160, y: 150 }
+                ],
+                plinkoSlots: ['#ff003f', '#ff5a1f', '#ff9a0a', '#ffc000', '#ffc000', '#ff9a0a', '#ff5a1f'],
                 towerRows: [
                     { y: 30, win: 0 }, { y: 66, win: 2 }, { y: 102, win: 1 }, { y: 138, win: 3 }
                 ]

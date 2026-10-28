@@ -49,6 +49,9 @@
                     { name: 'Battles', to: '/battles', icon: 'battles', colors: ['#ff4d4d', '#b3122e'] }
                 ],
                 homeOriginals: [
+                    { name: 'Plinko', to: '/plinko', icon: 'plinko', colors: ['#ff3d77', '#b3124a'] },
+                    { name: 'Dice', to: '/dice', icon: 'dice', colors: ['#2fd4ff', '#0b6fb8'] },
+                    { name: 'Flip', to: '/flip', icon: 'flip', colors: ['#ffd34d', '#c98a00'] },
                     { name: 'Mines', to: '/mines', icon: 'mines', colors: ['#1fd1a5', '#0b7d76'] },
                     { name: 'Towers', to: '/towers', icon: 'towers', colors: ['#ffbe0b', '#e07a00'] },
                     { name: 'Cases', to: '/unbox', icon: 'unbox', colors: ['#c13cff', '#7a12c4'] },

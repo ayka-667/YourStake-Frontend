@@ -14,6 +14,9 @@ import BlackjackTables from '../views/blackjack/BlackjackTables';
 import BlackjackTable from '../views/blackjack/BlackjackTable';
 import Duels from '../views/Duels';
 import Mines from '../views/Mines';
+import Plinko from '../views/Plinko';
+import Dice from '../views/Dice';
+import Flip from '../views/Flip';
 import Towers from '../views/Towers';
 import Unbox from '../views/unbox/Unbox';
 import UnboxOverview from '../views/unbox/UnboxOverview';
@@ -93,6 +96,21 @@ const routes = [
         path: '/mines',
         name: 'Mines',
         component: Mines
+    },
+    {
+        path: '/plinko',
+        name: 'Plinko',
+        component: Plinko
+    },
+    {
+        path: '/dice',
+        name: 'Dice',
+        component: Dice
+    },
+    {
+        path: '/flip',
+        name: 'Flip',
+        component: Flip
     },
     {
         path: '/towers',

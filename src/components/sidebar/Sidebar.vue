@@ -77,6 +77,9 @@
                     { name: 'Case Battles', to: '/battles', icon: 'battles' }
                 ],
                 sidebarOriginals: [
+                    { name: 'Plinko', to: '/plinko', icon: 'plinko' },
+                    { name: 'Dice', to: '/dice', icon: 'dice' },
+                    { name: 'Flip', to: '/flip', icon: 'flip' },
                     { name: 'Mines', to: '/mines', icon: 'mines' },
                     { name: 'Towers', to: '/towers', icon: 'towers' },
                     { name: 'Cases', to: '/unbox', icon: 'unbox' },

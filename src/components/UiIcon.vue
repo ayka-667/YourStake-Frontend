@@ -30,6 +30,9 @@
         search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
         star: '<path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3l-5.5 2.9 1-6.2L3 9.6l6.2-.9z"/>',
         fire: '<path d="M12 21c4 0 7-2.7 7-6.8 0-4.6-4-6.6-5-11.2-2.7 2.1-3.4 4.5-3.5 6.4C9.3 8.3 8.6 7.2 8.4 6 6.4 8 5 10.6 5 14.2 5 18.3 8 21 12 21z"/>',
+        plinko: '<circle cx="12" cy="4.5" r="1.6" fill="currentColor"/><circle cx="8" cy="10" r="1.2" fill="currentColor"/><circle cx="16" cy="10" r="1.2" fill="currentColor"/><circle cx="4.5" cy="15.5" r="1.2" fill="currentColor"/><circle cx="12" cy="15.5" r="1.2" fill="currentColor"/><circle cx="19.5" cy="15.5" r="1.2" fill="currentColor"/><path d="M3 20.5h18"/>',
+        dice: '<rect x="3.5" y="3.5" width="17" height="17" rx="3.5"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.2" fill="currentColor"/>',
+        flip: '<ellipse cx="12" cy="12" rx="5" ry="9"/><path d="M12 3c3 0 7 4 7 9s-4 9-7 9"/>',
         coin: '<circle cx="12" cy="12" r="9"/><path d="M14.8 9.2A3 3 0 0 0 12 8c-1.7 0-3 .9-3 2s1.3 1.7 3 2 3 .9 3 2-1.3 2-3 2a3 3 0 0 1-2.8-1.2M12 6v2M12 16v2"/>'
     };
 

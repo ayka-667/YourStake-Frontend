@@ -12,6 +12,7 @@ const state = {
     socketUnbox: socketIo(process.env.VUE_APP_SOCKET_URL+'/unbox', { auth: {}, autoConnect: false, reconnection: true, reconnectionDelay: 5000, transports: ['websocket']}),
     socketBattles: socketIo(process.env.VUE_APP_SOCKET_URL+'/battles', { auth: {}, autoConnect: false, reconnection: true, reconnectionDelay: 5000, transports: ['websocket']}),
     socketUpgrader: socketIo(process.env.VUE_APP_SOCKET_URL+'/upgrader', { auth: {}, autoConnect: false, reconnection: true, reconnectionDelay: 5000, transports: ['websocket']}),
+    socketOriginals: socketIo(process.env.VUE_APP_SOCKET_URL+'/originals', { auth: {}, autoConnect: false, reconnection: true, reconnectionDelay: 5000, transports: ['websocket']}),
     socketCashier: socketIo(process.env.VUE_APP_SOCKET_URL+'/cashier', { auth: {}, autoConnect: false, reconnection: true, reconnectionDelay: 5000, transports: ['websocket']}),
     socketAdmin: socketIo(process.env.VUE_APP_SOCKET_URL+'/admin', { auth: {}, autoConnect: false, reconnection: true, reconnectionDelay: 5000, transports: ['websocket']})
 }
@@ -28,6 +29,7 @@ const getters = {
     socketUnbox: state => state.socketUnbox,
     socketBattles: state => state.socketBattles,
     socketUpgrader: state => state.socketUpgrader,
+    socketOriginals: state => state.socketOriginals,
     socketCashier: state => state.socketCashier,
     socketAdmin: state => state.socketAdmin
 }
@@ -66,6 +68,21 @@ const actions = {
         getters.socketGeneral.on('chatRemove', (data) => { dispatch('chatSocketRemove', data); });
         getters.socketGeneral.on('chatClear', (data) => { dispatch('chatSocketClear', data); });
         getters.socketGeneral.on('rainPayout', (data) => { dispatch('rainPayoutSocket', data); });
+    },
+    socketConnectOriginals({ getters, dispatch }) {
+        if(getters.socketOriginals.connected === true) { getters.socketOriginals.removeAllListeners(); }
+        if(getters.authToken !== null) { getters.socketOriginals.auth.token = getters.authToken; }
+
+        getters.socketOriginals.disconnect().connect();
+
+        dispatch('socketListenOriginals');
+    },
+    socketDisconnectOriginals({ getters }) {
+        getters.socketOriginals.removeAllListeners();
+        getters.socketOriginals.disconnect();
+    },
+    socketListenOriginals({ getters, dispatch }) {
+        getters.socketOriginals.on('init', (data) => { dispatch('originalsSocketInit', data); });
     },
     socketConnectCrash({ getters, dispatch }) {
         if(getters.socketCrash.connected === true) { getters.socketCrash.removeAllListeners(); }
