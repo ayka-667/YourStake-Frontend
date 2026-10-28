@@ -5,9 +5,10 @@
             Wallet
         </div>
 
-        <div class="cashier-tabs" v-bind:class="'tabs-' + modalTab">
+        <div class="cashier-tabs" v-bind:class="['tabs-' + modalTab, { 'tabs-ads': modalAdsEnabled }]">
             <span class="tabs-thumb"></span>
             <button v-on:click="modalSetTab('overview')" v-bind:class="{ 'tab-active': modalTab === 'overview' }">Overview</button>
+            <button v-if="modalAdsEnabled" v-on:click="modalSetTab('free')" v-bind:class="{ 'tab-active': modalTab === 'free' }">Free coins</button>
             <button v-on:click="modalSetTab('withdraw')" v-bind:class="{ 'tab-active': modalTab === 'withdraw' }">Withdraw</button>
         </div>
 
@@ -37,6 +38,10 @@
                         <button v-on:click="modalRedeemButton()" v-bind:disabled="socketSendLoading !== null">Redeem</button>
                     </div>
                 </div>
+            </div>
+
+            <div v-else-if="modalTab === 'free'" key="free" class="cashier-pane">
+                <AdsRewarded />
             </div>
 
             <div v-else-if="modalWithdrawState !== 'done'" key="withdraw" class="cashier-pane">
@@ -101,6 +106,8 @@
     import { mapGetters, mapActions } from 'vuex';
     import AmountNumber from '@/components/AmountNumber';
     import UiIcon from '@/components/UiIcon';
+    import AdsRewarded from '@/components/ads/AdsRewarded';
+    import { rewardedAdUnit } from '@/utils/rewardedAd';
 
     // Legacy (L.../M.../3...) and bech32 (ltc1...) Litecoin addresses.
     const LTC_ADDRESS = /^([LM3][a-km-zA-HJ-NP-Z1-9]{25,33}|ltc1[02-9ac-hj-np-z]{8,87})$/;
@@ -109,12 +116,15 @@
         name: 'ModalCashier',
         components: {
             AmountNumber,
-            UiIcon
+            UiIcon,
+            AdsRewarded
         },
         data() {
             return {
                 modalGiftCode: null,
                 modalTab: 'overview',
+                // The Free coins tab only shows once a rewarded ad unit is configured and the admin switch is on
+                modalAdsEnabled: rewardedAdUnit() !== null && (((this.$store.getters.generalSettings || {}).general || {}).ads || {}).enabled !== false,
                 modalAddress: '',
                 modalAmount: '',
                 modalWithdrawState: 'idle',
@@ -244,6 +254,23 @@
 
     .modal-cashier .cashier-tabs.tabs-withdraw .tabs-thumb {
         transform: translateX(100%);
+    }
+
+    /* Three tabs when rewarded ads are on: Overview, Free coins, Withdraw */
+    .modal-cashier .cashier-tabs.tabs-ads {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .modal-cashier .cashier-tabs.tabs-ads .tabs-thumb {
+        width: calc((100% - 8px) / 3);
+    }
+
+    .modal-cashier .cashier-tabs.tabs-ads.tabs-free .tabs-thumb {
+        transform: translateX(100%);
+    }
+
+    .modal-cashier .cashier-tabs.tabs-ads.tabs-withdraw .tabs-thumb {
+        transform: translateX(200%);
     }
 
     .modal-cashier .cashier-tabs button {
