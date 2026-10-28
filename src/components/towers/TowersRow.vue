@@ -7,9 +7,7 @@
             <transition name="fade" mode="out-in">
                 <div v-if="towersGame !== null && towersGame.revealed[row] !== undefined && towersGame.revealed[row].tile === (tile - 1) && towersGame.revealed[row].row[tile - 1] === 'coin'" class="tile-coin">
                     <div class="coin-inner">
-                        <div class="inner-value">
-                        </div>
-                        <img class="tile-mine" src="@/assets/img/mines/bomb.svg" />
+                        <img class="tile-gem" src="@/assets/img/mines/gem.svg" />
                     </div>
                 </div>
                 <div v-else-if="
@@ -18,7 +16,7 @@
                             (towersGame.revealed[row] !== undefined && towersGame.revealed[row].tile === (tile - 1) && towersGame.revealed[row].row[tile - 1] === 'lose') ||
                             (towersGame.state === 'completed' && towersGame.revealed.length <= row && towersGame.deck[row][tile - 1] === 'lose')
                             
-                        )" class="coin-inners">
+                        )" class="coin-inners" v-bind:class="{ 'inners-hit': towersGame.revealed[row] !== undefined }">
                     <img class="tile-mine" src="@/assets/img/mines/bomb.svg" />
                 </div>
                 <button 
@@ -181,84 +179,50 @@
     }
 
     .towers-row .coin-inner,
-    .towers-row .coin-inners,
-
-    .towers-row .lose-inner {
-        width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 7px;
-    overflow: hidden;
-    position: relative;  
-    
-   }
-
-    .towers-row .coin-inner {
-        width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 7px;
-    overflow: hidden;
-    position: relative;  
-    }
     .towers-row .coin-inners {
         width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 7px;
-    overflow: hidden;
-    position: relative;  
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 8px;
+        position: relative;
+        overflow: hidden;
+        animation: towers-tile-pop .35s cubic-bezier(.34, 1.56, .64, 1);
     }
-
 
     .towers-row .coin-inner {
-        width: 146px;
-height: 47px;
-
-background: #15753A;
-border-bottom: 5px solid #17472B;
-border-radius: 10px;
-
+        background: radial-gradient(80% 120% at 50% 50%, rgba(0, 231, 1, 0.16) 0%, rgba(0, 231, 1, 0) 70%), #071824;
+        box-shadow: inset 0 0 0 2px rgba(0, 231, 1, 0.55);
     }
+
     .towers-row .coin-inners {
-        width: 146px;
-height: 47px;
-
-background: linear-gradient(0deg, #AD1239, #AD1239),
-linear-gradient(0deg, #AD1239, #AD1239);
-border-radius: 10px;
+        background: #071824;
+        opacity: .45;
     }
 
-    .towers-row .lose-inner {
-        width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 7px;
-    overflow: hidden;
-    position: relative;  
-
-
+    .towers-row .coin-inners.inners-hit {
+        background: radial-gradient(80% 120% at 50% 50%, rgba(255, 59, 92, 0.22) 0%, rgba(255, 59, 92, 0) 70%), #071824;
+        box-shadow: inset 0 0 0 2px rgba(255, 59, 92, 0.6);
+        opacity: 1;
     }
 
-    .towers-row .lose-inner {
-        width: 146px;
-height: 47px;
+    .towers-row .coin-inner img.tile-gem {
+        height: 30px;
+        filter: drop-shadow(0 0 8px rgba(0, 231, 1, 0.55));
+    }
 
-background: linear-gradient(0deg, #AD1239, #AD1239),
-linear-gradient(0deg, #AD1239, #AD1239);
-border-radius: 10px;
+    .towers-row .coin-inners img.tile-mine {
+        height: 30px;
+    }
+
+    .towers-row .coin-inners.inners-hit img.tile-mine {
+        filter: drop-shadow(0 0 8px rgba(255, 59, 92, 0.6));
+    }
+
+    @keyframes towers-tile-pop {
+        0% { transform: scale(.82); }
+        100% { transform: scale(1); }
     }
 
     .towers-row button.button-reveal {
@@ -303,14 +267,6 @@ border-radius: 10px;
     .towers-row.row-revealed button.button-reveal .button-inner {
         opacity: 0.25;
         
-    }
-
-    .towers-row button.button-reveal .button-inner img,
-    .towers-row .coin-inner img {
-        transform: scaleX(-1);
-    }
-    .towers-row .coin-inners img {
-        transform: scaleX(-1);
     }
 
     .towers-row button.button-reveal .button-inner .inner-value,
