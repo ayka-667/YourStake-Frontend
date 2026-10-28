@@ -54,11 +54,24 @@
         return +coins.toFixed(2) + '';
     };
 
+    // Casino colours by value: 1 white, 5 red, 25 green, 100 black, 500 purple, 1,000+ gold.
+    const chipTier = (amount) => {
+        const coins = amount / 1000;
+        if(coins >= 1000) { return 'gold'; }
+        if(coins >= 500) { return 'purple'; }
+        if(coins >= 100) { return 'black'; }
+        if(coins >= 25) { return 'green'; }
+        if(coins >= 5) { return 'red'; }
+        return 'white';
+    };
+
     const TableChip = {
         name: 'TableChip',
         props: ['amount', 'pending'],
         render(h) {
-            return h('span', { class: ['table-chip', { 'chip-pending': this.pending === true }] }, chipLabel(this.amount));
+            return h('span', { class: ['table-chip', 'chip-' + chipTier(this.amount), { 'chip-pending': this.pending === true }] }, [
+                h('span', { class: 'chip-face' }, chipLabel(this.amount))
+            ]);
         }
     };
 
@@ -195,30 +208,55 @@
     .roulette-board .outside-red .outside-diamond { background: #d0233a; }
     .roulette-board .outside-black .outside-diamond { background: #6b8396; }
 
+    /* Casino chip: striped edge from a conic gradient, dashed inlay on the face */
     .roulette-board >>> .table-chip {
+        --chip: #e9eef3;
+        --chip-light: #ffffff;
+        --chip-dark: #9aa6b2;
+        --edge: #2f6fe0;
+        --ink: #14212b;
         position: absolute;
         top: 50%;
         left: 50%;
-        min-width: 28px;
-        height: 28px;
-        padding: 0 4px;
+        width: 32px;
+        height: 32px;
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 999px;
+        border-radius: 50%;
         transform: translate(-50%, -50%);
-        background: radial-gradient(circle, #00e701 0 52%, #05080a 53% 58%, #00e701 59%);
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.55), inset 0 0 0 2px rgba(255, 255, 255, 0.35);
-        font-size: 10px;
-        font-weight: 800;
-        color: #05080a;
+        background: repeating-conic-gradient(from 8deg, var(--edge) 0 14deg, var(--chip) 14deg 45deg);
+        box-shadow: 0 2px 0 var(--chip-dark), 0 4px 8px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(0, 0, 0, 0.18);
         pointer-events: none;
         animation: chip-drop .25s cubic-bezier(.34, 1.56, .64, 1);
     }
 
+    .roulette-board >>> .table-chip .chip-face {
+        width: 22px;
+        height: 22px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background: radial-gradient(circle at 40% 35%, var(--chip-light), var(--chip));
+        box-shadow: 0 0 0 1.5px var(--chip-dark), inset 0 0 0 1.5px rgba(255, 255, 255, 0.55);
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: var(--ink);
+        white-space: nowrap;
+    }
+
+    .roulette-board >>> .chip-red { --chip: #d0233a; --chip-light: #ef4a5f; --chip-dark: #861425; --edge: #ffffff; --ink: #ffffff; }
+    .roulette-board >>> .chip-green { --chip: #0c9e43; --chip-light: #2be06c; --chip-dark: #06612c; --edge: #ffffff; --ink: #ffffff; }
+    .roulette-board >>> .chip-black { --chip: #1b242c; --chip-light: #3b4954; --chip-dark: #05080a; --edge: #ffffff; --ink: #ffffff; }
+    .roulette-board >>> .chip-purple { --chip: #7b3fd1; --chip-light: #9f6bf0; --chip-dark: #4a1f8a; --edge: #ffd34d; --ink: #ffffff; }
+    .roulette-board >>> .chip-gold { --chip: #e6a812; --chip-light: #ffd64d; --chip-dark: #8f6200; --edge: #1b242c; --ink: #2a1a00; }
+
+    /* Not sent yet: dotted ring around the chip */
     .roulette-board >>> .table-chip.chip-pending {
-        opacity: .6;
-        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.85), 0 2px 6px rgba(0, 0, 0, 0.55);
+        outline: 2px dotted rgba(255, 255, 255, 0.9);
+        outline-offset: 2px;
     }
 
     @keyframes chip-drop {

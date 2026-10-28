@@ -2,7 +2,7 @@
     <div class="navbar-cashier">
         <div class="cashier-balance">
             <AmountNumber v-bind:amount="authUser.user.balance" />
-            <UiIcon name="coin" />
+            <img class="balance-chip" src="@/assets/img/icons/coin.svg" alt="" />
         </div>
         <button v-on:click="modalsSetShow('Cashier')" class="button-wallet">
             <UiIcon name="wallet" class="wallet-icon" />
@@ -56,10 +56,10 @@
         color: #ffffff;
     }
 
-    .navbar-cashier .cashier-balance .ui-icon {
-        width: 16px;
-        height: 16px;
-        color: #f5b70a;
+    .navbar-cashier .cashier-balance img.balance-chip {
+        width: 18px;
+        height: 18px;
+        flex: none;
     }
 
     .navbar-cashier button.button-wallet {
