@@ -55,6 +55,14 @@
         to { opacity: 1; transform: none; }
     }
 
+    /* Bets docks itself to the bottom on small screens; keep it in the flow under the game */
+    @media only screen and (max-width: 950px) {
+        .originals-shell .bets {
+            position: static;
+            margin-top: 30px;
+        }
+    }
+
     @media only screen and (max-width: 850px) {
         .originals-shell { padding: 20px 10px; }
         .originals-shell .shell-game { flex-direction: column-reverse; }

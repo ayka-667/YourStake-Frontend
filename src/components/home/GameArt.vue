@@ -31,6 +31,20 @@
 
         <!-- ================= ROULETTE ================= -->
         <g v-else-if="game === 'roll'">
+            <ellipse cx="100" cy="176" rx="78" ry="8" v-bind:fill="url('shadow')"/>
+            <rect x="14" y="58" width="172" height="92" rx="14" fill="#0f212e" stroke="#2f4553" stroke-width="2"/>
+            <g v-for="card in rollCards" v-bind:key="card.x">
+                <rect v-bind:x="card.x" v-bind:y="card.big ? 66 : 74" v-bind:width="card.big ? 52 : 40" v-bind:height="card.big ? 76 : 60" rx="8"
+                    v-bind:fill="card.fill" v-bind:style="card.big ? 'filter: drop-shadow(0 0 10px rgba(0,231,1,.55))' : ''"/>
+                <text v-bind:x="card.x + (card.big ? 26 : 20)" v-bind:y="card.big ? 112 : 110" text-anchor="middle"
+                    font-family="Inter, sans-serif" font-weight="800" v-bind:font-size="card.big ? 19 : 14"
+                    v-bind:fill="card.big ? '#05080a' : '#ffffff'">{{ card.label }}</text>
+            </g>
+            <path d="M100 46 L108 34 H92 Z" fill="#00e701"/>
+            <path d="M100 162 L108 174 H92 Z" fill="#00e701"/>
+        </g>
+
+        <g v-else-if="game === 'roulette'">
             <ellipse cx="100" cy="186" rx="70" ry="8" v-bind:fill="url('shadow')"/>
             <circle cx="100" cy="100" r="78" fill="#3b2412"/>
             <circle cx="100" cy="100" r="74" fill="#5a3518"/>
@@ -208,6 +222,11 @@
                     { x: 40, y: 150 }, { x: 64, y: 150 }, { x: 88, y: 150 }, { x: 112, y: 150 }, { x: 136, y: 150 }, { x: 160, y: 150 }
                 ],
                 plinkoSlots: ['#ff003f', '#ff5a1f', '#ff9a0a', '#ffc000', '#ffc000', '#ff9a0a', '#ff5a1f'],
+                rollCards: [
+                    { x: 22, label: '2×', fill: '#2f4553' },
+                    { x: 74, label: '14×', fill: '#00e701', big: true },
+                    { x: 138, label: '3×', fill: '#2f4553' }
+                ],
                 towerRows: [
                     { y: 30, win: 0 }, { y: 66, win: 2 }, { y: 102, win: 1 }, { y: 138, win: 3 }
                 ]

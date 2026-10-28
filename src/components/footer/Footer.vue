@@ -5,7 +5,8 @@
                 <div class="footer-column">
                     <div class="column-title">YourStake</div>
                     <router-link to="/crash">Crash</router-link>
-                    <router-link to="/roll">Roulette</router-link>
+                    <router-link to="/roll">Roll</router-link>
+                    <router-link to="/roulette">Roulette</router-link>
                     <router-link to="/blackjack">Blackjack</router-link>
                     <router-link to="/duels">Dice Duels</router-link>
                     <router-link to="/mines">Mines</router-link>

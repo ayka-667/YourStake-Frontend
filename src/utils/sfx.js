@@ -286,12 +286,17 @@ const sfx = {
         noise({ decay: 0.04, gain: 0.12, filter: 'lowpass', freq: 1200, wet: 0.1 });
     },
 
-    // Rare drop reveal (cases): rising sweep into a bell.
-    reveal() {
+    // Roulette ball rolling on the track: a soft rumble that slows down over `duration` seconds.
+    ball(duration = 4) {
         if(ready() === null) { return; }
-        noise({ attack: 0.25, decay: 0.15, gain: 0.07, freq: 600, to: 5000, q: 1.2, wet: 0.4 });
-        bell(1046.5, 0.32, 0.14, 1.1);
-        bell(1567.98, 0.32, 0.08, 1.1);
+        noise({ attack: 0.15, decay: duration, gain: 0.05, filter: 'lowpass', freq: 900, to: 260, wet: 0.25 });
+    },
+
+    // Ball hitting a fret between pockets.
+    fret(pitch = 1) {
+        if(ready() === null) { return; }
+        noise({ decay: 0.02, gain: 0.1, freq: 2600 * pitch * jitter(0.1), q: 4, wet: 0.2 });
+        tone({ freq: 1250 * pitch * jitter(0.05), attack: 0.001, decay: 0.035, gain: 0.04, type: 'triangle', wet: 0.2 });
     }
 };
 

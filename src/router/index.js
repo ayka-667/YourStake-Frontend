@@ -17,6 +17,7 @@ import Mines from '../views/Mines';
 import Plinko from '../views/Plinko';
 import Dice from '../views/Dice';
 import Flip from '../views/Flip';
+import Roulette from '../views/Roulette';
 import Towers from '../views/Towers';
 import Leaderboard from '../views/Leaderboard';
 
@@ -102,6 +103,11 @@ const routes = [
         path: '/flip',
         name: 'Flip',
         component: Flip
+    },
+    {
+        path: '/roulette',
+        name: 'Roulette',
+        component: Roulette
     },
     {
         path: '/towers',

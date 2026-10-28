@@ -71,7 +71,7 @@
             return {
                 sidebarMultiplayer: [
                     { name: 'Crash', to: '/crash', icon: 'crash' },
-                    { name: 'Roulette', to: '/roll', icon: 'roll' },
+                    { name: 'Roll', to: '/roll', icon: 'roll' },
                     { name: 'Blackjack', to: '/blackjack', icon: 'blackjack' },
                     { name: 'Dice Duels', to: '/duels', icon: 'duels' }
                 ],
@@ -79,6 +79,7 @@
                     { name: 'Plinko', to: '/plinko', icon: 'plinko' },
                     { name: 'Dice', to: '/dice', icon: 'dice' },
                     { name: 'Flip', to: '/flip', icon: 'flip' },
+                    { name: 'Roulette', to: '/roulette', icon: 'roulette' },
                     { name: 'Mines', to: '/mines', icon: 'mines' },
                     { name: 'Towers', to: '/towers', icon: 'towers' }
                 ]

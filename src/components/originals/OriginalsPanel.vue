@@ -2,7 +2,7 @@
     <div class="originals-panel">
         <div class="panel-field">
             <div class="field-label">
-                <span>Bet Amount</span>
+                <span>{{ amountLabel }}</span>
                 <span class="label-value">{{ panelFormatValue(panelAmountValue) }}</span>
             </div>
             <div class="field-amount">
@@ -18,7 +18,7 @@
 
         <slot></slot>
 
-        <div class="panel-field">
+        <div v-if="showProfit" class="panel-field">
             <div class="field-label">
                 <span>Profit on Win</span>
                 <span class="label-value">{{ multiplier > 0 ? multiplier.toFixed(2) + '×' : '–' }}</span>
@@ -54,6 +54,8 @@
         },
         props: {
             label: { type: String, default: 'Bet' },
+            amountLabel: { type: String, default: 'Bet Amount' },
+            showProfit: { type: Boolean, default: true },
             multiplier: { type: Number, default: 0 },
             busy: { type: Boolean, default: false },
             disabled: { type: Boolean, default: false }
@@ -110,6 +112,13 @@
                 }
 
                 this.modalsSetShow('FairSeed');
+            }
+        },
+        watch: {
+            // Lets games that place several chips read the current chip value.
+            panelAmountValue: {
+                handler(value) { this.$emit('amount', value); },
+                immediate: true
             }
         },
         computed: {
