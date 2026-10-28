@@ -161,8 +161,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        text-transform: uppercase;
-        font-size: 12px;
+        font-size: 13px;
         font-weight: 600;
         color: #557086;
     }
@@ -204,7 +203,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        background: #00e701;
+        background: transparent;
         border-radius: 4px;
         z-index: -1;
         isolation: isolate;
@@ -221,7 +220,7 @@
         position: absolute;
         top: 1px;
         left: 1px;
-        background: #001a2f;
+        background: transparent;
         border-radius: 4px;
         z-index: -1;
         isolation: isolate;
@@ -233,18 +232,20 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background: rgba(15, 33, 46, 0.27);
+        background: #2f4553;
+        border-radius: 6px;
+        transition: background .2s ease;
         border-radius: 4px;
         isolation: isolate;
     }
 
     .admin-stats .list-pagination button:disabled .button-inner {
-        background: rgba(15, 33, 46, 0.27);
-        box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.35);
+        background: #2f4553;
+        opacity: .4;
     }
 
     .admin-stats .list-pagination button .button-inner svg {
-        fill: #00e701;
+        fill: #ffffff;
     }
 
     .admin-stats .list-pagination button:disabled .button-inner svg {

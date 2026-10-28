@@ -2,7 +2,7 @@
     <div class="admin">
         <div class="admin-container">
             <div class="container-header">
-                <router-link to="/admin" class="header-title text-green-gradient">Admin panel</router-link>
+                <router-link to="/admin" class="header-title">Admin panel</router-link>
                 <AdminFilterNavbar />
             </div>
             <div class="container-content">
@@ -31,15 +31,17 @@
 <style scoped>
     .admin {
         width: 100%;
-        padding: 55px 50px 45px 50px;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 40px 20px 45px 20px;
     }
 
     .admin .admin-container {
         width: 100%;
-        padding: 30px;
-        border-radius: 15px;
-        background: radial-gradient(285% 150% at 50% 50%, #001e37 0%, #000e1a 100%);
-        border: 1px solid #24435e;
+        padding: 28px;
+        border-radius: 12px;
+        background: #0f212e;
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 24px 48px -24px rgba(0, 0, 0, 0.6);
     }
 
     .admin .container-header {
@@ -50,15 +52,17 @@
     }
 
     .admin .container-header a.header-title {
-        font-size: 32px;
-        font-weight: 700;
+        font-size: 26px;
+        font-weight: 800;
+        letter-spacing: -0.01em;
+        color: #ffffff;
     }
 
     .admin .container-content {
         width: 100%;
-        margin-top: 30px;
+        margin-top: 24px;
         padding-top: 20px;
-        border-top: 1px solid #213743;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .admin .container-content .slide-fade-enter-active {
@@ -72,7 +76,7 @@
     @media only screen and (max-width: 750px) {
 
         .admin {
-            padding: 55px 10px 45px 10px;
+            padding: 24px 10px 45px 10px;
         }
 
         .admin .admin-container {

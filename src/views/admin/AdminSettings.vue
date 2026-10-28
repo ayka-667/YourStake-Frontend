@@ -80,9 +80,9 @@
 
     .admin-settings .settings-section {
         width: 100%;
-        padding: 15px 10px;
-        border-radius: 5px;
-        background: rgba(47, 69, 83, 0.25);
+        padding: 14px 12px;
+        border-radius: 12px;
+        background: #213743;
     }
 
     .admin-settings .settings-section:nth-child(1) {
@@ -101,9 +101,9 @@
     }
 
     .admin-settings .section-title {
-        padding-left: 10px;
-        font-size: 14px;
-        font-weight: 600;
+        padding-left: 4px;
+        font-size: 13px;
+        font-weight: 700;
         color: #b1bad3;
     }
 

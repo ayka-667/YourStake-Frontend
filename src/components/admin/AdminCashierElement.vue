@@ -156,7 +156,7 @@
         justify-content: center;
         align-items: flex-end;
         border-radius: 50%;
-        border: 1px solid #9e9e9e;
+        border: 2px solid #2f4553;
         overflow: hidden;
     }
 

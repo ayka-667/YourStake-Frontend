@@ -229,8 +229,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        text-transform: uppercase;
-        font-size: 12px;
+        font-size: 13px;
         font-weight: 600;
         color: #557086;
     }
@@ -272,7 +271,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        background: #00e701;
+        background: transparent;
         border-radius: 4px;
         z-index: -1;
         isolation: isolate;
@@ -289,7 +288,7 @@
         position: absolute;
         top: 1px;
         left: 1px;
-        background: #001a2f;
+        background: transparent;
         border-radius: 4px;
         z-index: -1;
         isolation: isolate;
@@ -301,18 +300,20 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background: rgba(15, 33, 46, 0.27);
+        background: #2f4553;
+        border-radius: 6px;
+        transition: background .2s ease;
         border-radius: 4px;
         isolation: isolate;
     }
 
     .admin-cashier .list-pagination button:disabled .button-inner {
-        background: rgba(15, 33, 46, 0.27);
-        box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.35);
+        background: #2f4553;
+        opacity: .4;
     }
 
     .admin-cashier .list-pagination button .button-inner svg {
-        fill: #00e701;
+        fill: #ffffff;
     }
 
     .admin-cashier .list-pagination button:disabled .button-inner svg {
@@ -349,7 +350,7 @@
         font-weight: 600;
         color: #ffffff;
         background: rgba(47, 69, 83, 0.25);
-        border: 1px dashed rgba(46, 93, 119, 0.5);
+        border: 2px solid #2f4553;
     }
 
     .admin-cashier .filters-generate input {
@@ -381,7 +382,7 @@
         width: 300px;
         margin-top: 25px;
         padding-top: 25px;
-        border-top: 1px dashed #1a4060;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .admin-cashier .stats-deposit,
@@ -393,16 +394,16 @@
         justify-content: center;
         align-items: center;
         border-radius: 15px;
-        border: 1px dashed #073054;
+        border: none;
     }
 
     .admin-cashier .stats-deposit {
-        background: radial-gradient(60% 55% at 50% 100%, rgba(1, 246, 185, 0.2) 0%, rgba(1, 247, 185, 0) 100%);
+        background: #213743;
     }
 
     .admin-cashier .stats-withdraw {
         margin-top: 15px;
-        background: radial-gradient(80% 70% at 50% 100%, rgba(245, 80, 70, 0.2) 0%, rgba(245, 80, 70, 0) 100%);
+        background: #213743;
     }
 
     .admin-cashier .deposit-title,

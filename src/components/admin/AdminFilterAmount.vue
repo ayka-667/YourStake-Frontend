@@ -111,7 +111,8 @@
         width: 100%;
         padding: 3px;
         border-radius: 5px;
-        background: #022038;
+        background: #213743;
+        box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.6);
     }
 
     .admin-filter-amount .menu-inner button {

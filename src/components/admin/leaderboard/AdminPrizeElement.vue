@@ -1,6 +1,6 @@
 <template>
     <div class="admin-prize-element">
-        <input v-model="prize.amount" v-on:input="adminValidateInput()" type="text" placeholder="ENTER PRICE..." />
+        <input v-model="prize.amount" v-on:input="adminValidateInput()" type="text" placeholder="Enter prize amount..." />
         <button v-on:click="$parent.adminRemoveButton(pos)" class="button-remove">
             <IconClose />
         </button>
@@ -50,7 +50,7 @@
         font-weight: 600;
         color: #ffffff;
         background: rgba(47, 69, 83, 0.25);
-        border: 1px dashed rgba(46, 93, 119, 0.5);
+        border: 2px solid #2f4553;
     }
 
     .admin-prize-element input::placeholder {

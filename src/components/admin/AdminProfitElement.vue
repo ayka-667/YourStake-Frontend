@@ -53,9 +53,8 @@
         width: calc(25% - 22.5px);
         height: 230px;
         margin-right: 30px;
-        border-radius: 15px;
-        background: radial-gradient(90% 60% at 50% 50%, #032b4f 0%, #001425 100%);
-        border: 1px solid #123e62;
+        border-radius: 12px;
+        background: #213743;
     }
 
     .admin-profit-element:nth-child(4n) {
@@ -118,16 +117,16 @@
 
     .admin-profit-element .element-title {
         text-align: center;
-        font-size: 16px;
-        font-weight: 700;
-        color: #ffffff;
+        font-size: 14px;
+        font-weight: 600;
+        color: #b1bad3;
     }
 
     .admin-profit-element .element-date {
         text-align: center;
-        font-size: 14px;
-        font-weight: 700;
-        color: #b1bad3;
+        font-size: 13px;
+        font-weight: 600;
+        color: #557086;
     }
 
     @keyframes loading_animation {
@@ -142,7 +141,7 @@
             width: calc(50% - 15px);
             height: 230px;
             margin-right: 30px;
-            border-radius: 15px;
+            border-radius: 12px;
         }
 
         .admin-profit-element:nth-child(1),

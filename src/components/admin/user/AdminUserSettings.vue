@@ -233,44 +233,40 @@
     }
 
     .admin-user-settings .settings-element.element-toggle button {
-        width: 45px;
-        height: 15px;
+        width: 40px;
+        height: 22px;
         position: relative;
+        flex: none;
+        border-radius: 999px;
+        background: #2f4553;
         filter: none;
+        transition: background .2s ease;
     }
 
     .admin-user-settings .settings-element.element-toggle button:disabled {
         cursor: not-allowed;
-    }
-
-    .admin-user-settings .settings-element.element-toggle button::before {
-        content: '';
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background-color: #1a2c38;
-        border-radius: 4px;
-        isolation: isolate;
+        opacity: .6;
     }
 
     .admin-user-settings .settings-element.element-toggle button::after {
         content: '';
-        width: 25px;
-        height: 19px;
+        width: 16px;
+        height: 16px;
         position: absolute;
-        top: -2px;
-        left: 0;
-        background: #1c5064;
-        border-radius: 4px;
-        transition: all 0.3s ease;
-        isolation: isolate;
+        top: 3px;
+        left: 3px;
+        border-radius: 50%;
+        background: #ffffff;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+        transition: transform .25s cubic-bezier(.32, .72, 0, 1);
+    }
+
+    .admin-user-settings .settings-element.element-toggle button.button-active {
+        background: #00e701;
     }
 
     .admin-user-settings .settings-element.element-toggle button.button-active::after {
-        transform: translate(20px, 0);
-        background: #00e701;
+        transform: translateX(18px);
     }
 
     .admin-user-settings .settings-element.element-text .element-input,
@@ -299,7 +295,7 @@
         font-size: 12px;
         font-weight: 600;
         color: #ffffff;
-        background: rgba(10, 36, 52, 0.5);
+        background: #0f212e;
     }
 
     .admin-user-settings .settings-element.element-number .element-input input {

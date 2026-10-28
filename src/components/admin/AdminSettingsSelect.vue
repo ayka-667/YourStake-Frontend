@@ -56,32 +56,33 @@
 <style scoped>
     .admin-settings-select {
         width: 100%;
-        height: 47px;
+        height: 46px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-top: 10px;
-        padding: 0 10px;
-        border-radius: 5px;
-        background-color: rgba(47, 69, 83, 0.3);
+        margin-top: 8px;
+        padding: 0 12px;
+        border-radius: 8px;
+        background-color: #1a2c38;
     }
 
     .admin-settings-select .select-name {
         display: flex;
         align-items: center;
         font-size: 14px;
-        font-weight: 700;
-        color: #b1bad3;
+        font-weight: 600;
+        color: #ffffff;
     }
 
     .admin-settings-select select {
         width: 60px;
         height: 33px;
         padding: 0 5px;
-        border-radius: 5px;
+        border-radius: 6px;
+        border: 2px solid #2f4553;
         font-size: 12px;
         font-weight: 600;
         color: #ffffff;
-        background: rgba(10, 36, 52, 0.5);
+        background: #0f212e;
     }
 </style>

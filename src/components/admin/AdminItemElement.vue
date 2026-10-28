@@ -60,7 +60,7 @@
         font-weight: 600;
         color: #ffffff;
         background: rgba(47, 69, 83, 0.25);
-        border: 1px dashed rgba(46, 93, 119, 0.5);
+        border: 2px solid #2f4553;
     }
 
     .admin-item-element input::placeholder {

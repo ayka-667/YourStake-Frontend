@@ -97,10 +97,11 @@
                             yAxisID: 'yUsers',
                             data: [],
                             fill: true,
-                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                            borderColor: '#01f6f8',
-                            pointRadius: 5,
-                            pointBorderColor: '#ffffff'
+                            backgroundColor: 'rgba(0, 231, 1, 0.12)',
+                            borderColor: '#00e701',
+                            pointRadius: 4,
+                            pointBackgroundColor: '#00e701',
+                            pointBorderColor: '#0f212e'
                         }
                     ]
                 };
@@ -174,7 +175,7 @@
         top: 16px;
         left: 135px;
         right: 273px;
-        background: #213743;
+        background: rgba(255, 255, 255, 0.06);
     }
 
     .admin-dashboard .header-title {
@@ -208,9 +209,8 @@
         width: 100%;
         height: 250px;
         margin-top: 25px;
-        border-radius: 15px;
-        background: radial-gradient(180% 125% at 50% 15%, rgba(3, 43, 79, 0) 0%, #00284b 100%);
-        border: 1px solid #123e62;
+        border-radius: 12px;
+        background: #213743;
         overflow: hidden;
     }
 
@@ -218,8 +218,8 @@
         width: 100%;
         height: 100%;
         position: relative;
-        background: repeating-linear-gradient(#014469 0 1px, transparent 1px 100%),
-                    repeating-linear-gradient(90deg, #014469 0 1px, transparent 1px 100%);
+        background: repeating-linear-gradient(rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 100%),
+                    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 100%);
         background-size: 7.69% 41.66px;
     }
 
