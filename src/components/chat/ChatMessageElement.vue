@@ -1,7 +1,8 @@
 <template>
     <div class="chat-message-element" v-bind:class="{
         'element-rain': message.type === 'rainTip' || message.type === 'rainCompleted',
-        'element-system': message.type === 'system'
+        'element-system': message.type === 'system',
+        'element-win': message.type === 'bigWin'
     }">
         <div v-if="message.type === 'rainTip' || message.type === 'rainCompleted'" class="element-rain">
             <div class="rain-header">
@@ -25,6 +26,22 @@
                     </div>
                     in total from the rain.
                 </div>
+            </div>
+        </div>
+        <div v-else-if="message.type === 'bigWin'" class="element-win">
+            <div class="win-header">
+                <span class="win-icon">🏆</span>
+                <span class="win-title">Big win</span>
+                <span class="win-game">{{ chatGetMethod }}</span>
+            </div>
+            <div class="win-content">
+                <span class="win-username">{{ message.bet.user !== null ? message.bet.user.username : 'Hidden' }}</span>
+                won
+                <span class="win-amount">
+                    <img src="@/assets/img/icons/coin.svg" alt="icon" />
+                    {{ chatFormatValue(message.bet.payout) }}
+                </span>
+                <span class="win-multiplier">{{ (message.bet.multiplier / 100).toFixed(2) }}x</span>
             </div>
         </div>
         <div v-else-if="message.type === 'system'" class="element-system">
@@ -150,6 +167,10 @@
             ...mapGetters([
                 'authUser'
             ]),
+            chatGetMethod() {
+                const method = this.message.bet.method || '';
+                return method.charAt(0).toUpperCase() + method.slice(1);
+            },
             chatGetLevelColor() {
                 let color = '';
 
@@ -201,6 +222,72 @@
         padding: 15px 15px 15px 14px;
         background: linear-gradient(100deg, rgba(219, 125, 72, 0.1) 5%, rgba(162, 92, 53, 0.07) 30%, rgba(134, 77, 44, 0.06) 50%, rgba(0, 0, 0, 0) 82%), rgba(3, 16, 27, 0.32);
         border-left: 1px solid #db7d48;
+    }
+
+    .chat-message-element.element-win {
+        padding: 13px 15px 13px 14px;
+        background: linear-gradient(100deg, rgba(255, 176, 46, 0.12) 5%, rgba(255, 176, 46, 0.06) 40%, rgba(0, 0, 0, 0) 85%), rgba(3, 16, 27, 0.32);
+        border-left: 1px solid #ffb02e;
+    }
+
+    .chat-message-element .win-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    .chat-message-element .win-icon { font-size: 16px; line-height: 1; }
+    .chat-message-element .win-title { color: #ffb02e; }
+
+    .chat-message-element .win-game {
+        margin-left: auto;
+        padding: 2px 8px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        font-size: 11px;
+        font-weight: 600;
+        color: #b1bad3;
+    }
+
+    .chat-message-element .win-content {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 6px;
+        margin-top: 6px;
+        font-size: 14px;
+        font-weight: 600;
+        color: #b1bad3;
+    }
+
+    .chat-message-element .win-username {
+        font-weight: 700;
+        color: #ffffff;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 140px;
+        white-space: nowrap;
+    }
+
+    .chat-message-element .win-amount {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        font-weight: 800;
+        color: #00e701;
+    }
+
+    .chat-message-element .win-amount img { width: 15px; height: 15px; }
+
+    .chat-message-element .win-multiplier {
+        padding: 1px 6px;
+        border-radius: 4px;
+        background: rgba(255, 176, 46, 0.14);
+        font-size: 12px;
+        font-weight: 700;
+        color: #ffb02e;
     }
 
     .chat-message-element::after {

@@ -4,11 +4,21 @@
         <h3>
             Daily reward
             <span v-if="dailyAffiliated === true" class="badge-affiliated">Affiliated</span>
+            <span v-if="dailyStreak > 0" class="badge-streak">{{ dailyStreak }} day streak</span>
         </h3>
         <p>
-            Claim <span>{{ dailyFormat(dailyReward) }} coins</span> for free every day. Come back every 24 hours to claim it again.
-            <template v-if="dailyLoaded === true && dailyAffiliated !== true">Redeem a code to get <span>100.00 coins</span> a day.</template>
+            Claim free coins every 24 hours. Claim on consecutive days to grow your streak, up to <span>x4 on day {{ dailyStreakMax }}</span>. Miss a day and it starts over.
+            <template v-if="dailyLoaded === true && dailyAffiliated !== true">Redeem a code to get <span>10x more</span>.</template>
         </p>
+        <div class="daily-streak">
+            <div v-for="(reward, index) in dailyRewards" v-bind:key="index" class="streak-day" v-bind:class="{
+                'day-done': index < dailyStreakDone,
+                'day-next': index + 1 === dailyStreakNext
+            }">
+                <span class="day-label">Day {{ index + 1 }}</span>
+                <span class="day-amount">{{ dailyFormat(reward).replace('.00', '') }}</span>
+            </div>
+        </div>
         <div class="daily-bottom">
             <div class="bottom-earnings">
                 <span>{{ dailyCooldownLeft > 0 ? 'Next reward in' : 'Available' }}</span>
@@ -42,6 +52,9 @@
                 dailyCooldownEnd: 0,
                 dailyNow: Date.now(),
                 dailyTimerId: null,
+                dailyStreak: 0,
+                dailyStreakMax: 7,
+                dailyRewards: [],
                 dailyLoaded: false,
                 dailyLoading: false
             }
@@ -62,6 +75,9 @@
                 this.dailyReward = status.reward;
                 this.dailyAffiliated = status.affiliated === true;
                 this.dailyCooldownEnd = Date.now() + status.cooldownLeft;
+                this.dailyStreak = status.streak || 0;
+                this.dailyStreakMax = status.streakMax || 7;
+                this.dailyRewards = status.rewards || [];
                 this.dailyLoaded = true;
             },
             async dailyLoad() {
@@ -96,6 +112,14 @@
             ]),
             dailyCooldownLeft() {
                 return Math.max(0, this.dailyCooldownEnd - this.dailyNow);
+            },
+            // Days of the week row already claimed (past day 7 the row stays full, day 7 is the next one)
+            dailyStreakDone() {
+                const done = Math.min(this.dailyStreak, this.dailyStreakMax);
+                return this.dailyCooldownLeft <= 0 && done === this.dailyStreakMax ? done - 1 : done;
+            },
+            dailyStreakNext() {
+                return this.dailyCooldownLeft > 0 ? null : Math.min(this.dailyStreak + 1, this.dailyStreakMax);
             },
             dailyButtonDisabled() {
                 return this.dailyLoaded !== true || this.dailyLoading === true || this.dailyCooldownLeft > 0;
@@ -170,7 +194,7 @@
     }
 
     .rewards-daily p {
-        margin: 8px 0 20px 0;
+        margin: 8px 0 16px 0;
         max-width: 420px;
         font-size: 14px;
         font-weight: 500;
@@ -179,6 +203,50 @@
     }
 
     .rewards-daily p span { color: #ffffff; font-weight: 700; }
+
+    .rewards-daily .badge-streak {
+        padding: 3px 10px;
+        border-radius: 999px;
+        background: rgba(255, 166, 0, 0.14);
+        font-size: 12px;
+        font-weight: 700;
+        color: #ffb02e;
+    }
+
+    .rewards-daily .daily-streak {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 6px;
+    }
+
+    .rewards-daily .streak-day {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        padding: 8px 2px;
+        border-radius: 8px;
+        background: #1a2c38;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+    }
+
+    .rewards-daily .day-label {
+        font-size: 10px;
+        font-weight: 600;
+        color: #557086;
+        white-space: nowrap;
+    }
+
+    .rewards-daily .day-amount {
+        font-size: 13px;
+        font-weight: 800;
+        color: #b1bad3;
+    }
+
+    .rewards-daily .streak-day.day-done { background: rgba(0, 231, 1, 0.10); box-shadow: inset 0 0 0 1px rgba(0, 231, 1, 0.25); }
+    .rewards-daily .streak-day.day-done .day-amount { color: #00e701; }
+    .rewards-daily .streak-day.day-next { background: rgba(158, 192, 255, 0.14); box-shadow: inset 0 0 0 1px #9ec0ff; }
+    .rewards-daily .streak-day.day-next .day-amount { color: #ffffff; }
 
     .rewards-daily .daily-bottom {
         display: flex;
